@@ -1,75 +1,75 @@
 ---
-title: Privacy Policy
-id: '3'
+title: 隐私政策
+id: '6'
 tags: []
 categories:
   - - uncategorized
 comments: false
-date: 2019-12-11 21:55:06
+date: 2019-05-12 17:09:39
 ---
 
-## Who we are
+## 我们是谁
 
-Our website address is: http://blogs.idevlab.cn.
+我们的站点地址是：https://idevlab.cn。
 
-## What personal data we collect and why we collect it
+## 我们收集何种及为何收集个人数据
 
-### Comments
+### 评论
 
-When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user agent string to help spam detection.
+当访客留下评论时，我们会收集评论表单所显示的数据，和访客的IP地址及浏览器的user agent字符串来帮助检查垃圾评论。
 
-An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.
+由您的电子邮件地址所生成的匿名化字符串（又称为哈希）可能会被提供给Gravatar服务确认您是否有使用该服务。Gravatar服务的隐私政策在此：https://automattic.com/privacy/。在您的评论获批准后，您的资料图片将在您的评论旁公开展示。
 
-### Media
+### 媒体
 
-If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.
+如果您向此网站上传图片，您应当避免上传那些有嵌入地理位置信息（EXIF GPS）的图片。此网站的访客将可以下载并提取此网站的图片中的位置信息。
 
-### Contact forms
+### 联系表单
 
 ### Cookies
 
-If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.
+如果您在我们的站点上留下评论，您可以选择用cookies保存您的姓名、电子邮件地址和网站。这是通过让您可以不用在评论时再次填写相关内容而向您提供方便。这些cookies会保留一年。
 
-If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.
+如果您有此站点的账户并且您登录了此站点，我们会设置一个临时的cookie来确认您的浏览器是否接受cookies。此cookie不包含个人数据且会在您关闭浏览器时被丢弃。
 
-When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select "Remember Me", your login will persist for two weeks. If you log out of your account, the login cookies will be removed.
+当您登录时，我们也会设置多个cookies来保存您的登录信息及屏幕显示选项。登录cookies会保留两天，而屏幕显示选项cookies会保留一年。如果您选择了“记住我”，您的登录状态则会保留两周。如果您登出您的账户，用于登录的cookies将会被移除。
 
-If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.
+如果您编辑或发布文章，我们会在您的浏览器中保存一个额外的cookie。这个cookie不包含个人数据而只记录了您刚才编辑的文章的ID。这个cookie会保留一天。
 
-### Embedded content from other websites
+### 其他站点的嵌入内容
 
-Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.
+此站点上的文章可能会包含嵌入的内容（如视频、图像、文章等）。来自其他站点的嵌入内容的行为和您直接访问这些其他站点没有区别。
 
-These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.
+这些站点可能会收集关于您的数据、使用cookies、嵌入额外的第三方跟踪程序及监视您与这些嵌入内容的交互，包括在您有这些站点的账户并登录了这些站点时，跟踪您与嵌入内容的交互。
 
-### Analytics
+### 统计
 
-## Who we share your data with
+## 我们与谁共享您的信息
 
-## How long we retain your data
+## 我们保留多久您的信息
 
-If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.
+如果您留下评论，评论和其元数据将被无限期保存。我们这样做以便能识别并自动批准任何后续评论，而不用将这些后续评论加入待审队列。
 
-For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.
+对于本网站的注册用户，我们也会保存用户在个人资料中提供的个人信息。所有用户可以在任何时候查看、编辑或删除他们的个人信息（除了不能变更用户名外）、站点管理员也可以查看及编辑那些信息。
 
-## What rights you have over your data
+## 您对您的信息有什么权利
 
-If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.
+如果您有此站点的账户，或曾经留下评论，您可以请求我们提供我们所拥有的您的个人数据的导出文件，这也包括了所有您提供给我们的数据。您也可以要求我们抹除所有关于您的个人数据。这不包括我们因管理、法规或安全需要而必须保留的数据。
 
-## Where we send your data
+## 我们将您的信息发送到哪
 
-Visitor comments may be checked through an automated spam detection service.
+访客评论可能会被自动垃圾评论监测服务检查。
 
-## Your contact information
+## 您的联系信息
 
-## Additional information
+## 其他信息
 
-### How we protect your data
+### 我们如何保护您的数据
 
-### What data breach procedures we have in place
+### 我们有何种数据泄露处理流程
 
-### What third parties we receive data from
+### 我们从哪些第三方接收数据
 
-### What automated decision making and/or profiling we do with user data
+### 我们通过用户数据进行何种自动决策及/或归纳
 
-### Industry regulatory disclosure requirements
+### 行业监管披露要求
