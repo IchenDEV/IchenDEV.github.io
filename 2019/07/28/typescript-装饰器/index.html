@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TypeScript 装饰器 | idevlab</title><meta name="description" content="装饰器介绍随着TypeScript和ES6里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（Decorators）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 Javascript里的装饰器目前处在 建议征集的第二阶段，但在TypeScript里已做为一项实验性特性予以支持。 由于处于实验状态，我们要用装饰器现在还得要输入特殊的参数： tsc –ta"><meta name="author" content="idevlab"><meta name="copyright" content="idevlab"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2019/07/28/typescript-%E8%A3%85%E9%A5%B0%E5%99%A8/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="TypeScript 装饰器"><meta property="og:url" content="http://yoursite.com/2019/07/28/typescript-%E8%A3%85%E9%A5%B0%E5%99%A8/"><meta property="og:site_name" content="idevlab"><meta property="og:description" content="装饰器介绍随着TypeScript和ES6里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（Decorators）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 Javascript里的装饰器目前处在 建议征集的第二阶段，但在TypeScript里已做为一项实验性特性予以支持。 由于处于实验状态，我们要用装饰器现在还得要输入特殊的参数： tsc –ta"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2019-07-28T01:42:27.000Z"><meta property="article:modified_time" content="2020-08-06T15:24:38.026Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: {"limitCount":50,"languages":{"author":"作者: idevlab","link":"链接: ","source":"来源: idevlab","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-08-06 15:24:38'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">44</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">7</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">装饰器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88%E6%99%AE%E9%80%9A%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">装饰器（普通）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E5%B7%A5%E5%8E%82"><span class="toc-number">2.2.</span> <span class="toc-text">装饰器工厂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E7%BB%84%E5%90%88"><span class="toc-number">2.3.</span> <span class="toc-text">装饰器的组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E8%BF%90%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">2.4.</span> <span class="toc-text">装饰器的运行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">2.5.</span> <span class="toc-text">类装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">2.6.</span> <span class="toc-text">方法装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%99%A8%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">2.7.</span> <span class="toc-text">访问器装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">2.8.</span> <span class="toc-text">属性装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">2.9.</span> <span class="toc-text">参数装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">2.10.</span> <span class="toc-text">元数据</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">idevlab</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">TypeScript 装饰器</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-07-28T01:42:27.000Z" title="发表于 2019-07-28 01:42:27">2019-07-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-08-06T15:24:38.026Z" title="更新于 2020-08-06 15:24:38">2020-08-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>随着TypeScript和ES6里引入了类，在一些场景下我们需要额外的特性来支持标注或修改类及其成员。 装饰器（Decorators）为我们在类的声明及成员上通过元编程语法添加标注提供了一种方式。 Javascript里的装饰器目前处在 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-decorators">建议征集的第二阶段</a>，但在TypeScript里已做为一项实验性特性予以支持。</p>
+<p>由于处于实验状态，我们要用装饰器现在还得要输入<strong>特殊的参数：</strong></p>
+<p>tsc –target ES5 –experimentalDecorators</p>
+<p>装饰器主要有普通装饰器，装饰器工厂两种方式，简单来说普通装饰器不带被装饰的参数，装饰器工厂可以添加参数</p>
+<h2 id="装饰器（普通）"><a href="#装饰器（普通）" class="headerlink" title="装饰器（普通）"></a>装饰器（普通）</h2><p>例如，有一个<code>@sealed</code>装饰器，我们会这样定义<code>sealed</code>函数：</p>
+<p>function sealed(target) {<br>    // do something with “target” …<br>}</p>
+<h2 id="装饰器工厂"><a href="#装饰器工厂" class="headerlink" title="装饰器工厂"></a>装饰器工厂</h2><p>我们可以通过下面的方式来写一个装饰器工厂函数：</p>
+<p>function color(value: string) { // 这是一个装饰器工厂<br>    return function (target) { //  这是装饰器<br>        // do something with “target” and “value”…<br>    }<br>}</p>
+<h2 id="装饰器的组合"><a href="#装饰器的组合" class="headerlink" title="装饰器的组合"></a>装饰器的组合</h2><p>多个装饰器可以同时应用到一个声明上，就像下面的示例：</p>
+<ul>
+<li>书写在同一行上：</li>
+</ul>
+<p>@f @g x</p>
+<ul>
+<li>书写在多行上：</li>
+</ul>
+<p>@f<br>@g<br>x</p>
+<p>当多个装饰器应用于一个声明上，它们求值方式与<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Function_composition">复合函数</a>相似。在这个模型下，当复合<em>f_和_g_时，复合的结果(_f</em> ∘ <em>g</em>)(<em>x</em>)等同于<em>f</em>(<em>g</em>(<em>x</em>))。</p>
+<p>同样的，在TypeScript里，当多个装饰器应用在一个声明上时会进行如下步骤的操作：</p>
+<ol>
+<li>由上至下依次对装饰器表达式求值。</li>
+<li>求值的结果会被当作函数，由下至上依次调用。</li>
+</ol>
+<p>如果我们使用<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/decorators.html#decorator-factories">装饰器工厂</a>的话，可以通过下面的例子来观察它们求值的顺序：</p>
+<p>function f() {<br>    console.log(“f(): evaluated”);<br>    return function (target, propertyKey: string, descriptor: PropertyDescriptor) {<br>        console.log(“f(): called”);<br>    }<br>}<br>function g() {<br>    console.log(“g(): evaluated”);<br>    return function (target, propertyKey: string, descriptor: PropertyDescriptor) {<br>        console.log(“g(): called”);<br>    }<br>}<br>class C {<br>    @f()<br>    @g()<br>    method() {}<br>}</p>
+<p>在控制台里会打印出如下结果：</p>
+<p>f(): evaluated<br>g(): evaluated<br>g(): called<br>f(): called</p>
+<h2 id="装饰器的运行顺序"><a href="#装饰器的运行顺序" class="headerlink" title="装饰器的运行顺序"></a>装饰器的运行顺序</h2><p>类中不同声明上的装饰器将按以下规定的顺序应用：</p>
+<ol>
+<li>_参数装饰器_，然后依次是_方法装饰器_，_访问符装饰器_，或_属性装饰器_应用到每个实例成员。</li>
+<li>_参数装饰器_，然后依次是_方法装饰器_，_访问符装饰器_，或_属性装饰器_应用到每个静态成员。</li>
+<li>_参数装饰器_应用到构造函数。</li>
+<li>_类装饰器_应用到类。</li>
+</ol>
+<h2 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h2><p>类装饰器表达式会在运行时当作函数被调用，类的构造函数作为其唯一的参数。</p>
+<p>如果类装饰器返回一个值，它会使用提供的构造函数来替换类的声明。</p>
+<p>下面是使用类装饰器(<code>@sealed</code>)的例子，应用在<code>Greeter</code>类：</p>
+<p>@sealed<br>class Greeter {<br>    greeting: string;<br>    constructor(message: string) {<br>        this.greeting = message;<br>    }<br>    greet() {<br>        return “Hello, “ + this.greeting;<br>    }<br>}</p>
+<p>我们可以这样定义<code>@sealed</code>装饰器：</p>
+<p>function sealed(constructor: Function) {<br>    Object.seal(constructor);<br>    Object.seal(constructor.prototype);<br>}</p>
+<p>当<code>@sealed</code>被执行的时候，它将密封此类的构造函数和原型。(注：参见<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal</a>)</p>
+<p>下面是一个重载构造函数的例子。</p>
+<p>function classDecorator&lt;T extends {new(…args:any[]):{}}&gt;(constructor:T) {<br>    return class extends constructor {<br>        newProperty = “new property”;<br>        hello = “override”;<br>    }<br>}<br>@classDecorator<br>class Greeter {<br>    property = “property”;<br>    hello: string;<br>    constructor(m: string) {<br>        this.hello = m;<br>    }<br>}<br>console.log(new Greeter(“world”));</p>
+<h2 id="方法装饰器"><a href="#方法装饰器" class="headerlink" title="方法装饰器"></a>方法装饰器</h2><p>方法装饰器表达式会在运行时当作函数被调用，传入下列3个参数：</p>
+<ol>
+<li>对于静态成员来说是类的构造函数，对于实例成员是类的原型对象。</li>
+<li>成员的名字。</li>
+<li>成员的_属性描述符_。</li>
+</ol>
+<blockquote>
+<p>注意  如果代码输出目标版本小于<code>ES5</code>，_属性描述符_将会是<code>undefined</code>。</p>
+</blockquote>
+<p>如果方法装饰器返回一个值，它会被用作方法的_属性描述符_。</p>
+<blockquote>
+<p>注意  如果代码输出目标版本小于<code>ES5</code>返回值会被忽略。</p>
+</blockquote>
+<p>下面是一个方法装饰器（<code>@enumerable</code>）的例子，应用于<code>Greeter</code>类的方法上：</p>
+<p>class Greeter {<br>    greeting: string;<br>    constructor(message: string) {<br>        this.greeting = message;<br>    }<br>    @enumerable(false)<br>    greet() {<br>        return “Hello, “ + this.greeting;<br>    }<br>}</p>
+<p>我们可以用下面的函数声明来定义<code>@enumerable</code>装饰器：</p>
+<p>function enumerable(value: boolean) {<br>    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {<br>        descriptor.enumerable = value;<br>    };<br>}</p>
+<p>这里的<code>@enumerable(false)</code>是一个<a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/decorators.html#decorator-factories">装饰器工厂</a>。 当装饰器 <code>@enumerable(false)</code>被调用时，它会修改属性描述符的<code>enumerable</code>属性。</p>
+<h2 id="访问器装饰器"><a href="#访问器装饰器" class="headerlink" title="访问器装饰器"></a>访问器装饰器</h2><p>_访问器装饰器_声明在一个访问器的声明之前（紧靠着访问器声明）。 访问器装饰器应用于访问器的 _属性描述符_并且可以用来监视，修改或替换一个访问器的定义。 访问器装饰器不能用在声明文件中（.d.ts），或者任何外部上下文（比如 <code>declare</code>的类）里。</p>
+<blockquote>
+<p>注意  TypeScript不允许同时装饰一个成员的<code>get</code>和<code>set</code>访问器。取而代之的是，一个成员的所有装饰的必须应用在文档顺序的第一个访问器上。这是因为，在装饰器应用于一个_属性描述符_时，它联合了<code>get</code>和<code>set</code>访问器，而不是分开声明的。</p>
+</blockquote>
+<p>访问器装饰器表达式会在运行时当作函数被调用，传入下列3个参数：</p>
+<ol>
+<li>对于静态成员来说是类的构造函数，对于实例成员是类的原型对象。</li>
+<li>成员的名字。</li>
+<li>成员的_属性描述符_。</li>
+</ol>
+<blockquote>
+<p>注意  如果代码输出目标版本小于<code>ES5</code>，_Property Descriptor_将会是<code>undefined</code>。</p>
+</blockquote>
+<p>如果访问器装饰器返回一个值，它会被用作方法的_属性描述符_。</p>
+<blockquote>
+<p>注意  如果代码输出目标版本小于<code>ES5</code>返回值会被忽略。</p>
+</blockquote>
+<p>下面是使用了访问器装饰器（<code>@configurable</code>）的例子，应用于<code>Point</code>类的成员上：</p>
+<p>class Point {<br>    private _x: number;<br>    private _y: number;<br>    constructor(x: number, y: number) {<br>        this._x = x;<br>        this._y = y;<br>    }<br>    @configurable(false)<br>    get x() { return this._x; }<br>    @configurable(false)<br>    get y() { return this._y; }<br>}</p>
+<p>我们可以通过如下函数声明来定义<code>@configurable</code>装饰器：</p>
+<p>function configurable(value: boolean) {<br>    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {<br>        descriptor.configurable = value;<br>    };<br>}</p>
+<h2 id="属性装饰器"><a href="#属性装饰器" class="headerlink" title="属性装饰器"></a>属性装饰器</h2><p>_属性装饰器_声明在一个属性声明之前（紧靠着属性声明）。 属性装饰器不能用在声明文件中（.d.ts），或者任何外部上下文（比如 <code>declare</code>的类）里。</p>
+<p>属性装饰器表达式会在运行时当作函数被调用，传入下列2个参数：</p>
+<ol>
+<li>对于静态成员来说是类的构造函数，对于实例成员是类的原型对象。</li>
+<li>成员的名字。</li>
+</ol>
+<blockquote>
+<p>注意  _属性描述符_不会做为参数传入属性装饰器，这与TypeScript是如何初始化属性装饰器的有关。 因为目前没有办法在定义一个原型对象的成员时描述一个实例属性，并且没办法监视或修改一个属性的初始化方法。返回值也会被忽略。因此，属性描述符只能用来监视类中是否声明了某个名字的属性。</p>
+</blockquote>
+<p>我们可以用它来记录这个属性的元数据，如下例所示：</p>
+<p>class Greeter {<br>    @format(“Hello, %s”)<br>    greeting: string;<br>    constructor(message: string) {<br>        this.greeting = message;<br>    }<br>    greet() {<br>        let formatString = getFormat(this, “greeting”);<br>        return formatString.replace(“%s”, this.greeting);<br>    }<br>}</p>
+<p>然后定义<code>@format</code>装饰器和<code>getFormat</code>函数：</p>
+<p>import “reflect-metadata”;<br>const formatMetadataKey = Symbol(“format”);<br>function format(formatString: string) {<br>    return Reflect.metadata(formatMetadataKey, formatString);<br>}<br>function getFormat(target: any, propertyKey: string) {<br>    return Reflect.getMetadata(formatMetadataKey, target, propertyKey);<br>}</p>
+<p>这个<code>@format(&quot;Hello, %s&quot;)</code>装饰器是个 <a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/decorators.html#decorator-factories">装饰器工厂</a>。 当 <code>@format(&quot;Hello, %s&quot;)</code>被调用时，它添加一条这个属性的元数据，通过<code>reflect-metadata</code>库里的<code>Reflect.metadata</code>函数。 当 <code>getFormat</code>被调用时，它读取格式的元数据。</p>
+<blockquote>
+<p>注意  这个例子需要使用<code>reflect-metadata</code>库。 查看 <a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/decorators.html#metadata">元数据</a>了解<code>reflect-metadata</code>库更详细的信息。</p>
+</blockquote>
+<h2 id="参数装饰器"><a href="#参数装饰器" class="headerlink" title="参数装饰器"></a>参数装饰器</h2><p>参数装饰器表达式会在运行时当作函数被调用，传入下列3个参数：</p>
+<ol>
+<li>对于静态成员来说是类的构造函数，对于实例成员是类的原型对象。</li>
+<li>成员的名字。</li>
+<li>参数在函数参数列表中的索引。</li>
+</ol>
+<blockquote>
+<p>注意  参数装饰器只能用来监视一个方法的参数是否被传入。</p>
+</blockquote>
+<p>参数装饰器的返回值会被忽略。</p>
+<p>下例定义了参数装饰器（<code>@required</code>）并应用于<code>Greeter</code>类方法的一个参数：</p>
+<p>class Greeter {<br>    greeting: string;<br>    constructor(message: string) {<br>        this.greeting = message;<br>    }<br>    @validate<br>    greet(@required name: string) {<br>        return “Hello “ + name + “, “ + this.greeting;<br>    }<br>}</p>
+<p>然后我们使用下面的函数定义 <code>@required</code> 和 <code>@validate</code> 装饰器：</p>
+<p>import “reflect-metadata”;<br>const requiredMetadataKey = Symbol(“required”);<br>function required(target: Object, propertyKey: string | symbol, parameterIndex: number) {<br>    let existingRequiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];<br>    existingRequiredParameters.push(parameterIndex);<br>    Reflect.defineMetadata(requiredMetadataKey, existingRequiredParameters, target, propertyKey);<br>}<br>function validate(target: any, propertyName: string, descriptor: TypedPropertyDescriptor<Function>) {<br>    let method = descriptor.value;<br>    descriptor.value = function () {<br>        let requiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyName);<br>        if (requiredParameters) {<br>            for (let parameterIndex of requiredParameters) {<br>                if (parameterIndex &gt;= arguments.length || arguments[parameterIndex] === undefined) {<br>                    throw new Error(“Missing required argument.”);<br>                }<br>            }<br>        }<br>        return method.apply(this, arguments);<br>    }<br>}</p>
+<p><code>@required</code>装饰器添加了元数据实体把参数标记为必需的。 <code>@validate</code>装饰器把<code>greet</code>方法包裹在一个函数里在调用原先的函数前验证函数参数。</p>
+<blockquote>
+<p>注意  这个例子使用了<code>reflect-metadata</code>库。 查看 <a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/decorators.html#metadata">元数据</a>了解<code>reflect-metadata</code>库的更多信息。</p>
+</blockquote>
+<h2 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h2><p>一些例子使用了<code>reflect-metadata</code>库来支持<a target="_blank" rel="noopener" href="https://github.com/rbuckton/ReflectDecorators">实验性的metadata API</a>。 这个库还不是ECMAScript (JavaScript)标准的一部分。 然而，当装饰器被ECMAScript官方标准采纳后，这些扩展也将被推荐给ECMAScript以采纳。</p>
+<p>你可以通过npm安装这个库：</p>
+<p>npm i reflect-metadata –save</p>
+<p>TypeScript支持为带有装饰器的声明生成元数据。 你需要在命令行或 <code>tsconfig.json</code>里启用<code>emitDecoratorMetadata</code>编译器选项。</p>
+<p><strong>Command Line</strong>:</p>
+<p>tsc –target ES5 –experimentalDecorators –emitDecoratorMetadata</p>
+<p><strong>tsconfig.json</strong>:</p>
+<p>{<br>    “compilerOptions”: {<br>        “target”: “ES5”,<br>        “experimentalDecorators”: true,<br>        “emitDecoratorMetadata”: true<br>    }<br>}</p>
+<p>当启用后，只要<code>reflect-metadata</code>库被引入了，设计阶段添加的类型信息可以在运行时使用。</p>
+<p>如下例所示：</p>
+<p>import “reflect-metadata”;<br>class Point {<br>    x: number;<br>    y: number;<br>}<br>class Line {<br>    private _p0: Point;<br>    private _p1: Point;<br>    @validate<br>    set p0(value: Point) { this._p0 = value; }<br>    get p0() { return this._p0; }<br>    @validate<br>    set p1(value: Point) { this._p1 = value; }<br>    get p1() { return this._p1; }<br>}<br>function validate<T>(target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<T>) {<br>    let set = descriptor.set;<br>    descriptor.set = function (value: T) {<br>        let type = Reflect.getMetadata(“design:type”, target, propertyKey);<br>        if (!(value instanceof type)) {<br>            throw new TypeError(“Invalid type.”);<br>        }<br>        set(value);<br>    }<br>}</p>
+<p>TypeScript编译器可以通过<code>@Reflect.metadata</code>装饰器注入设计阶段的类型信息。 你可以认为它相当于下面的TypeScript：</p>
+<p>class Line {<br>    private _p0: Point;<br>    private _p1: Point;<br>    @validate<br>    @Reflect.metadata(“design:type”, Point)<br>    set p0(value: Point) { this._p0 = value; }<br>    get p0() { return this._p0; }<br>    @validate<br>    @Reflect.metadata(“design:type”, Point)<br>    set p1(value: Point) { this._p1 = value; }<br>    get p1() { return this._p1; }<br>}</p>
+<blockquote>
+<p>注意  装饰器元数据是个实验性的特性并且可能在以后的版本中发生破坏性的改变（breaking changes）。</p>
+</blockquote>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">idevlab</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/07/28/typescript-%E8%A3%85%E9%A5%B0%E5%99%A8/">http://yoursite.com/2019/07/28/typescript-%E8%A3%85%E9%A5%B0%E5%99%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">idevlab</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/12/12/%E9%A6%96%E9%A1%B5/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">首页</div></div></a></div><div class="next-post pull-right"><a href="/2019/07/28/%E5%AF%86%E7%A0%81%E5%AD%A6-%E5%85%A5%E9%97%A8/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">密码学 入门</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By idevlab</div><div class="icp"><a><img class="icp-icon" src="/img/icp.png"/><span></span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
