@@ -104,5 +104,5 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/IchenDEV/IchenDEV.github.io.git
+  repository: git@github.com:IchenDEV/IchenDEV.github.io.git
   branch: gh-pages
