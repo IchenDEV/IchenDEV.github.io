@@ -233,11 +233,8 @@ sharejs:
 addtoany:
   enable: false
   item:
-    - facebook
-    - twitter
     - wechat
     - sina_weibo
-    - facebook_messenger
     - email
     - copy_link
 
@@ -319,14 +316,6 @@ utterances:
   light_theme: github-light
   dark_theme: photon-dark
 
-# Facebook Comments Plugin
-# https://developers.facebook.com/docs/plugins/comments/
-facebook_comments:
-  app_id:
-  user_id: # optional
-  pageSize: 10 # The number of comments to show
-  order_by: social # social/time/reverse_time
-  lang: en_US # Language en_US/zh_CN/zh_TW and so on
 
 # Chat Services
 # --------------------------------------
@@ -378,8 +367,8 @@ footer:
   copyright: false # Copyright of theme and framework
   ICP: # Chinese ICP License
     enable: true
-    url:
-    text:
+    url: https://beian.miit.gov.cn/#/Integrated/index
+    text: 浙ICP备18044260号-1
     icon: /img/icp.png
 
 # Analysis
@@ -599,10 +588,10 @@ aside:
     button:
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/IchenDev
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 欢迎来到一个什么都搞，什么都不会的菜鸡的博客
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
