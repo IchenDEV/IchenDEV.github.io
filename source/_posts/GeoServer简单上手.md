@@ -47,7 +47,7 @@ GeoServer的控制和管理是基于网页形式，所有和GeoServer相关的�
 
 在GeoServer的Web管理页面中输入用户名与密码进行登录。如果是默认安装，那么用户名为"admin"，密码为"geoserver"。
 
-![](../img/geoServer/adminPanel.png)
+![](/img/geoServer/adminPanel.png)
 
 与ArcMap、QGIS将整个地图处理为.mxd或.qgs不同的是，GeoServer使用的是图层与图层组的概念。将在服务器上准备发布为服务的数据定义为一组数据集，然后规定在发布为Web服务时的一些参数。
 
@@ -56,16 +56,16 @@ GeoServer在安装后已经自带了一些样例图层与服务。
 # 添加TIF遥感
 
 右边菜单选择```Stores``` 点击 ```Add new Store```选择```GeoTIFF```，设置工作区和名称和描述，并选择Tif文件
-![](../img/geoServer/addtif.png)
+![](/img/geoServer/addtif.png)
 
 然后发布图层，检查设置，一般默认即可
 
-![](../img/geoServer/pubilshLayer.png)
+![](/img/geoServer/pubilshLayer.png)
 
 ## 预览
 在Tile Layers 可以预览刚才发布的图层
 
-![](../img/geoServer/preview.png)
+![](/img/geoServer/preview.png)
 
 ## wmts
     http://localhost:8080/geoserver/gwc/service/wmts?
