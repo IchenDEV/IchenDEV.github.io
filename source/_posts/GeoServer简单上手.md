@@ -1,10 +1,11 @@
 ---
 title: GeoServer简单上手
 date: 2020-08-21 15:13:40
-cover: http://www.onegreen.net/maps/Upload_maps/201401/2014012310344200.jpg
+cover: https://i.loli.net/2020/08/21/rzyw93HERsBgbuq.jpg
 tags: 
 
 ---
+
 ![](http://geoserver.org/img/geoserver-logo.png)
 # GeoServer简单介绍 
 
