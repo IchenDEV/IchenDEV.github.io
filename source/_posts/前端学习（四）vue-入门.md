@@ -1,6 +1,7 @@
 ---
 title: 前端学习（四）Vue 入门
-tags: []
+tags: 
+  - VUE
 id: '301'
 categories:
   - - 前端
