@@ -3,7 +3,8 @@ title: GeoServer简单上手
 date: 2020-08-21 15:13:40
 cover: https://i.loli.net/2020/08/21/rzyw93HERsBgbuq.jpg
 tags: 
-
+categories:
+  - - GeoServer
 ---
 
 ![](http://geoserver.org/img/geoserver-logo.png)

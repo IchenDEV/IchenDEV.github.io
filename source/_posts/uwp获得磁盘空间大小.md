@@ -3,7 +3,7 @@ title: UWP获得磁盘空间大小
 tags: []
 id: '163'
 categories:
-  - - 开发C#
+  - - 'UWP'
 date: 2018-08-28 16:34:42
 ---
 
