@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>记一次在Centos6.10上安装Python3.8 | idevlab</title><meta name="description" content="问题的由来现在有一个python3写的django项目，和一台老服务器服务器上没有安装python3，是Centos6.10系统 OpenSSL 版本升级查看openssl版本1openssl version 下载指定版本的openssl软件https:&#x2F;&#x2F;www.openssl.org&#x2F;source&#x2F; 1wget https:&#x2F;&#x2F;www.openssl.org&#x2F;source&#x2F;openssl-1."><meta name="author" content="idevlab"><meta name="copyright" content="idevlab"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blogs.idevlab.cn/2020/09/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Centos6-10%E4%B8%8A%E5%AE%89%E8%A3%85Python3-8/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="记一次在Centos6.10上安装Python3.8"><meta property="og:url" content="https://blogs.idevlab.cn/2020/09/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Centos6-10%E4%B8%8A%E5%AE%89%E8%A3%85Python3-8/"><meta property="og:site_name" content="idevlab"><meta property="og:description" content="问题的由来现在有一个python3写的django项目，和一台老服务器服务器上没有安装python3，是Centos6.10系统 OpenSSL 版本升级查看openssl版本1openssl version 下载指定版本的openssl软件https:&#x2F;&#x2F;www.openssl.org&#x2F;source&#x2F; 1wget https:&#x2F;&#x2F;www.openssl.org&#x2F;source&#x2F;openssl-1."><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-09-03T12:46:47.000Z"><meta property="article:modified_time" content="2020-09-03T07:22:21.373Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: {"limitCount":50,"languages":{"author":"作者: idevlab","link":"链接: ","source":"来源: idevlab","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-09-03 07:22:21'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">38</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-number">1.</span> <span class="toc-text">问题的由来</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OpenSSL-%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7"><span class="toc-number">2.</span> <span class="toc-text">OpenSSL 版本升级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bopenssl%E7%89%88%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">查看openssl版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84openssl%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">下载指定版本的openssl软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">2.3.</span> <span class="toc-text">编译安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlite-%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">sqlite 安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#uuid-%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">uuid 安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python3-%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">python3 安装</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">idevlab</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">记一次在Centos6.10上安装Python3.8</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-03T12:46:47.000Z" title="发表于 2020-09-03 12:46:47">2020-09-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-03T07:22:21.373Z" title="更新于 2020-09-03 07:22:21">2020-09-03</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="问题的由来"><a href="#问题的由来" class="headerlink" title="问题的由来"></a>问题的由来</h1><p>现在有一个python3写的django项目，和一台老服务器<br>服务器上没有安装python3，是Centos6.10系统</p>
+<h1 id="OpenSSL-版本升级"><a href="#OpenSSL-版本升级" class="headerlink" title="OpenSSL 版本升级"></a>OpenSSL 版本升级</h1><h2 id="查看openssl版本"><a href="#查看openssl版本" class="headerlink" title="查看openssl版本"></a>查看openssl版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
+<h2 id="下载指定版本的openssl软件"><a href="#下载指定版本的openssl软件" class="headerlink" title="下载指定版本的openssl软件"></a>下载指定版本的openssl软件</h2><p><a target="_blank" rel="noopener" href="https://www.openssl.org/source/">https://www.openssl.org/source/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.1.1g.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> openssl-1.1.0k</span><br><span class="line">./config shared zlib</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/bin/openssl /usr/bin/openssl.bak</span><br><span class="line">mv /usr/include/openssl /usr/include/openssl.bak</span><br><span class="line">find / -name openssl</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/bin/openssl /usr/bin/openssl</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/include/openssl /usr/include/openssl</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/lib64/&quot;</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line">ldconfig </span><br><span class="line">openssl version -a</span><br></pre></td></tr></table></figure>
+
+<h1 id="sqlite-安装"><a href="#sqlite-安装" class="headerlink" title="sqlite 安装"></a>sqlite 安装</h1><p><a target="_blank" rel="noopener" href="https://www.sqlite.org/download.html">https://www.sqlite.org/download.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.sqlite.org/2020/sqlite-amalgamation-3330000.zip</span><br><span class="line">tar xvzf sqlite-autoconf-333000.tar.gz</span><br><span class="line"><span class="built_in">cd</span> sqlite-autoconf-333000</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo yum install sqlite-devel</span><br></pre></td></tr></table></figure>
+<h1 id="uuid-安装"><a href="#uuid-安装" class="headerlink" title="uuid 安装"></a>uuid 安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install libuuid-devel</span><br></pre></td></tr></table></figure>
+
+<h1 id="python3-安装"><a href="#python3-安装" class="headerlink" title="python3 安装"></a>python3 安装</h1><p><a target="_blank" rel="noopener" href="https://www.python.org/downloads/source/">https://www.python.org/downloads/source/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span><br><span class="line">wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz</span><br><span class="line">tar -zxvf Python-3.8.5.tgz</span><br><span class="line"><span class="built_in">cd</span> Python-3.8.5</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/python3</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/python3/bin/python3 /usr/bin/python3</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/python3/bin/pip3 /usr/bin/pip3</span><br></pre></td></tr></table></figure></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">idevlab</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blogs.idevlab.cn/2020/09/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Centos6-10%E4%B8%8A%E5%AE%89%E8%A3%85Python3-8/">https://blogs.idevlab.cn/2020/09/03/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Centos6-10%E4%B8%8A%E5%AE%89%E8%A3%85Python3-8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blogs.idevlab.cn" target="_blank">idevlab</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/09/03/Ciscn2020%E5%88%9D%E8%B5%9B/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ciscn2020初赛</div></div></a></div><div class="next-post pull-right"><a href="/2020/09/01/Photoshop2021/"><img class="next-cover" data-lazy-src="/2020/09/01/Photoshop2021/start.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">初探 Photoshop 2021</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By idevlab</div><div class="icp"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index"><img class="icp-icon" src="/img/icp.png"/><span>浙ICP备18044260号-1</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
