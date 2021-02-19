@@ -5,5 +5,6 @@ db.json
 node_modules/
 public/
 .deploy*/
+.vscode
 github-deploy-key
 github-deploy-key.pub
