@@ -35,3 +35,5 @@ Macrotasks 包含生成 dom 对象、解析 HTML、执行主线程 js 代码、�
 Microtasks 则是完成一些更新应用程序状态的较小任务，如处理 promise 的回调和 DOM 的修改，这些任务在浏览器重渲染前执行。Microtask 应该以异步的方式尽快执行，其开销比执行一个新的 macrotask 要小。Microtasks 使得我们可以在 UI 重渲染之前执行某些任务，从而避免了不必要的 UI 渲染，这些渲染可能导致显示的应用程序状态不一致。
 
 在单次的迭代中，event loop 首先检查 macrotask 队列，如果有一个 macrotask 等待执行，那么执行该任务。当该任务执行完毕后（或者 macrotask 队列为空），event loop 继续执行 microtask 队列。如果 microtask 队列有等待执行的任务，那么 event loop 就一直取出任务执行知道 microtask 为空。这里我们注意到处理 microtask 和 macrotask 的不同之处：在单次循环中，一次最多处理一个 macrotask（其他的仍然驻留在队列中），然而却可以处理完所有的 microtask。
+
+![](https://user-gold-cdn.xitu.io/2019/1/10/1683877ba9aab056?imageView2/0/w/1280/h/960/ignore-error/1)
