@@ -3,7 +3,6 @@ title: Welcome to Wordpress 5.0
 tags: []
 id: '237'
 categories:
-  - archived
   - - 站务
 date: 2018-12-07 14:44:47
 ---

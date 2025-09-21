@@ -2,7 +2,6 @@
 title: Git清除敏感信息
 date: 2020-08-14 20:58:23
 categories:
-  - archived
 tags:
 ---
 

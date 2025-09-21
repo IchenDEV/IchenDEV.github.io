@@ -4,7 +4,6 @@ tags:
   - HTML
 id: '333'
 categories:
-  - archived
   - - Web
 date: 2019-01-13 16:30:28
 ---

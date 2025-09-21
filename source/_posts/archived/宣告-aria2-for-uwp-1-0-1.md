@@ -3,7 +3,6 @@ title: 宣告 Aria2 for UWP 1.0.1
 tags: []
 id: '378'
 categories:
-  - archived
   - - UWP桌面桥
   - - 发布
 date: 2019-05-15 00:58:48

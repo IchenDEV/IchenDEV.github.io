@@ -3,7 +3,6 @@ title: 在UWP程序中添加自动更新
 tags: []
 id: '74'
 categories:
-  - archived
   - - UWP桌面桥
 date: 2018-08-12 23:35:50
 ---

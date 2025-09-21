@@ -3,7 +3,6 @@ title: idevlab❤Linux
 tags: []
 id: '372'
 categories:
-  - archived
   - - 站务
 date: 2019-05-12 18:47:24
 ---

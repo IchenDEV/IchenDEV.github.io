@@ -3,7 +3,6 @@ title: 宣布文件资源浏览器Max RP
 tags: []
 id: '168'
 categories:
-  - archived
   - - 'UWP'
     - 文件浏览器
 date: 2018-08-28 17:42:18

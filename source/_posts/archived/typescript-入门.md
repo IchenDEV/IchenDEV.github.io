@@ -3,7 +3,6 @@ title: TypeScript 入门
 tags: []
 id: '398'
 categories:
-  - archived
   - - Web
 date: 2019-07-28 01:08:54
 ---

@@ -3,7 +3,6 @@ title: ES6-2021技巧
 date: 2021-02-19 23:37:35
 tags: Javascript
 categories:
-  - archived
   - - Web
 ---
 # ES 6-2021 技巧

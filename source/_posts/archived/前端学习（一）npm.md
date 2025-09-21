@@ -3,7 +3,6 @@ title: 前端学习（一）npm
 tags: []
 id: '249'
 categories:
-  - archived
   - - Web
 date: 2019-01-10 00:18:02
 ---

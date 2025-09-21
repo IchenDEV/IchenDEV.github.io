@@ -2,7 +2,6 @@
 title: Webpack Loaders VS Plugin
 date: 2021-03-09 15:25:28
 categories:
-  - archived
 tags:
 ---
 

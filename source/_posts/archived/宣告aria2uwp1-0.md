@@ -3,7 +3,6 @@ title: 宣告 Aria2 UWP 1.0
 tags: []
 id: '358'
 categories:
-  - archived
   - - 发布
 date: 2019-05-12 17:49:30
 ---
