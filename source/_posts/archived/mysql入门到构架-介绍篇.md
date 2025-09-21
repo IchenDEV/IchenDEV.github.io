@@ -3,7 +3,6 @@ title: MySQL入门到构架 介绍篇
 tags: []
 id: '402'
 categories:
-  - archived
   - - 站务
 date: 2019-07-28 01:22:58
 ---

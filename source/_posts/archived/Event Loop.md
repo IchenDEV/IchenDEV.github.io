@@ -1,8 +1,6 @@
 ---
 title: Event Loop
 date: 2021-03-09 13:23:51
-categories:
-  - archived
 tags:
 ---
 

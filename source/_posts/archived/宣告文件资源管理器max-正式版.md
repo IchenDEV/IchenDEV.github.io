@@ -3,7 +3,6 @@ title: 宣告文件资源管理器Max 正式版
 tags: []
 id: '174'
 categories:
-  - archived
   - - 发布
   - - 'UWP'
     - 文件浏览器

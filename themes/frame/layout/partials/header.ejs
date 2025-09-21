@@ -5,6 +5,7 @@
         <a href="<%= url_for()%>">
           <% if (theme.logo_image.enable) {%>
             <img class="logo-img" src="<%= url_for(theme.logo_image.image_path)%>" alt="logo_image">
+            <%= theme.site_brand_name %>
           <%} else {%>
             <%= theme.site_brand_name %>
           <% } %>

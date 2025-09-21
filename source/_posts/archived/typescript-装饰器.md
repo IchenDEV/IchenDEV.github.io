@@ -3,7 +3,6 @@ title: TypeScript 装饰器
 tags: []
 id: '407'
 categories:
-  - archived
   - - Web
 date: 2019-07-28 01:42:27
 ---

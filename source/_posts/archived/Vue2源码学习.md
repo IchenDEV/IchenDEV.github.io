@@ -2,7 +2,6 @@
 title: Vue2 源码学习
 date: 2021-03-03 21:56:51
 categories:
-  - archived
 tags:
 cover: http://gainfromhere.com/wp-content/uploads/2017/07/vue-js.jpg
 ---

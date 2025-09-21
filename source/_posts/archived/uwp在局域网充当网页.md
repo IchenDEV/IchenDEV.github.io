@@ -3,7 +3,6 @@ title: UWP在局域网充当网页
 tags: []
 id: '209'
 categories:
-  - archived
   - - 'UWP'
 date: 2018-09-12 16:32:34
 ---

@@ -3,7 +3,6 @@ title: UWP文件复制进度指示
 tags: []
 id: '149'
 categories:
-  - archived
   - - 'UWP'
 date: 2018-08-27 01:47:10
 ---
