@@ -2,7 +2,6 @@
 title: 初探 Photoshop 2021
 date: 2020-09-01 18:56:23
 categories:
-  - archived
 tags: Adobe
 cover: start.png
 ---

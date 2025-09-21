@@ -3,7 +3,6 @@ title: I春秋CTF writeup
 tags: []
 id: '427'
 categories:
-  - archived
   - - CTF
     - misc
 date: 2020-04-13 17:42:27

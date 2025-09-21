@@ -3,7 +3,6 @@ title: 记一次在Centos6.10上安装Python3.8
 date: 2020-09-03 12:46:47
 tags:
 categories:
-  - archived
   - - '运维'
 ---
 # 问题的由来

@@ -3,7 +3,6 @@ title: 'Re:0-从零开始的PWN'
 date: 2020-08-17 20:45:54
 tags:
 categories:
-  - archived
   - - CTF
     - PWN
 ---

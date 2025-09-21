@@ -4,7 +4,6 @@ tags:
   - 桌面桥
 id: '80'
 categories:
-  - archived
   - - 'UWP'
 date: 2018-08-12 23:46:53
 ---

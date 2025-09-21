@@ -3,7 +3,6 @@ title: Ciscn2020初赛
 date: 2020-09-03 13:15:43
 tags: CTF
 categories:
-  - archived
   - - CTF
 ---
 

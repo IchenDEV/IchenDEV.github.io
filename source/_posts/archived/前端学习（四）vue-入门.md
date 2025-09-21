@@ -4,7 +4,6 @@ tags:
   - VUE
 id: '301'
 categories:
-  - archived
   - - Web
 date: 2019-01-11 23:39:48
 ---

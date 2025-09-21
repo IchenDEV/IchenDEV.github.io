@@ -3,7 +3,6 @@ title: 宣布文件资源管理器max 测试3
 tags: []
 id: '142'
 categories:
-  - archived
   - - 'UWP'
     - 文件浏览器
 date: 2018-08-24 19:10:17
