@@ -1,5 +1,7 @@
 ---
 title: I'm back & 好品味和坏味道
+date: 2025-09-13 00:00:00
+updated: 2025-10-13 06:00:00
 tags: 
   - AI
   - Life
