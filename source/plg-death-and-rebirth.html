@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLG 的消亡与重生 — 一个技术乌托邦的完整故事</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #050506;
+      --bg-secondary: #09090b;
+      --bg-tertiary: #0f0f12;
+      --bg-card: #111114;
+      --bg-card-hover: #16161a;
+      --text-primary: #f8f8fa;
+      --text-secondary: #a0a0a8;
+      --text-muted: #606068;
+      --slg-color: #ef4444;
+      --slg-dim: rgba(239,68,68,0.12);
+      --plg-color: #22c55e;
+      --plg-dim: rgba(34,197,94,0.12);
+      --hybrid-color: #3b82f6;
+      --hybrid-dim: rgba(59,130,246,0.12);
+      --future-color: #a855f7;
+      --future-dim: rgba(168,85,247,0.12);
+      --amber-color: #f59e0b;
+      --amber-dim: rgba(245,158,11,0.12);
+      --border-subtle: rgba(255,255,255,0.05);
+      --border-medium: rgba(255,255,255,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.02;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ==================== NAVIGATION ==================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      background: rgba(5,5,6,0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      opacity: 0;
+      transform: translateY(-100%);
+      animation: navSlideIn 0.6s ease forwards 1s;
+    }
+
+    @keyframes navSlideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.death:hover { color: var(--slg-color); }
+    .nav-links a.compare:hover { color: var(--amber-color); }
+    .nav-links a.rebirth:hover { color: var(--plg-color); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 30% 20%, rgba(239,68,68,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(34,197,94,0.04) 0%, transparent 50%);
+    }
+
+    .hero-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-chapter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-title .death { color: var(--slg-color); }
+    .hero-title .rebirth { color: var(--plg-color); }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards 1s;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--slg-color), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+    /* ==================== SECTION STYLES ==================== */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-eyebrow.slg { color: var(--slg-color); }
+    .section-eyebrow.plg { color: var(--plg-color); }
+    .section-eyebrow.amber { color: var(--amber-color); }
+    .section-eyebrow.future { color: var(--future-color); }
+
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .section-intro {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin-top: 1.5rem;
+      line-height: 1.9;
+    }
+
+    /* ==================== PART 1: THE FALL ==================== */
+    .fall-section {
+      background: var(--bg-secondary);
+      padding: 6rem 2rem;
+    }
+
+    .fall-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .fall-quote {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.35rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      padding-left: 2rem;
+      border-left: 2px solid var(--slg-color);
+      margin-bottom: 4rem;
+    }
+
+    .fall-symptoms {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .symptom-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.6s ease;
+    }
+
+    .symptom-card.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .symptom-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--slg-color);
+    }
+
+    .symptom-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--slg-color);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+    }
+
+    .symptom-card h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .symptom-card p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .symptom-card strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ==================== PART 2: COMPARISON ==================== */
+    .compare-section {
+      padding: 6rem 2rem;
+    }
+
+    .compare-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Mindset Cards */
+    .mindset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .mindset-grid { grid-template-columns: 1fr; }
+    }
+
+    .mindset-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .mindset-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mindset-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .mindset-card.slg::before { background: linear-gradient(90deg, var(--slg-color), #f87171); }
+    .mindset-card.plg::before { background: linear-gradient(90deg, var(--plg-color), #4ade80); }
+
+    .mindset-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mindset-card.slg .mindset-icon { background: var(--slg-dim); }
+    .mindset-card.plg .mindset-icon { background: var(--plg-dim); }
+
+    .mindset-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .mindset-card.slg .mindset-label { color: var(--slg-color); }
+    .mindset-card.plg .mindset-label { color: var(--plg-color); }
+
+    .mindset-card h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .mindset-card p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Comparison Table */
+    .compare-table {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .table-header {
+      display: grid;
+      grid-template-columns: 2fr 3fr 3fr;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .table-header-cell {
+      padding: 1.25rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .table-header-cell:nth-child(2) { color: var(--slg-color); border-left: 1px solid var(--border-subtle); }
+    .table-header-cell:nth-child(3) { color: var(--plg-color); border-left: 1px solid var(--border-subtle); }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 2fr 3fr 3fr;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.3s ease;
+    }
+
+    .table-row:last-child { border-bottom: none; }
+    .table-row:hover { background: rgba(255,255,255,0.02); }
+
+    .table-cell {
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .table-cell:first-child {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .table-cell:not(:first-child) {
+      color: var(--text-secondary);
+      border-left: 1px solid var(--border-subtle);
+    }
+
+    .table-cell .emoji { margin-right: 0.5rem; }
+
+    @media (max-width: 768px) {
+      .table-header, .table-row { grid-template-columns: 1fr; }
+      .table-cell { border-left: none !important; }
+      .table-cell:first-child { background: var(--bg-tertiary); font-size: 0.85rem; }
+      .table-cell:nth-child(2)::before { content: 'SLG: '; color: var(--slg-color); font-weight: 500; }
+      .table-cell:nth-child(3)::before { content: 'PLG: '; color: var(--plg-color); font-weight: 500; }
+    }
+
+    /* Behavior Grid */
+    .behavior-section {
+      background: var(--bg-secondary);
+      padding: 6rem 2rem;
+    }
+
+    .behavior-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .behavior-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.75rem;
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 0.5s ease;
+    }
+
+    .behavior-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .behavior-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .behavior-card h4 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .behavior-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .behavior-item {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .behavior-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      flex-shrink: 0;
+      height: fit-content;
+      margin-top: 0.15rem;
+    }
+
+    .behavior-tag.slg { background: var(--slg-dim); color: var(--slg-color); }
+    .behavior-tag.plg { background: var(--plg-dim); color: var(--plg-color); }
+
+    .behavior-text { color: var(--text-secondary); }
+
+    /* ==================== PART 3: WHY PLG DIES ==================== */
+    .why-section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .why-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 0%, rgba(239,68,68,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .why-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-reasons {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .why-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .why-number {
+      position: absolute;
+      top: -0.75rem;
+      left: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--slg-color);
+      opacity: 0.2;
+    }
+
+    .why-card h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+    }
+
+    .why-card p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .why-card strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ==================== PART 4: THE TWIST ==================== */
+    .twist-section {
+      background: var(--bg-secondary);
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .twist-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(34,197,94,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .twist-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .twist-reveal {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .twist-but {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .twist-headline {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .twist-headline .highlight {
+      background: linear-gradient(135deg, var(--plg-color), var(--hybrid-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .twist-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Case Studies Grid */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.5s ease;
+    }
+
+    .case-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .case-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .case-card.cursor::before { background: linear-gradient(90deg, var(--plg-color), #4ade80); }
+    .case-card.linear::before { background: linear-gradient(90deg, #5e6ad2, #8b5cf6); }
+    .case-card.lovable::before { background: linear-gradient(90deg, #ec4899, #f472b6); }
+    .case-card.supabase::before { background: linear-gradient(90deg, #3ecf8e, var(--plg-color)); }
+
+    .case-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .case-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .case-card.cursor .case-logo { background: var(--plg-dim); color: var(--plg-color); }
+    .case-card.linear .case-logo { background: rgba(94,106,210,0.15); color: #5e6ad2; }
+    .case-card.lovable .case-logo { background: rgba(236,72,153,0.15); color: #ec4899; }
+    .case-card.supabase .case-logo { background: rgba(62,207,142,0.15); color: #3ecf8e; }
+
+    .case-info h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .case-info span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .case-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .case-stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .case-card.cursor .case-stat-value { color: var(--plg-color); }
+    .case-card.linear .case-stat-value { color: #5e6ad2; }
+    .case-card.lovable .case-stat-value { color: #ec4899; }
+    .case-card.supabase .case-stat-value { color: #3ecf8e; }
+
+    .case-stat-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .case-insight {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .case-insight strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ==================== LIFECYCLE ==================== */
+    .lifecycle-section {
+      padding: 6rem 2rem;
+    }
+
+    .lifecycle-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .lifecycle-visual {
+      display: flex;
+      align-items: stretch;
+      gap: 1rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .lifecycle-visual::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--plg-color), var(--hybrid-color), var(--future-color), var(--amber-color));
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .lifecycle-stage {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 0.5s ease;
+    }
+
+    .lifecycle-stage.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stage-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .stage-icon.plg { background: var(--plg-dim); }
+    .stage-icon.hybrid { background: var(--hybrid-dim); }
+    .stage-icon.future { background: var(--future-dim); }
+    .stage-icon.amber { background: var(--amber-dim); }
+
+    .stage-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .stage-label.plg { color: var(--plg-color); }
+    .stage-label.hybrid { color: var(--hybrid-color); }
+    .stage-label.future { color: var(--future-color); }
+    .stage-label.amber { color: var(--amber-color); }
+
+    .lifecycle-stage h4 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .lifecycle-stage p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .lifecycle-visual {
+        flex-direction: column;
+      }
+      .lifecycle-visual::before { display: none; }
+    }
+
+    /* ==================== KEY INSIGHT ==================== */
+    .insight-section {
+      background: var(--bg-secondary);
+      padding: 5rem 2rem;
+    }
+
+    .insight-card {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(34,197,94,0.06), rgba(59,130,246,0.04));
+      border: 1px solid rgba(34,197,94,0.15);
+      border-radius: 16px;
+      padding: 3rem;
+    }
+
+    .insight-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .insight-grid { grid-template-columns: 1fr; }
+    }
+
+    .insight-item {
+      text-align: center;
+    }
+
+    .insight-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .insight-item h4 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .insight-item p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ==================== CONCLUSION ==================== */
+    .conclusion-section {
+      padding: 6rem 2rem;
+    }
+
+    .conclusion-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .conclusion-quote {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    .conclusion-quote .death { color: var(--slg-color); }
+    .conclusion-quote .rebirth { color: var(--plg-color); }
+
+    .conclusion-text {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.9;
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <span class="nav-logo">PLG // 2026</span>
+      <div class="nav-links">
+        <a href="#fall" class="death">消亡</a>
+        <a href="#compare" class="compare">对比</a>
+        <a href="#why" class="death">原因</a>
+        <a href="#rebirth" class="rebirth">重生</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-container">
+      <p class="hero-chapter">一个技术乌托邦的完整故事</p>
+      <h1 class="hero-title">
+        PLG 的<span class="death">消亡</span><br>与<span class="rebirth">重生</span>
+      </h1>
+      <p class="hero-subtitle">
+        当满屏的「获取」变成「咨询」，我们以为 PLG 死了。<br>
+        直到 Cursor 用 12 人团队创造了 $1B ARR。
+      </p>
+      <div class="hero-scroll">
+        <span>SCROLL TO BEGIN</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PART 1: THE FALL ==================== -->
+  <section id="fall" class="fall-section">
+    <div class="fall-container">
+      <header class="section-header">
+        <p class="section-eyebrow slg">CHAPTER 01 · THE FALL</p>
+        <h2 class="section-title">PLG 的消亡：我们看到了什么</h2>
+      </header>
+
+      <p class="fall-quote">
+        在软件行业的浪漫主义时期，我们曾深信 PLG 是唯一的真理。那时，我们的梦想是构建一个逻辑自洽、优雅极致的工具，让它像病毒一样在全球范围内自发扩散。<br><br>
+        然而，站在 2026 年的废墟上，我们发现这个乌托邦正在崩塌——至少表面上如此。
+      </p>
+
+      <div class="fall-symptoms">
+        <div class="symptom-card">
+          <p class="symptom-number">症状 01</p>
+          <h3>消失的「获取」按钮</h3>
+          <p>
+            PLG 的图腾曾是那个简单、干脆的「获取」按钮。它意味着用户拥有主权，意味着产品价值可以跨越一切障碍直接触达。<strong>但现在，满屏的「获取」已悄然变成了「咨询」。</strong>当入口变成「咨询」，PLG 赖以生存的自闭环流量转化被彻底掐断。产品不再是交付价值的本体，而沦为了销售获取线索的诱饵。
+          </p>
+        </div>
+
+        <div class="symptom-card">
+          <p class="symptom-number">症状 02</p>
+          <h3>创新的「通胀」</h3>
+          <p>
+            为了维持增长的假象，组织开始陷入「大力出奇迹」的狂热。<strong>团队规模在膨胀，但颠覆式的创新却消失了。</strong>招募更多的人，往往只是为了满足大客户清单上那些平庸的需求，或是为了在 PPT 里补齐竞品的功能。当研发资源被大量消耗在线索工具、支付组件、活动页面等非核心业务上时，真正的「底层进化」停滞了。
+          </p>
+        </div>
+
+        <div class="symptom-card">
+          <p class="symptom-number">症状 03</p>
+          <h3>归因的黑盒</h3>
+          <p>
+            对于追求 PLG 的研发来说，最极致的折磨莫过于<strong>「数据不闭环」</strong>。你上线了一个精巧的优化，却拿不到任何真实的用户反馈。在 SLG 导向的组织里，产品的好坏变得不可证伪——功能成功了，是销售的功劳；功能失败了，则是产品力不足。你不仅失去了数据，也失去了作为「创造者」的因果感。
+          </p>
+        </div>
+
+        <div class="symptom-card">
+          <p class="symptom-number">症状 04</p>
+          <h3>销售的「样板间」</h3>
+          <p>
+            很多号称具有 PLG 活力的产品，本质上只是销售的「样板间」。<strong>演示驱动开发</strong>成为常态——产品经理和研发忙于应付那些「看上去很牛」的功能，因为它们在演示环节能瞬间抓取老板的眼球。这些功能在真实业务场景中往往难以落地，但只要合同签了、钱收到了，谁在乎那些被技术债淹没的底层架构？
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PART 2: COMPARISON ==================== -->
+  <section id="compare" class="compare-section">
+    <div class="compare-container">
+      <header class="section-header">
+        <p class="section-eyebrow amber">CHAPTER 02 · DEEP DIVE</p>
+        <h2 class="section-title">SLG vs PLG：两种思维的底层逻辑</h2>
+        <p class="section-intro">
+          在我们宣判 PLG 的死亡之前，让我们先真正理解这两种增长哲学的本质差异。
+        </p>
+      </header>
+
+      <div class="mindset-grid">
+        <div class="mindset-card slg">
+          <div class="mindset-icon">🎯</div>
+          <p class="mindset-label">Sales-Led Growth</p>
+          <h3>销售驱动增长</h3>
+          <p>
+            以销售团队为核心引擎，通过人际关系、商务谈判和定制化方案推动交易。产品是销售叙事的载体，价值在谈判桌上被定义。<strong>核心信仰：关系决定成败。</strong>
+          </p>
+        </div>
+
+        <div class="mindset-card plg">
+          <div class="mindset-icon">🚀</div>
+          <p class="mindset-label">Product-Led Growth</p>
+          <h3>产品驱动增长</h3>
+          <p>
+            以产品体验为核心引擎，让用户通过自助使用发现价值，自然转化和传播。产品本身就是最好的销售，数据驱动一切决策。<strong>核心信仰：产品自己会说话。</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="compare-table">
+        <div class="table-header">
+          <div class="table-header-cell">维度</div>
+          <div class="table-header-cell">SLG 思维</div>
+          <div class="table-header-cell">PLG 思维</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">增长引擎</div>
+          <div class="table-cell"><span class="emoji">📞</span>销售漏斗转化</div>
+          <div class="table-cell"><span class="emoji">🔄</span>用户自传播飞轮</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">客户获取</div>
+          <div class="table-cell"><span class="emoji">🎣</span>主动出击找客户</div>
+          <div class="table-cell"><span class="emoji">🧲</span>让客户主动找来</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">定价逻辑</div>
+          <div class="table-cell"><span class="emoji">💰</span>能签多大签多大</div>
+          <div class="table-cell"><span class="emoji">📊</span>按使用量/价值付费</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">成功指标</div>
+          <div class="table-cell"><span class="emoji">📈</span>关单量、合同额</div>
+          <div class="table-cell"><span class="emoji">💡</span>活跃度、留存率、NPS</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">产品定位</div>
+          <div class="table-cell"><span class="emoji">🪤</span>线索获取工具</div>
+          <div class="table-cell"><span class="emoji">🎁</span>价值交付本体</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">决策依据</div>
+          <div class="table-cell"><span class="emoji">👔</span>KP 需求清单</div>
+          <div class="table-cell"><span class="emoji">📉</span>用户行为数据</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">竞争壁垒</div>
+          <div class="table-cell"><span class="emoji">🔗</span>客户关系锁定</div>
+          <div class="table-cell"><span class="emoji">🏔️</span>用户习惯与网络效应</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">失败归因</div>
+          <div class="table-cell"><span class="emoji">🎭</span>「产品力不足」</div>
+          <div class="table-cell"><span class="emoji">🔍</span>数据分析定位问题</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Behavior Comparison -->
+  <section class="behavior-section">
+    <div class="section" style="padding-top: 0;">
+      <header class="section-header">
+        <p class="section-eyebrow amber">BEHAVIORAL PATTERNS</p>
+        <h2 class="section-title">行为模式的深层差异</h2>
+      </header>
+
+      <div class="behavior-grid">
+        <div class="behavior-card">
+          <p class="behavior-category">产品设计</p>
+          <h4>功能取舍的逻辑</h4>
+          <div class="behavior-items">
+            <div class="behavior-item">
+              <span class="behavior-tag slg">SLG</span>
+              <span class="behavior-text">优先做大客户要求的功能，「竞品有我们也要有」</span>
+            </div>
+            <div class="behavior-item">
+              <span class="behavior-tag plg">PLG</span>
+              <span class="behavior-text">优先做能提升激活率和留存的功能，数据说了算</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavior-card">
+          <p class="behavior-category">团队结构</p>
+          <h4>资源分配的倾斜</h4>
+          <div class="behavior-items">
+            <div class="behavior-item">
+              <span class="behavior-tag slg">SLG</span>
+              <span class="behavior-text">销售团队最大，产品/研发是「支撑部门」</span>
+            </div>
+            <div class="behavior-item">
+              <span class="behavior-tag plg">PLG</span>
+              <span class="behavior-text">产品/增长团队核心，销售是「加速器」</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavior-card">
+          <p class="behavior-category">用户关系</p>
+          <h4>谁是真正的「客户」</h4>
+          <div class="behavior-items">
+            <div class="behavior-item">
+              <span class="behavior-tag slg">SLG</span>
+              <span class="behavior-text">KP（关键决策者）是客户，用户只是「操作人员」</span>
+            </div>
+            <div class="behavior-item">
+              <span class="behavior-tag plg">PLG</span>
+              <span class="behavior-text">每一个用户都是客户，他们的体验决定一切</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavior-card">
+          <p class="behavior-category">定价策略</p>
+          <h4>商业模式的设计</h4>
+          <div class="behavior-items">
+            <div class="behavior-item">
+              <span class="behavior-tag slg">SLG</span>
+              <span class="behavior-text">报价灵活，看客户预算和谈判能力</span>
+            </div>
+            <div class="behavior-item">
+              <span class="behavior-tag plg">PLG</span>
+              <span class="behavior-text">透明定价，按需付费，降低决策门槛</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavior-card">
+          <p class="behavior-category">反馈渠道</p>
+          <h4>获取反馈的方式</h4>
+          <div class="behavior-items">
+            <div class="behavior-item">
+              <span class="behavior-tag slg">SLG</span>
+              <span class="behavior-text">客户成功经理转述，信息层层过滤</span>
+            </div>
+            <div class="behavior-item">
+              <span class="behavior-tag plg">PLG</span>
+              <span class="behavior-text">埋点数据 + 用户调研，第一手洞察</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="behavior-card">
+          <p class="behavior-category">研发心态</p>
+          <h4>工程师的自我认同</h4>
+          <div class="behavior-items">
+            <div class="behavior-item">
+              <span class="behavior-tag slg">SLG</span>
+              <span class="behavior-text">「我是外包，做完需求等下一个」</span>
+            </div>
+            <div class="behavior-item">
+              <span class="behavior-tag plg">PLG</span>
+              <span class="behavior-text">「我是创造者，我的代码直接影响用户」</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PART 3: WHY PLG DIES ==================== -->
+  <section id="why" class="why-section">
+    <div class="why-container">
+      <header class="section-header">
+        <p class="section-eyebrow slg">CHAPTER 03 · THE REASONS</p>
+        <h2 class="section-title">PLG 为何「看起来」走向消亡</h2>
+        <p class="section-intro">
+          PLG 不是输给了 SLG，而是输给了这个时代的结构性困境。当资本寒冬来临、增长焦虑蔓延，那些曾经被视为「正确答案」的原则，开始显得过于理想主义。
+        </p>
+      </header>
+
+      <div class="why-reasons">
+        <div class="why-card">
+          <span class="why-number">01</span>
+          <h3>获客成本的不可承受之重</h3>
+          <p>
+            PLG 依赖「让产品自己获客」，但现实是：<strong>流量越来越贵，注意力越来越稀缺</strong>。当 CAC（获客成本）持续攀升，「免费试用-自然转化」的路径变得奢侈。与其等待用户自己发现价值，不如让销售主动出击，至少能把握确定性。
+          </p>
+        </div>
+
+        <div class="why-card">
+          <span class="why-number">02</span>
+          <h3>企业采购的权力结构</h3>
+          <p>
+            PLG 假设「用户即买家」，但在 B2B 世界，<strong>使用产品的人往往没有采购权</strong>。真正拍板的 KP 不会亲自试用产品，他们需要销售来「翻译」价值、提供定制方案、背书承诺。PLG 绕过了销售，却绕不过组织的决策结构。
+          </p>
+        </div>
+
+        <div class="why-card">
+          <span class="why-number">03</span>
+          <h3>短期主义的胜利</h3>
+          <p>
+            PLG 是长期主义的游戏——积累用户、沉淀口碑、等待飞轮转起来。<strong>但资本市场要的是下个季度的 ARR 增长</strong>。当 CFO 问「为什么这个月的合同额下降了」，没有人有耐心听「用户留存在改善」。SLG 提供了即时可见的结果，哪怕是虚假繁荣。
+          </p>
+        </div>
+
+        <div class="why-card">
+          <span class="why-number">04</span>
+          <h3>「咨询」按钮的诱惑</h3>
+          <p>
+            把「获取」换成「咨询」，意味着每一个有意向的用户都变成了可追踪的线索。<strong>销售可以介入、筛选、转化。</strong>这种控制感让管理层安心。而 PLG 的开放入口，在他们眼中是「漏水的桶」——用户来了又走，我们什么都抓不住。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PART 4: THE TWIST ==================== -->
+  <section id="rebirth" class="twist-section">
+    <div class="twist-container">
+      <div class="twist-reveal">
+        <p class="twist-but">然而</p>
+        <h2 class="twist-headline">
+          <span class="highlight">PLG 没有死</span><br>
+          死的是「伪 PLG」
+        </h2>
+        <p class="twist-subtitle">
+          当 Cursor 用 12 人团队创造 $1B ARR，当 Lovable 8 个月达到 $100M ARR，我们不得不承认：真正的 PLG 正在 AI 时代迎来它的黄金年代。
+        </p>
+      </div>
+
+      <header class="section-header" style="text-align: center;">
+        <p class="section-eyebrow plg">EVIDENCE</p>
+        <h2 class="section-title">四个活生生的反例</h2>
+      </header>
+
+      <div class="cases-grid">
+        <!-- Cursor -->
+        <div class="case-card cursor">
+          <div class="case-header">
+            <div class="case-logo">C</div>
+            <div class="case-info">
+              <h3>Cursor</h3>
+              <span>AI 代码编辑器</span>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div>
+              <div class="case-stat-value">$1B</div>
+              <div class="case-stat-label">24 个月 ARR</div>
+            </div>
+            <div>
+              <div class="case-stat-value">12 人</div>
+              <div class="case-stat-label">核心团队</div>
+            </div>
+            <div>
+              <div class="case-stat-value">$0</div>
+              <div class="case-stat-label">营销支出</div>
+            </div>
+            <div>
+              <div class="case-stat-value">36%</div>
+              <div class="case-stat-label">转化率</div>
+            </div>
+          </div>
+          <p class="case-insight">
+            <strong>SaaS 历史上最快达到 $100M ARR。</strong>$20/月的透明定价，开发者自己刷卡，不需要说服老板。第一次 Tab 补全就让你「哇」出来——这才是 PLG 该有的样子。
+          </p>
+        </div>
+
+        <!-- Linear -->
+        <div class="case-card linear">
+          <div class="case-header">
+            <div class="case-logo">L</div>
+            <div class="case-info">
+              <h3>Linear</h3>
+              <span>Issue 追踪工具</span>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div>
+              <div class="case-stat-value">$1.25B</div>
+              <div class="case-stat-label">估值</div>
+            </div>
+            <div>
+              <div class="case-stat-value">100 人</div>
+              <div class="case-stat-label">团队</div>
+            </div>
+            <div>
+              <div class="case-stat-value">$35K</div>
+              <div class="case-stat-label">累计营销</div>
+            </div>
+            <div>
+              <div class="case-stat-value">2 PM</div>
+              <div class="case-stat-label">产品经理</div>
+            </div>
+          </div>
+          <p class="case-insight">
+            <strong>「产品优先，规模其次」</strong>——创业 3 年才招第一个营销。通过极致的速度和设计美学，让 OpenAI、Cursor 都成为客户。不是工具，是开发者的「身份象征」。
+          </p>
+        </div>
+
+        <!-- Lovable -->
+        <div class="case-card lovable">
+          <div class="case-header">
+            <div class="case-logo">♥</div>
+            <div class="case-info">
+              <h3>Lovable</h3>
+              <span>AI 全栈开发平台</span>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div>
+              <div class="case-stat-value">$100M</div>
+              <div class="case-stat-label">8 个月 ARR</div>
+            </div>
+            <div>
+              <div class="case-stat-value">独角兽</div>
+              <div class="case-stat-label">欧洲最快</div>
+            </div>
+            <div>
+              <div class="case-stat-value">5 分钟</div>
+              <div class="case-stat-label">首次部署</div>
+            </div>
+            <div>
+              <div class="case-stat-value">500K+</div>
+              <div class="case-stat-label">生成应用</div>
+            </div>
+          </div>
+          <p class="case-insight">
+            <strong>从描述到部署 5 分钟。</strong>CEO 愿意牺牲 $150 万 ARR 来降价——这是对 PLG 长期主义的极致押注。与 Supabase 深度集成，让「Vibe Coding」成为新常态。
+          </p>
+        </div>
+
+        <!-- Supabase -->
+        <div class="case-card supabase">
+          <div class="case-header">
+            <div class="case-logo">S</div>
+            <div class="case-info">
+              <h3>Supabase</h3>
+              <span>开源 Firebase 替代</span>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div>
+              <div class="case-stat-value">$200M</div>
+              <div class="case-stat-label">D 轮融资</div>
+            </div>
+            <div>
+              <div class="case-stat-value">开源</div>
+              <div class="case-stat-label">核心策略</div>
+            </div>
+            <div>
+              <div class="case-stat-value">秒级</div>
+              <div class="case-stat-label">后端启动</div>
+            </div>
+            <div>
+              <div class="case-stat-value">生态</div>
+              <div class="case-stat-label">Vibe Coding 基石</div>
+            </div>
+          </div>
+          <p class="case-insight">
+            <strong>Cursor、Lovable、Bolt 背后的基础设施。</strong>开源 + 慷慨的免费层 + 开发者社区 = 成为 AI 编程时代的「默认后端选择」。这就是生态位的力量。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LIFECYCLE ==================== -->
+  <section class="lifecycle-section">
+    <div class="lifecycle-container">
+      <header class="section-header">
+        <p class="section-eyebrow future">THE TRUTH</p>
+        <h2 class="section-title">增长模式随产品生命周期演进</h2>
+        <p class="section-intro">
+          PLG 和 SLG 从来不是非此即彼的选择，而是产品在不同生命阶段的最优策略。真正成熟的公司，懂得在正确的时间使用正确的增长模式。
+        </p>
+      </header>
+
+      <div class="lifecycle-visual">
+        <div class="lifecycle-stage">
+          <div class="stage-icon plg">🌱</div>
+          <p class="stage-label plg">种子期</p>
+          <h4>纯 PLG</h4>
+          <p>产品即营销。用极致的用户体验让早期采用者「哇」出来，依靠口碑自然扩散。</p>
+        </div>
+        <div class="lifecycle-stage">
+          <div class="stage-icon hybrid">🚀</div>
+          <p class="stage-label hybrid">增长期</p>
+          <h4>PLG + 社区</h4>
+          <p>飞轮开始转动。建立开发者社区、开源生态、模板市场，让用户成为布道者。</p>
+        </div>
+        <div class="lifecycle-stage">
+          <div class="stage-icon future">🏢</div>
+          <p class="stage-label future">扩张期</p>
+          <h4>PLS 混合</h4>
+          <p>企业客户敲门了。引入销售团队承接 PLG 带来的「热线索」，但产品依然是获客主引擎。</p>
+        </div>
+        <div class="lifecycle-stage">
+          <div class="stage-icon amber">🏛️</div>
+          <p class="stage-label amber">成熟期</p>
+          <h4>SLG 主导</h4>
+          <p>Fortune 500 要定制、要合规、要 SSO。销售成为主力，但 PLG 漏斗依然是新用户入口。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KEY INSIGHT ==================== -->
+  <section class="insight-section">
+    <div class="insight-card">
+      <h3 class="insight-title">PLG 成功的三个硬性前提</h3>
+      <div class="insight-grid">
+        <div class="insight-item">
+          <div class="insight-icon">⚡</div>
+          <h4>即时价值感知</h4>
+          <p>用户在 5 分钟内必须体验到「哇」。Cursor 的第一次 Tab 补全，Lovable 的即时部署——没有这个，就别谈 PLG。</p>
+        </div>
+        <div class="insight-item">
+          <div class="insight-icon">💳</div>
+          <h4>用户即买家</h4>
+          <p>使用产品的人有权限自己付费。$20/月的开发者工具可以 PLG，$200K/年的企业软件请找销售。</p>
+        </div>
+        <div class="insight-item">
+          <div class="insight-icon">🔄</div>
+          <h4>内置传播机制</h4>
+          <p>产品使用本身创造分享场景。Figma 的协作链接，Notion 的公开页面——用着用着就传播了。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONCLUSION ==================== -->
+  <section class="conclusion-section">
+    <div class="conclusion-container">
+      <p class="conclusion-quote">
+        PLG 没有终结，终结的是那些<br>
+        把「<span class="death">免费试用</span>」当作 PLG 全部的误解。
+      </p>
+      <p class="conclusion-text">
+        真正的 PLG 从来不是「不要销售」，而是「让产品成为最好的销售」。在 AI 时代，当产品可以在几分钟内交付价值、当用户可以自己决定付费、当使用本身就是传播——PLG 不仅不会消失，还会以更纯粹的形式回归。
+        <br><br>
+        Cursor 证明了这一点。Linear 证明了这一点。Lovable 正在证明这一点。
+        <br><br>
+        <strong style="color: var(--plg-color);">下一个 PLG 奇迹，或许就在你的赛道上。</strong>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>PLG 的消亡与重生 · 2026 · 基于 Cursor, Linear, Lovable, Supabase 案例研究</p>
+  </footer>
+
+  <script>
+    // Intersection Observer
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, observerOptions);
+
+    // Observe elements
+    document.querySelectorAll('.symptom-card, .mindset-card, .behavior-card, .why-card, .case-card, .lifecycle-stage').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+      observer.observe(el);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
