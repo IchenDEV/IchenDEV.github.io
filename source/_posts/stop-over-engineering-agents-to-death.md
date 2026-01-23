@@ -9,7 +9,7 @@ tags:
   - AGI
 categories:
   - [gallery]
-featured_image: /gallery/ai-evolution/cover.png
+featured_image: /gallery/stop-over-engineering-agents-to-death/cover.png
 author: chenli & gpt5.2 & claude 4.5
 ---
 
