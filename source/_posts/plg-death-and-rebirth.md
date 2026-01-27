@@ -7,6 +7,7 @@ tags:
   - SaaS
   - 产品
   - 增长
+  - Thinking
 categories:
   - [gallery]
 featured_image: /gallery/plg-death-and-rebirth/cover.png
