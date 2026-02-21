@@ -1,19 +1,19 @@
 ---
 title: "大家都在简化 OpenClaw 的部署，代价是什么？"
 date: 2026-02-21
-categories:
-  - tech
+updated: 2026-02-21
 tags:
   - OpenClaw
   - AI Agent
   - 安全
   - 技术伦理
-description: "当一键部署成为潮流，我们是否在不经意间为便利付出了安全的代价？在点击“下一步”之前，我们真的了解自己正在做什么吗？"
+categories:
+  - [gallery]
+featured_image: /gallery/openclaw-deployment-cost/cover.png
+description: "当一键部署成为潮流，我们是否在不经意间为便利付出了安全的代价？在点击下一步之前，我们真的了解自己正在做什么吗？"
 ---
 
 ## 引言：当“一键部署”成为新的“下一步，下一步”
-
-![cover](/images/openclaw-deployment-cost/cover.png)
 
 最近，如果你关注 AI 圈，几乎不可能错过 OpenClaw。作为一个开发者，我得承认，第一次看到它能像真人一样操作我的电脑时，那种“未来已来”的兴奋感是实实在在的。它打破了 AI 和操作系统之间的那堵墙，让“数字助理”这个词变得不再科幻。
 
@@ -51,7 +51,7 @@ description: "当一键部署成为潮流，我们是否在不经意间为便利
 
 ## 便利的代价：你看不见的安全黑洞
 
-![OpenClaw 能访问的系统权限范围](/images/openclaw-deployment-cost/risk-diagram.png)
+![OpenClaw 能访问的系统权限范围](./risk-diagram.png)
 
 当你跳过学习，直接进入“下一步，下一步”的流程时，你可能根本意识不到自己打开了多少风险敞口。这就像你拿到了一把能打开城市所有门的万能钥匙，却没人告诉你其中有些门背后是悬崖。
 
