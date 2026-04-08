@@ -209,6 +209,22 @@ echo "开始巡检" > /workspace/current_env/channels/dev/send
 
 ---
 
+## 尾声：现实已经在投票了
+
+就在本文写完的前一天，2026 年 4 月 7 日，AWS 悄悄发布了一个东西：**Amazon S3 Files**。
+
+官方将其描述为「S3 二十年来最大的更新」。它能做什么？将 S3 存储桶挂载为原生文件系统，提供亚毫秒级文件访问，原生支持 POSIX 权限（UID/GID），让 Lambda、EC2、EKS 直接连接——消除了对 s3fs 或数据暂存的需求。
+
+官方的那句话值得原文引用：
+
+> *Your AI agents can read/write to S3 like a local disk, while your data team access the same objects via API.*
+
+这不是某个独立博客的思想实验。这是全球最大的云厂商，用一次产品发布，在现实层面为「万物皆文件」投了一票。
+
+方向对不对，市场会给出答案。
+
+---
+
 ## 回到原点
 
 我们正处于计算架构演进的奇点。
