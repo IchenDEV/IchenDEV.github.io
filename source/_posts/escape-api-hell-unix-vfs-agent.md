@@ -221,6 +221,10 @@ echo "开始巡检" > /workspace/current_env/channels/dev/send
 
 这不是某个独立博客的思想实验。这是全球最大的云厂商，用一次产品发布，在现实层面为「万物皆文件」投了一票。
 
+不止 AWS。Vercel Labs 同期开源了 [just-bash](https://github.com/vercel-labs/just-bash)，副标题直接写着 **"Bash for Agents"**——一个完全用 TypeScript 实现的内存虚拟 Bash 环境，支持完整的 Unix Shell 语义、可挂载的文件系统、管道与重定向，专门为 AI Agent 设计。它甚至提供了自定义命令接口，让开发者可以把任意 SaaS 操作挂载成 Shell 命令，Agent 用 Bash 脚本就能调用。
+
+两家公司，两条独立的技术路线，同时走向了同一个方向：**给 Agent 一个原生的文件系统和 Shell 环境，而不是一堆 API。**
+
 方向对不对，市场会给出答案。
 
 ---
