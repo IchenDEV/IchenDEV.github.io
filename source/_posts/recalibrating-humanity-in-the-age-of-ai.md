@@ -111,7 +111,7 @@ author: chenli with gemini
 
 在那个不需要我们去“制造”和“计算”的未来，人类的价值坐标将发生根本性的偏移。我们将从效率的竞争中解脱出来，转向深度的体验。
 
-![手艺与人味儿：不完美的价值](./human-craft-in-ai-city.png)
+![手艺与人味儿：不完美的价值](./human-craft-in-ai-city.jpg)
 
 > **生活剪影：有缺陷的咖啡**
 >
