@@ -50,8 +50,8 @@ footer:
     enable: true
 
   other_info:
-    enable: true
-    content: ICP备案号：浙ICP备18044260号-1
+    enable: false
+    content: ""
 
 # color mode: default / classic / dark
 color_mode: classic
