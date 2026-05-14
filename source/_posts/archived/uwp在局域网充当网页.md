@@ -46,7 +46,7 @@ date: 2018-09-12 16:32:34
 
 而我们的文件夹里面是一个你要显示的网站,示例文件夹目录如下图所示
 
-![](https://idevlab.cn/wordpress/wp-content/uploads/2018/09/p-2.png)
+![](https://idevlab.cn/wordpress/wp-content/uploads/2018/09/p-2.jpg)
 
 至于Controller就直接克隆示例就行了。
 

@@ -17,4 +17,4 @@ tags:
 
 仅举一个例子，您可以在下面的图像中清楚地看到加载器的工作位置和插件的工作位置
 
-![](https://user-images.githubusercontent.com/18499153/76778096-39507500-67e4-11ea-9d0a-56e12b36d6dc.png)
+![](https://user-images.githubusercontent.com/18499153/76778096-39507500-67e4-11ea-9d0a-56e12b36d6dc.jpg)

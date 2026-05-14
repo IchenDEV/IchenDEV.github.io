@@ -3,20 +3,20 @@ title: 初探 Photoshop 2021
 date: 2020-09-01 18:56:23
 categories:
 tags: Adobe
-cover: start.png
+cover: start.jpg
 ---
 
 # 与君初相识，犹如故人归
 
 beta 版本的启动界面，还比较老样式，正式版应该会改成和2020现在的圆角白底的样式
 
-![](start.png)
+![](start.jpg)
 
 ## 关于
 
 22.0.0版本，和2020后面几个版本一样的关于界面
 
-![](about.png)
+![](about.jpg)
 
 # 士别三日，当刮目相待
 
@@ -24,12 +24,12 @@ beta 版本的启动界面，还比较老样式，正式版应该会改成和202
 
 说到天空替换让我想起小米的魔法换天，而这次Photoshop带来的是更加自定义换的换天效果。
 
-![](skyreplace.png)
+![](skyreplace.jpg)
 
 天空的亮度，色温，大小和样式都可以自定义！！
 
 ### 对比图
-![](skyba.png)
+![](skyba.jpg)
 
 换天的效果还是非常好的！
 
@@ -37,22 +37,22 @@ beta 版本的启动界面，还比较老样式，正式版应该会改成和202
 
 ### 智能肖像
 
-![](face.png)
+![](face.jpg)
 
 丰富可调节的人脸调整
 
-![](smooth.png)
+![](smooth.jpg)
 
 可控的美颜
 
-![](style.png)
-![](make.png)
+![](style.jpg)
+![](make.jpg)
 
 妆容风格一键变换
 
 ### 智能上色
 
-![](color.png)
+![](color.jpg)
 
 利用神经网络技术让上色变得更加简单！十分轻松就可以对黑白照片进行上色
 

@@ -49,7 +49,7 @@ RocketMQ主要由 Producer、Broker、Consumer 三部分组成，其中Producer 
  为消息设置的标志，用于同一主题下区分不同类型的消息。来自同一业务单元的消息，可以根据不同业务目的在同一主题下设置不同标签。标签能够有效地保持代码的清晰度和连贯性，并优化RocketMQ提供的查询系统。消费者可以根据Tag实现对不同子主题的不同消费逻辑，实现更好的扩展性。
 
 ### 架构设计
-![](https://github.com/apache/rocketmq/blob/master/docs/cn/image/rocketmq_architecture_1.png)
+![](https://github.com/apache/rocketmq/blob/master/docs/cn/image/rocketmq_architecture_1.jpg)
 - Producer：消息发布的角色，支持分布式集群方式部署。Producer通过MQ的负载均衡模块选择相应的Broker集群队列进行消息投递，投递的过程支持快速失败并且低延迟。
 
 - Consumer：消息消费的角色，支持分布式集群方式部署。支持以push推，pull拉两种模式对消息进行消费。同时也支持集群方式和广播方式的消费，它提供实时消息订阅机制，可以满足大多数用户的需求。

@@ -51,7 +51,7 @@ date: 2019-01-13 16:30:28
 ```markdown
 <video controls width="400" height="400"
        autoplay loop muted
-       poster="poster.png">
+       poster="poster.jpg">
   <source src="rabbit320.mp4" type="video/mp4">
   <source src="rabbit320.webm" type="video/webm">
   <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>

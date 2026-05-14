@@ -10,7 +10,7 @@ tags:
   - 多Agent系统
 categories:
   - [gallery]
-featured_image: /gallery/filesystem-vs-database-refutation/cover.png
+featured_image: /gallery/filesystem-vs-database-refutation/cover.jpg
 author: chenli
 description: 文件系统是 AI 最 Native 的形式？这个观点在单 Agent 的简单场景下看似成立，但在多 Agent 协作的真实世界中必然崩溃。别偷懒，直接上 AI Native 数据库。
 ---
@@ -41,7 +41,7 @@ write_json_file("result.json", result)
 
 **但这只是幻觉。**
 
-![文件系统 Native 的幻觉：单 Agent 的平静 vs 多 Agent 的混乱](illusion.png)
+![文件系统 Native 的幻觉：单 Agent 的平静 vs 多 Agent 的混乱](illusion.jpg)
 
 一旦系统变得稍微复杂一点——多个 Agent、并发操作、多源数据——文件系统就会暴露出根本性的缺陷。而这些"稍微复杂一点"的场景，**正是现实中的常态**。
 
@@ -75,7 +75,7 @@ T103: Agent 3 修改并写回 → quantity = 125
 
 正确结果应该是某个确定的值，实际结果是完全不确定。这就是**丢失更新（Lost Update）问题**。
 
-![多 Agent 并发写入的丢失更新灾难，以及数据库 ACID 事务的解决方案](crash.png)
+![多 Agent 并发写入的丢失更新灾难，以及数据库 ACID 事务的解决方案](crash.jpg)
 
 文件系统提供的并发控制机制极其原始：
 - **整文件锁定**：所有 Agent 排队等待，完全无法并行
@@ -153,7 +153,7 @@ Agent 需要在 100 万条记录中找到特定客户的所有订单：
 
 **文件系统**是为"单用户、单进程、离线"设计的。**数据库**是为"多用户、多进程、在线、高并发"设计的。当 Agent 系统从前者演进到后者时，不是"选择升级"，而是"被迫升级"。
 
-![从偷懒的文件系统到 AI Native 数据库的必然演进路径](evolution.png)
+![从偷懒的文件系统到 AI Native 数据库的必然演进路径](evolution.jpg)
 
 ---
 

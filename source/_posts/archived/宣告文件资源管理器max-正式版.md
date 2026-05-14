@@ -53,7 +53,7 @@ Fix5：
 
 添加了部分动画。
 
-![](https://idevlab.cn/wordpress/wp-content/uploads/2018/09/sg.png)
+![](https://idevlab.cn/wordpress/wp-content/uploads/2018/09/sg.jpg)
 
 Fix 6:  
   

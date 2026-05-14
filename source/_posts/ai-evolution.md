@@ -9,7 +9,7 @@ tags:
   - AGI
 categories:
   - [gallery]
-featured_image: /gallery/ai-evolution/cover.png
+featured_image: /gallery/ai-evolution/cover.jpg
 author: chenli
 ---
 

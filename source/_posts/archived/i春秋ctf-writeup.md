@@ -16,7 +16,7 @@ date: 2020-04-13 17:42:27
 
 解法：调戏微信机器人
 
-![](https://i0.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/image-2.png?fit=335%2C1024&ssl=1)
+![](https://i0.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/image-2.jpg?fit=335%2C1024&ssl=1)
 
 flag{xin\_lei\_bu\_lei\_14b4s}
 
@@ -30,11 +30,11 @@ flag：IceCTF{h3l10\_wr0ld} 
 
 ### 0x03 Vape Nation
 
-题目内容：Go Green!   [vape\_nation.png](https://static2.ichunqiu.com/icq/resources/fileupload/CTF/IceCTF/stego/vape_nation.png)
+题目内容：Go Green!   [vape\_nation.jpg](https://static2.ichunqiu.com/icq/resources/fileupload/CTF/IceCTF/stego/vape_nation.jpg)
 
 解法：用Stegsolve看一下Green 0
 
-![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午6.07.41.png?fit=750%2C849&ssl=1)
+![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午6.07.41.jpg?fit=750%2C849&ssl=1)
 
 ### 0x04 签到题
 
@@ -44,7 +44,7 @@ flag：IceCTF{h3l10\_wr0ld} 
 
 flag：flag{baIdU\_8ei\_meme\_D0}
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午5.49.20.png?fit=750%2C404&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午5.49.20.jpg?fit=750%2C404&ssl=1)
 
 ### 0x05 那些年我追过的贝丝
 
@@ -56,7 +56,7 @@ ZmxhZ3tpY3FlZHVfZ29nb2dvX2Jhc2U2NH0=
 
 解法： base64 搞一下就完了
 
-![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午5.52.13.png?fit=750%2C402&ssl=1)
+![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午5.52.13.jpg?fit=750%2C402&ssl=1)
 
 flag：flag{icqedu\_gogogo\_base64}
 
@@ -72,7 +72,7 @@ flag：flag{icqedu\_gogogo\_base64}
 
 解法：直接编译，输入ba1f2511fc30423bdb 输出就是flag
 
-![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午5.58.59.png?fit=750%2C532&ssl=1)
+![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午5.58.59.jpg?fit=750%2C532&ssl=1)
 
 ### 0x07 剧情大反转
 
@@ -80,7 +80,7 @@ flag：flag{icqedu\_gogogo\_base64}
 
 解法： 反转字符串即可
 
-![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午6.06.35.png?fit=750%2C503&ssl=1)
+![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午6.06.35.jpg?fit=750%2C503&ssl=1)
 
 flag：flag{w41c0me\_t0\_441~}
 
@@ -90,7 +90,7 @@ flag：flag{w41c0me\_t0\_441~}
 
 解法：HEX编码，让cyberchef魔法一下就好了
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午6.11.43.png?fit=750%2C503&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午6.11.43.jpg?fit=750%2C503&ssl=1)
 
 flag：flag{hex2str\_challenge}
 
@@ -166,7 +166,7 @@ flag:flag{rc4\_l\_keepgoing}
 
 题解：反编译一下，在string可以看到flag
 
-![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午7.18.11-1.png?fit=750%2C438&ssl=1)
+![](https://i1.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午7.18.11-1.jpg?fit=750%2C438&ssl=1)
 
 ### 0x0C 表姐家的签到题
 
@@ -190,7 +190,7 @@ flag{key}
 
 题解：看提示盲猜md5,查md5数据库得到
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午7.34.13.png?fit=750%2C503&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午7.34.13.jpg?fit=750%2C503&ssl=1)
 
 flag:flag{12345678}
 
@@ -238,7 +238,7 @@ ROT13一下就好了
 
 MORES 解一下就好了
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午8.48.31.png?fit=750%2C503&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午8.48.31.jpg?fit=750%2C503&ssl=1)
 
 flage{71ca5cd-7db9-4ba3-9383-1af867881f07}
 
@@ -250,7 +250,7 @@ f5-lf5aa9gc9{-8648cbfb4f979c-c2a851d6e5-c}
 
 栅栏加密解一下就好了
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午8.54.17.png?fit=750%2C442&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午8.54.17.jpg?fit=750%2C442&ssl=1)
 
 flag{6cb9c256-5fac-4b47-a1ec-59988ff9c8d5}
 
@@ -262,7 +262,7 @@ flag{6cb9c256-5fac-4b47-a1ec-59988ff9c8d5}
 
 解法如图：
 
-![](https://i0.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.00.04.png?fit=750%2C503&ssl=1)
+![](https://i0.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.00.04.jpg?fit=750%2C503&ssl=1)
 
 flag{th1s\_is\_Un1c0de\_you\_Know?}
 
@@ -286,7 +286,7 @@ flag{This\_is\_Xx3nc0de}
 
 题解：BASE32编码
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.06.26.png?fit=750%2C410&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.06.26.jpg?fit=750%2C410&ssl=1)
 
 flag{erhei\_e8934\_erUO}
 
@@ -310,7 +310,7 @@ flag{xvzoc}
 
 题解：发现32位长，md5查一下
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.16.46.png?fit=750%2C410&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.16.46.jpg?fit=750%2C410&ssl=1)
 
 flag{admin}
 
@@ -338,7 +338,7 @@ flag{148,18020}
 
 题解：二进制编码，cyberchef魔法一下就可以了
 
-![](https://i0.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.23.05.png?fit=750%2C410&ssl=1)
+![](https://i0.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.23.05.jpg?fit=750%2C410&ssl=1)
 
 flag{ce3e502c-48c9-4d50-9990-5b81db6fcbf0}
 
@@ -354,7 +354,7 @@ flag{ce3e502c-48c9-4d50-9990-5b81db6fcbf0}
 
 题解：HEX编码，cyberchef魔法一下就可以了
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.25.11.png?fit=750%2C410&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.25.11.jpg?fit=750%2C410&ssl=1)
 
 flag{ec8b2ee0-3ae9-4c21-a012-08aa5fa7be67}
 
@@ -366,7 +366,7 @@ flag{ichunqiu\_=E6=8A=80=E6=9C=AF=E6=9C=89=E6=B8=A9=E5=BA=A6}
 
 题解：PQ编码，cyberchef魔法一下就可以了
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.27.58.png?fit=750%2C410&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.27.58.jpg?fit=750%2C410&ssl=1)
 
 flag{ichunqiu\_技术有温度}
 
@@ -378,7 +378,7 @@ flag{abbab\_babbb\_baaaa\_aaabb}
 
 题解：培根密码
 
-![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.33.19.png?fit=750%2C410&ssl=1)
+![](https://i2.wp.com/blogs.idevlab.cn/wp-content/uploads/2020/04/截屏2020-04-13-下午9.33.19.jpg?fit=750%2C410&ssl=1)
 
 flag{N\_X\_Q\_D}
 

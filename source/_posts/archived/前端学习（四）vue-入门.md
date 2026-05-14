@@ -12,15 +12,15 @@ date: 2019-01-11 23:39:48
 
 按照前面一篇所述，我们已经新建了一个模板。主要包括下面几个文件夹
 
-![](https://idevlab.cn/wp-content/uploads/2019/01/image-4.png)
+![](https://idevlab.cn/wp-content/uploads/2019/01/image-4.jpg)
 
 我们先不去管其他文件夹，先看src文件夹，一般来说src是源代码储存的地方
 
 为了简单起见，先删除掉src文件夹中除了App.vue和main.js的文件，并简化剩下两个文件的内容。（“router,”也应该删掉）
 
-![](https://idevlab.cn/wp-content/uploads/2019/01/image-5.png)
+![](https://idevlab.cn/wp-content/uploads/2019/01/image-5.jpg)
 
-![](https://ob8aie1adzzf.i.optimole.com/a68f27ab61d173dd833c8ee324e7ed87/750/750/55/https/idevlab.cn/wp-content/uploads/2019/01/image-7-1024x945.png)
+![](https://ob8aie1adzzf.i.optimole.com/a68f27ab61d173dd833c8ee324e7ed87/750/750/55/https/idevlab.cn/wp-content/uploads/2019/01/image-7-1024x945.jpg)
 
 App.vue
 
@@ -38,7 +38,7 @@ npm run dev
 
 后面在<script>标签中
 
-![](https://idevlab.cn/wp-content/uploads/2019/01/image-8.png)
+![](https://idevlab.cn/wp-content/uploads/2019/01/image-8.jpg)
 
 是这个部分让其他文件引用的名称。
 
