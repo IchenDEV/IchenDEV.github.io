@@ -88,21 +88,21 @@ started with developing web sites and applications.">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 ```
 
-将图标保存在与网站的索引页面相同的目录中，以.ico格式保存（大多数浏览器将支持更通用的格式，如.gif或.png，但使用ICO格式将确保它能在如**Internet Explorer 6**一样久远的浏览器显示）
+将图标保存在与网站的索引页面相同的目录中，以.ico格式保存（大多数浏览器将支持更通用的格式，如.jpg或.jpg，但使用ICO格式将确保它能在如**Internet Explorer 6**一样久远的浏览器显示）
 
 现在我们还可以使用不同的图标
 
 ```markdown
 <!-- third-generation iPad with high-resolution Retina display: -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.jpg">
 <!-- iPhone with high-resolution Retina display: -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.jpg">
 <!-- first- and second-generation iPad: -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.jpg">
 <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-<link rel="apple-touch-icon-precomposed" href="https://developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+<link rel="apple-touch-icon-precomposed" href="https://developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.jpg">
 <!-- basic favicon -->
-<link rel="shortcut icon" href="https://developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+<link rel="shortcut icon" href="https://developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.jpg">
 ```
 
 #####   
@@ -179,11 +179,11 @@ started with developing web sites and applications.">
 
 ```markdown
 <a href="https://idevlab.cn">
-  <img src="https://ob8aie1adzzf.i.optimole.com/910553ce6e20388a2d06814252deb850/270/270/55/https/idevlab.cn/wp-content/uploads/2019/01/cropped-cropped-Screenshot_2018-08-16-21-32-16-520_com.android.browser-1.png" alt="idevlab logo that links to the idevlab homepage">
+  <img src="https://ob8aie1adzzf.i.optimole.com/910553ce6e20388a2d06814252deb850/270/270/55/https/idevlab.cn/wp-content/uploads/2019/01/cropped-cropped-Screenshot_2018-08-16-21-32-16-520_com.android.browser-1.jpg" alt="idevlab logo that links to the idevlab homepage">
 </a>
 ```
 
- [![idevlab logo that links to the idevlab homepage](https://ob8aie1adzzf.i.optimole.com/910553ce6e20388a2d06814252deb850/270/270/55/https/idevlab.cn/wp-content/uploads/2019/01/cropped-cropped-Screenshot_2018-08-16-21-32-16-520_com.android.browser-1.png)](https://idevlab.cn)  
+ [![idevlab logo that links to the idevlab homepage](https://ob8aie1adzzf.i.optimole.com/910553ce6e20388a2d06814252deb850/270/270/55/https/idevlab.cn/wp-content/uploads/2019/01/cropped-cropped-Screenshot_2018-08-16-21-32-16-520_com.android.browser-1.jpg)](https://idevlab.cn)  
 
 你也可以使用链接导航到文章的某位置
 

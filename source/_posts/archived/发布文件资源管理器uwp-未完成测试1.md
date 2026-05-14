@@ -18,18 +18,18 @@ date: 2018-08-20 22:35:15
 
 1.更新的文件Path条 
 
-![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/1.png)
+![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/1.jpg)
 
-![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/2.png)
+![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/2.jpg)
 
 2.导航条 前进后退 已经可用
 
 3.搜索 可用（一点慢）
 
-![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/3.png)
+![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/3.jpg)
 
 4.添加了一些图标
 
-![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/4.png)
+![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/4.jpg)
 
 5.属性页添加了一些信息

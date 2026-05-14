@@ -9,18 +9,18 @@ tags:
   - Open Source
 categories:
   - [gallery]
-featured_image: /gallery/petx-codex-pets-anywhere/cover.png
+featured_image: /gallery/petx-codex-pets-anywhere/cover.jpg
 author: chenli
 description: PetX 是一组面向 Codex pet atlas 的页面组件包，让 React、Vue、Svelte、SolidJS 和 Web Component 都能直接渲染同一套宠物素材。
 ---
 
 这两天 Codex 推出桌面宠物，十分有趣，我做了不少角色
 
-角色做多了以后，很快就遇到一个小问题：这些 `spritesheet.webp` 和 `pet.json` 放在 Codex 里能用，但像放到我其他网页、文档站或者展示页里，每次都要重新写一套渲染逻辑。
+角色做多了以后，很快就遇到一个小问题：这些 `spritesheet.jpg` 和 `pet.json` 放在 Codex 里能用，但像放到我其他网页、文档站或者展示页里，每次都要重新写一套渲染逻辑。
 
 所以我顺手写了 [PetX](https://github.com/IchenDEV/petx)。
 
-它做的事很小：把 Codex 桌宠的 `spritesheet.webp` 和 `pet.json` 变成页面组件。React、Vue、Svelte、SolidJS、Web Component 都能用同一套素材。
+它做的事很小：把 Codex 桌宠的 `spritesheet.jpg` 和 `pet.json` 变成页面组件。React、Vue、Svelte、SolidJS、Web Component 都能用同一套素材。
 
 官网：[petx.idevlab.dev](https://petx.idevlab.dev/)。
 
@@ -28,7 +28,7 @@ description: PetX 是一组面向 Codex pet atlas 的页面组件包，让 React
 
 <!-- more -->
 
-![PetX 官网首页](petx-home.png)
+![PetX 官网首页](petx-home.jpg)
 
 ## 这事原本很小
 
@@ -77,13 +77,13 @@ PetX 的接入文档会告诉 AI 怎么处理 React、Vue、Svelte、SolidJS、W
 
 官网里放了一个调试区，可以切换动画、尺寸、偏移、帧间隔，也能切换框架代码片段。官网没有做成复杂文档站，先让人一眼看到 PetX 能干什么。
 
-![PetX 示例角色](pet-gallery.png)
+![PetX 示例角色](pet-gallery.jpg)
 
 这些角色都来自同一种素材格式：
 
 ```text
 pet.json
-spritesheet.webp
+spritesheet.jpg
 ```
 
 ## 项目链接

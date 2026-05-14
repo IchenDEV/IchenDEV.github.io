@@ -11,7 +11,7 @@ date: 2018-08-27 01:47:10
 
 下面我提供一种显示进度的方法。
 
-![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/Capture.png)
+![](https://idevlab.cn/wordpress/wp-content/uploads/2018/08/Capture.jpg)
 
 复制顾名思义，就是读取再写入。
 

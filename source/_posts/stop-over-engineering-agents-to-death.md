@@ -10,7 +10,7 @@ tags:
   - Engineering
 categories:
   - [gallery]
-featured_image: /gallery/stop-over-engineering-agents-to-death/cover.png
+featured_image: /gallery/stop-over-engineering-agents-to-death/cover.jpg
 author: chenli & gpt5.2 & claude 4.5
 ---
 

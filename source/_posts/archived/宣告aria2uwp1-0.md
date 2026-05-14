@@ -15,7 +15,7 @@ date: 2019-05-12 17:49:30
 
 基于AriaNg，我们漂亮的外观；基于Aria2，我们拥有强大的性能！
 
-![](https://idevlab.cn/wp-content/uploads/2019/05/捕获-1024x800.png)
+![](https://idevlab.cn/wp-content/uploads/2019/05/捕获-1024x800.jpg)
 
 下载地址：[https://1drv.ws/u/s!AuJGwXeVs2O9mJxuZ-BGz-rM-UpTcw](https://1drv.ws/u/s!AuJGwXeVs2O9mJxuZ-BGz-rM-UpTcw)
 
