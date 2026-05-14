@@ -1,11 +1,7 @@
 ---
 title: 我们已经站在「大漏洞时代」的入口
 date: 2026-05-09
-<<<<<<< HEAD
-updated: 2026-05-13
-=======
 updated: 2026-05-14
->>>>>>> ba02012 (feat: 补充 CVE-2026-42945 NGINX ngx_http_rewrite_module 堆溢出漏洞)
 tags:
   - 网络安全
   - Linux
