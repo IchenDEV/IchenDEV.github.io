@@ -1,0 +1,57 @@
+language: zh-CN
+
+site_brand_name: idevlab
+terminal_title: "idevlab-blogs"
+favicon: /favicon.png
+
+stylesheets:
+  - /css/terminal.css
+
+scripts:
+  - /js/search.js
+  - /js/system-info.js
+  - /js/theme-switcher.js
+
+menu:
+  _home: /
+  _archives: /archives/
+  _categories: /categories/
+  _tags: /tags/
+  _about: /about/
+
+profile:
+  identity: idevlab-blogs
+  role: hacker & creator
+  image: /profile_cover.png
+  lines:
+    - "> code. write. explore."
+    - "> coffee-powered"
+
+welcome:
+  command: cat welcome.txt
+  title: Welcome to my terminal-based blog.
+  lines:
+    - Here I share thoughts about programming, life,
+    - and everything in between.
+  accent: Stay curious. Keep hacking.
+
+about:
+  title: ABOUT
+  lines:
+    - 探讨科技和人文的十字路口
+    - 相信好奇心的力量
+    - 记录我的想法与实践
+  links:
+    GitHub: https://github.com/IchenDEV
+
+now:
+  - label: 正在学习
+    value: AI
+  - label: 正在构建
+    value: 一个 AI Native 的开发系统
+  - label: 最近在读
+    value: 查拉图斯特拉如是说
+
+recent_tags_limit: 8
+date_format: YYYY-MM-DD
+footer_text: keep learning, keep shipping.
