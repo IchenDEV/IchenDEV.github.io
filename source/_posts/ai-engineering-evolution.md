@@ -9,7 +9,7 @@ tags:
   - Workflow
 categories:
   - [gallery]
-featured_image: /gallery/ai-engineering-evolution/cover.jpg
+featured_image: /gallery/ai-engineering-evolution/timeline.jpg
 author: chenli
 description: 软件构建已经进入「AI Engineering」阶段。从代码补全到多 Agent 并行协同，AI 正在重写软件生产的组织方式。
 ---

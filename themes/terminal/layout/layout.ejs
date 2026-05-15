@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || theme.language || 'zh-CN' %>">
+  <head>
+    <%- partial('partials/head') %>
+  </head>
+  <body>
+    <div class="terminal-shell">
+      <header class="terminal-titlebar" aria-label="Terminal window">
+        <div class="terminal-controls" aria-hidden="true">
+          <span class="control control-close"></span>
+          <span class="control control-minimize"></span>
+          <span class="control control-zoom"></span>
+        </div>
+        <div class="terminal-title"><%- theme.terminal_title || config.title %></div>
+      </header>
+      <div class="terminal-grid">
+        <aside class="terminal-sidebar terminal-sidebar-left">
+          <%- partial('partials/left-sidebar') %>
+        </aside>
+        <main class="terminal-main">
+          <%- body %>
+        </main>
+        <aside class="terminal-sidebar terminal-sidebar-right">
+          <%- partial('partials/right-sidebar') %>
+        </aside>
+      </div>
+    </div>
+    <%- partial('partials/search-data') %>
+    <% if (theme.scripts && theme.scripts.length > 0) { %>
+      <% theme.scripts.forEach(function(script) { %>
+        <script src="<%- url_for(script) %>"></script>
+      <% }); %>
+    <% } %>
+  </body>
+</html>
