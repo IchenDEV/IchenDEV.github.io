@@ -8,13 +8,15 @@
     white: "terminal-white",
   };
   const key = "terminal-theme";
-  const currentNode = document.querySelector("[data-terminal-theme-current]");
+  const currentNodes = Array.from(document.querySelectorAll("[data-terminal-theme-current]"));
   const choices = Array.from(document.querySelectorAll("[data-terminal-theme-choice]"));
 
   function setTheme(theme) {
     const nextTheme = themes.includes(theme) ? theme : "green";
     document.documentElement.dataset.terminalTheme = nextTheme;
-    if (currentNode) currentNode.textContent = names[nextTheme];
+    currentNodes.forEach((node) => {
+      node.textContent = names[nextTheme];
+    });
     choices.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.terminalThemeChoice === nextTheme));
     });
@@ -38,13 +40,13 @@
     });
   });
 
-  if (currentNode) {
-    currentNode.addEventListener("click", () => {
+  currentNodes.forEach((node) => {
+    node.addEventListener("click", () => {
       const activeTheme = document.documentElement.dataset.terminalTheme || "green";
       const index = themes.indexOf(activeTheme);
       setTheme(themes[(index + 1) % themes.length]);
     });
-  }
+  });
 
   setTheme(savedTheme() || "green");
 })();
