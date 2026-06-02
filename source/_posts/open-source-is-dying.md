@@ -10,7 +10,7 @@ tags:
   - 简历流水线
 categories:
   - [gallery]
-featured_image: /gallery/open-source-is-dying/cover-hope.jpg
+featured_image: /gallery/open-source-is-dying/cover-new.jpg
 author: chenli
 description: AI 生成的低质量 PR 和培训机构批量制造的简历流水线，正在联手压垮开源社区的维护者。但这并非终局，开源的免疫系统正在苏醒，新的信任边界正在建立。
 ---
