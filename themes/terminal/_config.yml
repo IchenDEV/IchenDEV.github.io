@@ -11,6 +11,7 @@ scripts:
   - /js/search.js
   - /js/system-info.js
   - /js/theme-switcher.js
+  - /js/keyboard-shortcuts.js
 
 menu:
   _home: /
