@@ -64,8 +64,14 @@
     return true;
   }
 
+  function scrollTarget() {
+    const main = document.querySelector(".terminal-main");
+    if (main && main.scrollHeight > main.clientHeight) return main;
+    return document.scrollingElement || document.documentElement;
+  }
+
   function scrollPage(direction) {
-    window.scrollBy({
+    scrollTarget().scrollBy({
       top: Math.round(window.innerHeight * 0.85) * direction,
       behavior: "smooth",
     });
@@ -73,8 +79,9 @@
   }
 
   function scrollToEdge(edge) {
-    window.scrollTo({
-      top: edge === "bottom" ? document.documentElement.scrollHeight : 0,
+    const target = scrollTarget();
+    target.scrollTo({
+      top: edge === "bottom" ? target.scrollHeight : 0,
       behavior: "smooth",
     });
     return true;

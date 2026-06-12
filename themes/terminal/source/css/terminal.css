@@ -374,6 +374,57 @@ img {
   font-size: 0.82rem;
 }
 
+.shortcut-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+}
+
+.shortcut-list div {
+  display: grid;
+  grid-template-columns: minmax(5rem, 42%) minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: baseline;
+}
+
+.shortcut-list dt,
+.shortcut-list dd {
+  margin: 0;
+}
+
+.shortcut-list dt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+  min-width: 0;
+  color: var(--terminal-muted);
+}
+
+.shortcut-list dd {
+  min-width: 0;
+  color: var(--terminal-muted);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.shortcut-list kbd {
+  display: inline-flex;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--terminal-line-bright);
+  border-bottom-color: var(--terminal-green);
+  border-radius: 4px;
+  padding: 0 0.35rem;
+  background: var(--terminal-soft-bg);
+  color: var(--terminal-text);
+  font: inherit;
+  font-size: 0.76rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .system-panel dl,
 .system-panel dd {
   margin: 0;
@@ -962,6 +1013,7 @@ img {
   }
 
   .profile-panel,
+  .shortcut-panel,
   .system-panel,
   .terminal-footer {
     display: none;
