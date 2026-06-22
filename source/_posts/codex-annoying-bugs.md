@@ -1,0 +1,216 @@
+---
+title: 你的 SSD 还在流血吗？盘点近期 Codex 那些让人头疼的 Bug 及其终极拯救指南
+date: 2026-06-22
+updated: 2026-06-22
+tags:
+  - Codex
+  - OpenAI
+  - Bug 修复
+  - macOS
+  - SSD
+  - 开发工具
+categories:
+  - [gallery]
+featured_image: /gallery/codex-annoying-bugs/cover.jpg
+author: chenli
+description: 从每天写入 1.76TB 日志谋杀 SSD，到每次启动留下近 1GB 幽灵目录——Codex 近期 Bug 汇总与终极急救方案
+---
+
+![](cover.jpg)
+
+如果你是一位开发者，且最近正在重度依赖 OpenAI 的 Codex 桌面端或 CLI 工具，那么你可能需要停下手头的工作，立刻检查一下你的硬盘剩余空间和 SSD 写入量了。
+
+近段时间，Codex 频繁曝出多个严重影响系统性能和硬件寿命的 Bug。从疯狂吞噬磁盘空间的"克隆大军"，到每天写入近 2TB 数据"谋杀" SSD 的日志风暴，这些问题不仅让人心惊肉跳，更在开发者社区引发了广泛的讨论。
+
+本文将按时间顺序梳理近期 Codex 暴露出的核心 Bug，强调其严重性，并逐一展开详细分析，最后为你提供一套行之有效的综合解决方案。
+
+## 近期 Codex 核心 Bug 概览
+
+在我们深入技术细节之前，先来看看近期 Codex 到底惹了哪些祸：
+
+| Bug 类型 | 影响平台 | 严重程度 | 核心症状 | 发现时间 |
+| :--- | :--- | :--- | :--- | :--- |
+| **SSD 寿命刺客** | macOS Desktop, Linux CLI | 🔴 极高 | 每天写入 1.76TB 日志，极速消耗 SSD 寿命 | 近期反馈 |
+| **克隆大军** | macOS Desktop | 🔴 极高 | 每次启动/退出留下近 1GB 目录，最高累计超 125GB | 2026年6月 |
+| **Crashpad 转储膨胀** | macOS Desktop | 🟡 中等 | 每天产生约 5GB 的崩溃转储文件 | 2026年6月 |
+| **僵尸进程与系统卡顿** | macOS Desktop | 🟡 中等 | 退出后遗留大量辅助进程，导致 HID 延迟 | 2026年6月 |
+
+正如你所见，这些 Bug 并非无关痛痒的 UI 错位，而是实打实地在消耗你的硬件资源。接下来，我们将逐一拆解这些问题，并给出相应的急救措施。
+
+---
+
+## 深入分析与急救措施
+
+### 1. SSD 寿命刺客：每天 1.76TB 的"慢性谋杀"
+
+这可能是近期最让人后怕的一个 Bug。有开发者在社区反馈，Codex 应用可能因为某些异常，频繁写入 TRACE 级别的日志。这种行为会将日志持久化到本地 SQLite 数据库中，然后再进行删除 [1]。
+
+**恐怖的数据**：有用户发现，自己在短短 21 天内，固态硬盘的写入量达到了惊人的 37TB，平均每天写入 1.76TB。要知道，常见的 1TB 消费级固态硬盘（如官方标准 600TBW），按照每天写入 100GB 计算，大约需要 16 年才能报废。但在 Codex 的这种"摧残"下，仅需 11 个月就会达到 TBW 限额，导致硬盘过保甚至进入只读模式。
+
+**技术根源**：Codex 在启动后，会持续向用户目录下的 SQLite 数据库（如 `~/.codex/logs_2.sqlite`）写入数据。据观察，在模型流式输出期间，写入速率约为 5 MiB/s，峰值甚至可达 16 MiB/s。更糟糕的是，即便你设置了 `RUST_LOG=warn` 环境变量，它依然我行我素，继续持久化大量低价值的 TRACE 级别日志。
+
+**急救方案**：如果你发现自己的 `logs_2.sqlite` 文件异常庞大，或者观察到持续的高频写入，你可以通过 SQLite 触发器来阻止新日志的插入。这种方法简单、可逆，且对 SSD 极其友好。
+
+在完全退出 Codex 后，执行以下命令：
+
+```bash
+# 阻止新日志插入
+sqlite3 ~/.codex/logs_2.sqlite "CREATE TRIGGER IF NOT EXISTS block_log_inserts BEFORE INSERT ON logs BEGIN SELECT RAISE(IGNORE); END;"
+
+# 验证是否生效（看到 block_log_inserts 即代表成功）
+sqlite3 ~/.codex/logs_2.sqlite "SELECT name, tbl_name, sql FROM sqlite_master WHERE type='trigger';"
+```
+
+如果你的硬盘空间已经捉襟见肘，还可以顺手清理一下历史日志：
+
+```bash
+# 备份原数据库（以防万一）
+cp ~/.codex/logs_2.sqlite ~/.codex/logs_2.sqlite.bak
+
+# 清空日志并回收空间
+sqlite3 ~/.codex/logs_2.sqlite "DELETE FROM logs;"
+sqlite3 ~/.codex/logs_2.sqlite "VACUUM;"
+```
+
+如果日后需要恢复日志写入（例如向官方提交 Bug 报告需要日志），只需执行：
+
+```bash
+sqlite3 ~/.codex/logs_2.sqlite "DROP TRIGGER IF EXISTS block_log_inserts;"
+```
+
+### 2. 克隆大军：每次启动"白嫖" 1GB 空间的幽灵
+
+在 GitHub Issue #25667 中，开发者 yorhasaber 爆出了另一个令人窒息的 Bug [2]。每次启动并退出 Codex macOS 应用时，系统都会在 `/private/var/folders/.../X/com.openai.codex.code_sign_clone/` 目录下留下一个约 965MB 的新目录。
+
+**失控的膨胀**：这些目录在应用退出后并不会被自动清理，只有在重启 macOS 时才会被系统回收。随着启动次数的增加，这些"克隆体"会不断累积。社区中的反馈触目惊心：
+
+- 7 个克隆目录 = 6.5 GB
+- 16 个克隆目录 = 16 GB
+- 104 个克隆目录 = **130 GB**
+- 最严重案例：**125 GB** 的磁盘空间就这样悄无声息地消失了
+
+更让人哭笑不得的是，当用户尝试用第三方清理工具卸载 Codex 时，工具会将这些幽灵目录也算进 Codex 的"体积"里，显示 Codex 占用了 150GB 以上的空间，让不明真相的用户误以为是清理工具出了问题。
+
+**技术根源**：这个问题与 Chromium 的 `MacAppCodeSignClone` 机制有关。克隆的创建本身是预期行为，但不活跃的克隆目录在应用退出后未能被正确清理，代码签名克隆清理助手未被正确触发。
+
+**急救方案**：
+
+首先，你可以用以下命令检查问题的严重程度：
+
+```bash
+# 查看克隆目录数量
+find /private/var/folders/*/*/X/com.openai.codex.code_sign_clone \
+  -maxdepth 1 -type d -name 'code_sign_clone.*' 2>/dev/null | wc -l
+
+# 查看总占用空间
+du -sh /private/var/folders/*/*/X/com.openai.codex.code_sign_clone 2>/dev/null
+```
+
+然后，在退出 Codex 后，执行以下命令进行清理：
+
+```bash
+# 退出 Codex
+osascript -e 'quit app "Codex"'
+sleep 3
+
+# 清掉打包/clone 泄漏
+base="$(dirname "$(getconf DARWIN_USER_TEMP_DIR)")/X/com.openai.codex.code_sign_clone"
+rm -rf "$base"/code_sign_clone.*
+```
+
+社区用户 Jolg42 还提供了一个更智能的自动化清理脚本，可以保留最新的克隆目录（以防 Codex 正在运行时需要它），并定期通过 cron 自动清理旧目录：
+
+```bash
+# 添加到 crontab，每小时自动清理一次
+0 * * * * /bin/bash "$HOME/dotfiles/utils/cleanup-codex-code-sign-clones.sh" >/dev/null 2>&1 || true
+```
+
+### 3. 僵尸进程与 Crashpad 转储：系统卡顿的幕后黑手
+
+除了上述两个"重量级" Bug，Codex 还在后台制造了不少麻烦。
+
+首先是 **Crashpad 待处理转储的无限增长**（Issue #25921）。Codex 每天会生成约 5GB 的崩溃转储文件，存放在 `~/Library/Application Support/com.openai.codex/web/Crashpad/pending` 目录下，且没有任何自动清理机制。
+
+其次是**僵尸进程的累积**（Issue #25744）。当你退出 Codex 时，它并不会"干净利落"地离开。多个辅助进程（如 `SkyComputerUseService`、`node_repl`、`browser_crashpad_handler` 等）依然在后台游荡，这不仅会导致 HID 延迟，还会引发 `syspolicyd` 和 `trustd` 进程的 CPU/内存失控。
+
+你可以先用以下命令确认是否有残留进程：
+
+```bash
+pgrep -fl 'Codex|node_repl|SkyComputerUse|app-server|browser_crashpad_handler'
+```
+
+**急救方案**：
+
+```bash
+# 清理残留的 helper 进程
+pkill -f 'SkyComputerUseClient|SkyComputerUseService|node_repl|browser_crashpad_handler' 2>/dev/null
+
+# 恢复系统服务
+sudo killall syspolicyd trustd 2>/dev/null
+```
+
+---
+
+## 终极拯救指南：一键清理脚本
+
+如果你不想每次都手动执行上述繁琐的命令，这里提供一个综合性的清理脚本。建议你将其保存为 `codex_fix.sh`，在每次觉得系统卡顿或磁盘空间报警时运行一次。
+
+```bash
+#!/bin/bash
+# Codex 完整清理和修复脚本
+
+echo "=== Codex 问题诊断和修复 ==="
+
+# 1. 退出 Codex
+echo "1. 退出 Codex 应用..."
+osascript -e 'quit app "Codex"' 2>/dev/null || true
+sleep 3
+
+# 2. 清理孤立进程
+echo "2. 清理孤立进程..."
+pkill -f 'SkyComputerUseClient|SkyComputerUseService|node_repl|browser_crashpad_handler' 2>/dev/null || true
+
+# 3. 清理 code_sign_clone 目录
+echo "3. 清理 code_sign_clone 目录..."
+base="$(dirname "$(getconf DARWIN_USER_TEMP_DIR)")/X/com.openai.codex.code_sign_clone"
+if [ -d "$base" ]; then
+  find "$base" -maxdepth 1 -type d -name 'code_sign_clone.*' -exec rm -rf {} + 2>/dev/null || true
+  echo "已清理: $base"
+fi
+
+# 4. 阻止日志频繁写入 (保护 SSD)
+echo "4. 阻止日志频繁写入..."
+if [ -f "$HOME/.codex/logs_2.sqlite" ]; then
+  sqlite3 "$HOME/.codex/logs_2.sqlite" \
+    "CREATE TRIGGER IF NOT EXISTS block_log_inserts BEFORE INSERT ON logs BEGIN SELECT RAISE(IGNORE); END;" \
+    2>/dev/null || true
+  echo "已创建日志阻止触发器"
+fi
+
+# 5. 恢复系统服务
+echo "5. 恢复系统服务..."
+sudo killall syspolicyd trustd 2>/dev/null || true
+
+echo ""
+echo "=== 清理完成，当前状态 ==="
+echo "- code_sign_clone 目录数: $(find /private/var/folders/*/*/X/com.openai.codex.code_sign_clone -maxdepth 1 -type d -name 'code_sign_clone.*' 2>/dev/null | wc -l | tr -d ' ')"
+echo "- 日志数据库大小: $(ls -lh ~/.codex/logs_2.sqlite 2>/dev/null | awk '{print $5}' || echo '文件不存在')"
+```
+
+---
+
+## 写在最后
+
+Codex 作为一款强大的 AI 编程助手，无疑极大地提升了我们的开发效率。但在享受便利的同时，我们也必须警惕这些底层 Bug 对硬件和系统的潜在伤害。
+
+在官方彻底修复这些问题之前，定期检查你的磁盘空间、监控 SSD 写入量，并备好上述的急救脚本，将是你在这场"人机博弈"中保护自己硬件的最佳策略。
+
+希望这篇文章能帮你拯救正在"流血"的 SSD，也期待 OpenAI 能尽快推出修复补丁，让我们可以更加安心地进行 Vibe Coding。
+
+---
+
+### 参考资料
+
+[1] [附解决方案] Codex桌面版/CLI版可能会频繁写入日志影响SSD寿命 每天写入1.76TB. 蓝点网. https://www.landian.news/archives/113555.html
+
+[2] [Bug] macOS app leaves code_sign_clone directories after quit (~965MB per launch). GitHub Issue #25667. https://github.com/openai/codex/issues/25667
