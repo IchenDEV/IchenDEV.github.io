@@ -10,7 +10,7 @@ categories:
   - [gallery]
 featured_image: /gallery/loop-engineering/cover.jpg
 author: chenli
-description: "循环工程"正迅速成为 AI 软件开发领域最炙手可热的流行词。开发者不再直接提示 AI，而是设计并管理让 AI 自主运行的"循环"。本文深入剖析吴恩达提出的三大产品开发循环框架。
+description: 「循环工程」正迅速成为 AI 软件开发领域最炸手可热的流行词。开发者不再直接提示 AI，而是设计并管理让 AI 自主运行的「循环」。本文深入剖析吴恩达提出的三大产品开发循环框架。
 ---
 
 "循环工程"（Loop Engineering）正迅速成为 AI 软件开发领域最炙手可热的流行词。这一概念由 Claude Code 创建者 Boris Cherny 和 OpenClaw 创建者 Peter Steinberger 提出，并得到了著名 AI 学者吴恩达（Andrew Ng）的深度阐释与推崇。
