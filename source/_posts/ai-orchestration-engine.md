@@ -1,7 +1,7 @@
 ---
 title: "AI办公真正缺的，是让软件长成你的样子"
-date: 2026-08-12
-updated: 2026-08-12
+date: 2026-08-14
+updated: 2026-08-14
 tags:
   - AI
   - Agent
