@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Forced intimacy in platform language</title>
+  <desc id="desc">A tired reader is crowded by friendly-sounding speech bubbles and reaching hands.</desc>
+  <defs>
+    <style>
+      .ink{fill:none;stroke:#111;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .paper{fill:#fff;stroke:#111;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .txt{fill:#111;font-family:"Marker Felt","Comic Sans MS",Arial,sans-serif;font-size:31px}
+      .small{fill:#111;font-family:"Marker Felt","Comic Sans MS",Arial,sans-serif;font-size:25px}
+      .caption{fill:#111;font-family:"Marker Felt","Comic Sans MS",Arial,sans-serif;font-size:50px}
+    </style>
+    <filter id="rough" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="1" seed="11" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.75"/>
+    </filter>
+    <g id="heart"><path class="thin" d="M0 8 C-10-4-26 10 0 30 C26 10 10-4 0 8Z"/></g>
+    <g id="hand-left"><path class="ink" d="M0 14 C35 10 62 4 88-8 C103-16 111-2 101 8 L79 25 C105 14 119 18 113 31 C109 40 94 45 74 48 C95 48 105 58 96 68 C84 78 59 74 35 68 L0 59"/></g>
+    <g id="hand-right"><path class="ink" d="M116 14 C81 10 54 4 28-8 C13-16 5-2 15 8 L37 25 C11 14-3 18 3 31 C7 40 22 45 42 48 C21 48 11 58 20 68 C32 78 57 74 81 68 L116 59"/></g>
+  </defs>
+  <rect width="1200" height="900" fill="#fff"/>
+  <g filter="url(#rough)">
+    <path class="paper" d="M120 72 Q120 38 157 38 H414 Q452 38 452 76 V170 Q452 204 414 204 H329 L299 236 L294 204 H158 Q120 204 120 170Z"/>
+    <text class="txt" x="166" y="101">You're one</text><text class="txt" x="189" y="140">of us now!</text><use href="#heart" transform="translate(292 154) scale(.55)"/>
+    <path class="paper" d="M475 70 Q475 38 510 38 H702 Q737 38 737 73 V139 Q737 174 700 174 H627 L604 205 L598 174 H512 Q475 174 475 139Z"/>
+    <text class="txt" x="535" y="119">bestie</text><use href="#heart" transform="translate(603 129) scale(.45)"/>
+    <path class="paper" d="M780 67 Q780 35 816 35 H1069 Q1106 35 1106 74 V171 Q1106 207 1066 207 H976 L946 238 L940 207 H817 Q780 207 780 170Z"/>
+    <text class="txt" x="836" y="98">We're all</text><text class="txt" x="843" y="137">FAMILY here!</text><use href="#heart" transform="translate(1018 157) scale(.45)"/>
+    <path class="paper" d="M62 263 Q62 228 99 228 H405 Q442 228 442 265 V355 Q442 392 401 392 H303 L273 424 L267 392 H99 Q62 392 62 355Z"/>
+    <text class="txt" x="130" y="318">listen to me</text>
+    <path class="paper" d="M150 339 L190 325 L190 366 L150 352Z"/><path class="thin" d="M148 339 Q132 340 132 346 Q132 354 149 352 M162 354 L168 376 L180 372 L175 350 M198 329 L212 319 M201 345 L220 345 M198 362 L213 371"/>
+    <path class="paper" d="M807 260 Q807 226 844 226 H1111 Q1148 226 1148 264 V351 Q1148 388 1108 388 H1005 L974 420 L968 388 H845 Q807 388 807 351Z"/>
+    <text class="txt" x="903" y="316">trust me</text><use href="#heart" transform="translate(991 331) scale(.45)"/>
+    <path class="paper" d="M75 468 Q75 435 111 435 H410 Q446 435 446 472 V569 Q446 605 407 605 H304 L274 637 L268 605 H112 Q75 605 75 568Z"/>
+    <text class="small" x="147" y="493">You should</text><text class="small" x="140" y="526">want this!</text><circle class="thin" cx="232" cy="563" r="20"/><path class="thin" d="M222 556 q5-5 10 0 M239 556 q5-5 10 0 M223 570 q12 9 24 0 M174 558 l6 12 13 2-10 9 3 13-12-7-12 7 3-13-10-9 13-2Z"/>
+    <path class="paper" d="M802 460 Q802 426 839 426 H1110 Q1147 426 1147 465 V562 Q1147 600 1108 600 H1018 L986 633 L980 600 H839 Q802 600 802 562Z"/>
+    <text class="small" x="862" y="493">You need to</text><text class="small" x="850" y="528">speak up!</text><circle class="thin" cx="1045" cy="558" r="20"/><path class="thin" d="M1035 551 q5-5 10 0 M1051 551 q5-5 10 0 M1037 565 q10 8 20 0 M877 550 H970 M891 565 H957"/>
+    <use href="#hand-left" transform="translate(0 224) scale(.75)"/>
+    <use href="#hand-left" transform="translate(0 390) scale(.78)"/>
+    <use href="#hand-left" transform="translate(0 558) scale(.72)"/>
+    <use href="#hand-right" transform="translate(1080 220) scale(.75)"/>
+    <use href="#hand-right" transform="translate(1082 388) scale(.78)"/>
+    <use href="#hand-right" transform="translate(1080 552) scale(.72)"/>
+    <circle class="paper" cx="604" cy="438" r="58"/>
+    <path class="thin" d="M583 431 q8-8 17 0 M617 431 q8-8 17 0 M590 463 q14-10 28 0"/>
+    <path class="paper" d="M527 612 Q523 512 565 489 Q603 519 641 489 Q685 512 679 612Z"/>
+    <path class="ink" d="M561 513 Q526 535 520 584 M520 584 Q505 598 490 584 M648 516 Q669 548 669 594"/>
+    <path class="ink" d="M490 584 Q482 562 490 541 Q496 526 509 515"/>
+    <path class="thin" d="M563 364 q13-17 25 0 q12-22 25 0 q13-17 25 0 M646 384 l10-17 M663 390 l17-9"/>
+    <path class="ink" d="M314 633 H887"/><path class="ink" d="M343 633 V704 M858 633 V704"/>
+    <g transform="translate(502 586)"><path class="paper" d="M0 0 Q52-18 104 3 V52 Q52 34 0 51Z"/><path class="paper" d="M104 3 Q156-18 208 0 V51 Q156 34 104 52Z"/><line class="thin" x1="104" y1="4" x2="104" y2="52"/><line class="thin" x1="22" y1="20" x2="78" y2="15"/><line class="thin" x1="132" y1="16" x2="186" y2="20"/></g>
+    <g transform="translate(405 565)"><path class="paper" d="M0 0 H45 V66 H0Z"/><path class="ink" d="M45 15 q27 0 25 18 q-2 19-25 17"/></g>
+    <g transform="translate(760 566)"><rect class="paper" width="40" height="68" rx="3"/><path class="thin" d="M10 0 L6-33 M20 0 L24-41 M30 0 L41-30"/></g>
+    <text class="caption" x="258" y="792">Not every connection is real.</text>
+    <text class="caption" x="164" y="850">Some are designed to keep you close.</text>
+    <path class="ink" d="M500 865 Q610 880 718 865"/>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Finding signal in a noisy feed</title>
+  <desc id="desc">A reader sorts a pile of sensational posts into a few useful facts and actions.</desc>
+  <defs>
+    <style>
+      .ink{fill:none;stroke:#111;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .paper{fill:#fff;stroke:#111;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .txt{fill:#111;font-family:"Marker Felt","Comic Sans MS",Arial,sans-serif;font-size:28px}
+      .small{fill:#111;font-family:"Marker Felt","Comic Sans MS",Arial,sans-serif;font-size:21px}
+      .caption{fill:#111;font-family:"Marker Felt","Comic Sans MS",Arial,sans-serif;font-size:54px}
+    </style>
+    <filter id="rough" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="1" seed="23" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="0.75"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="#fff"/>
+  <g filter="url(#rough)">
+    <path class="paper" d="M48 660 Q63 509 87 389 Q111 258 177 208 Q246 157 355 213 Q432 252 467 372 Q500 486 484 660Z"/>
+    <path class="paper" d="M84 120 L195 120 L211 83 L237 118 L281 85 L302 126 L345 109 L347 157 L391 174 L361 207 L386 244 L338 247 L322 291 L283 261 L247 292 L229 249 L182 257 L191 211 L147 188 L182 156 L150 126Z"/><text class="txt" x="126" y="190">BREAKING!!!</text>
+    <g transform="translate(70 278) rotate(-6)"><rect class="paper" width="218" height="119" rx="6"/><text class="small" x="25" y="37">YOU WON'T</text><text class="small" x="25" y="66">BELIEVE THIS!!!</text><rect class="thin" x="25" y="84" width="22" height="16"/><path class="thin" d="M30 87 l11 5-11 5Z"/><line class="thin" x1="60" y1="91" x2="176" y2="91"/></g>
+    <g transform="translate(226 340) rotate(5)"><rect class="paper" width="215" height="125" rx="6"/><text class="small" x="28" y="39">UNPOPULAR</text><text class="small" x="28" y="70">OPINION</text><text class="txt" x="177" y="74">!</text><line class="thin" x1="27" y1="97" x2="155" y2="97"/></g>
+    <g transform="translate(48 431) rotate(-3)"><rect class="paper" width="225" height="128" rx="6"/><text class="small" x="27" y="39">HOT TAKE</text><text class="small" x="27" y="69">ALERT!!!</text><path class="thin" d="M55 111 C36 94 45 73 55 62 C55 78 70 76 68 59 C88 78 81 103 67 113Z"/></g>
+    <g transform="translate(219 496) rotate(4)"><rect class="paper" width="231" height="132" rx="6"/><text class="small" x="28" y="38">THIS WILL</text><text class="small" x="28" y="68">BLOW YOUR MIND</text><path class="thin" d="M58 100 c-17-10-24 15-6 20 c-1 17 24 17 27 2 c16 7 27-15 11-24 c3-16-21-19-26-5 c-11-9-25 1-20 12"/></g>
+    <path class="paper" d="M54 583 Q54 560 78 560 H201 Q225 560 225 584 V620 Q225 644 201 644 H132 L116 663 L111 644 H78 Q54 644 54 620Z"/><text class="small" x="77" y="610">Seriously?!</text>
+    <path class="paper" d="M312 232 Q312 209 336 209 H430 Q454 209 454 233 V270 Q454 294 430 294 H389 L373 313 L368 294 H336 Q312 294 312 270Z"/><text class="small" x="338" y="259">Must see!</text>
+    <path class="paper" d="M250 637 Q250 614 274 614 H407 Q431 614 431 638 V674 Q431 698 407 698 H349 L333 717 L328 698 H274 Q250 698 250 674Z"/><text class="small" x="283" y="664">OMG!!!</text>
+    <path class="paper" d="M28 237 L70 221 L70 267 L28 251Z"/><path class="thin" d="M28 237 Q11 238 11 244 Q11 253 28 251 M41 253 L47 276 L60 272 L55 249 M78 224 L94 214 M81 241 H101 M78 258 L94 268"/>
+    <path class="thin" d="M59 327 l-18-12 M64 344 l-22 0 M390 318 l16-14 M408 333 l22-2 M104 204 l-12-18 M371 191 l14-17"/>
+    <text class="txt" x="169" y="737">NOISE</text>
+    <circle class="paper" cx="623" cy="424" r="55"/><circle class="thin" cx="602" cy="417" r="18"/><circle class="thin" cx="642" cy="417" r="18"/><line class="thin" x1="620" y1="417" x2="624" y2="417"/><path class="thin" d="M586 399 Q602 385 619 399 M626 399 Q642 385 659 399 M608 451 q16-10 31 0"/>
+    <path class="paper" d="M536 620 Q535 509 577 478 Q622 507 667 478 Q710 510 707 620Z"/>
+    <path class="ink" d="M574 509 Q534 531 526 581 M668 510 Q704 535 720 575"/>
+    <circle class="paper" cx="728" cy="527" r="47"/><circle class="thin" cx="728" cy="527" r="34"/><path class="ink" d="M695 560 L662 602"/>
+    <path class="paper" d="M743 501 L796 480 L813 538 L760 559Z"/><line class="thin" x1="760" y1="500" x2="794" y2="491"/><line class="thin" x1="765" y1="515" x2="799" y2="506"/><line class="thin" x1="770" y1="530" x2="802" y2="522"/>
+    <path class="paper" d="M538 632 H733 L708 773 H562Z"/><text class="txt" x="607" y="683">SORT</text><path class="thin" d="M626 709 H669 L654 728 V755 H641 V728Z"/>
+    <path class="thin" stroke-dasharray="10 12" d="M449 455 Q510 454 554 482 M779 489 Q838 458 879 447"/>
+    <path class="paper" d="M510 204 Q510 177 538 177 H739 Q767 177 767 206 V260 Q767 288 739 288 H668 L645 316 L638 288 H539 Q510 288 510 260Z"/><text class="small" x="550" y="220">What's actually</text><text class="small" x="558" y="250">useful here?</text>
+    <path class="paper" d="M854 91 Q854 64 883 64 H1070 Q1099 64 1099 92 V140 Q1099 168 1070 168 H1009 L988 193 L982 168 H883 Q854 168 854 140Z"/><text class="txt" x="891" y="120">Signal &gt; Noise</text>
+    <rect class="paper" x="850" y="226" width="291" height="137" rx="7"/><text class="small" x="878" y="261">Key insight:</text><text class="small" x="878" y="297">Focus on quality</text><text class="small" x="878" y="329">over volume.</text><path class="thin" d="M1092 244 l6 12 13 2-10 9 3 13-12-7-12 7 3-13-10-9 13-2Z"/>
+    <rect class="paper" x="850" y="391" width="291" height="167" rx="7"/><text class="small" x="878" y="426">Useful facts:</text><text class="small" x="884" y="463">• Fact 1 ______</text><text class="small" x="884" y="498">• Fact 2 ______</text><text class="small" x="884" y="533">• Fact 3 ______</text>
+    <rect class="paper" x="850" y="584" width="291" height="107" rx="7"/><text class="small" x="878" y="620">Action step:</text><rect class="thin" x="880" y="639" width="22" height="22"/><path class="thin" d="M884 649 l7 7 13-15"/><text class="small" x="916" y="658">Try this next</text>
+    <path class="paper" d="M846 715 H1145 L1125 814 H869Z"/><text class="txt" x="958" y="764">KEEP</text><path class="thin" d="M997 785 l6 12 13 2-10 9 3 13-12-7-12 7 3-13-10-9 13-2Z"/><path class="thin" d="M884 715 V678 H943 V715 M953 715 V665 H1011 V715 M1023 715 V684 H1083 V715"/>
+    <text class="caption" x="276" y="860">Dig deep. Find what matters.</text>
+    <path class="ink" d="M470 878 Q602 891 735 878"/>
+  </g>
+</svg>
