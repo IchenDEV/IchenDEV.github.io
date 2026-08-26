@@ -12,7 +12,7 @@ tags:
   - 算法
 categories:
   - [gallery]
-featured_image: /gallery/please-dont-shout/cover-wide.svg
+featured_image: /gallery/please-dont-shout/cover-wide.png
 description: "从汉语声律、认知压缩、假熟络和推荐机制出发，解释为什么互联网越来越像所有人都在用同一副嗓子大喊。"
 ---
 
@@ -42,7 +42,7 @@ description: "从汉语声律、认知压缩、假熟络和推荐机制出发，
 
 于是我和它们形成了一种很别扭的关系：我需要其中的信息，却越来越无法忍受获取信息时必须穿过的语言环境。每次打开，我都像走进一个所有人同时靠近耳边讲话的房间。他们谈论的事情可能很小，语气却已经提前抵达高潮。久而久之，我脑子里只剩下一个问题：会不会好好说话？
 
-![从喧闹的信息流里筛出真正有用的内容](/gallery/please-dont-shout/signal-noise.svg)
+![从喧闹的信息流里筛出真正有用的内容](/gallery/please-dont-shout/signal-noise.png)
 
 ## 文字可以在没有声音时大喊
 
@@ -56,7 +56,7 @@ description: "从汉语声律、认知压缩、假熟络和推荐机制出发，
 
 一句话当然可以有焦点，却不能让每个词都争夺焦点。普通话表达重点时，会通过音高范围、时长和强度的变化把某些成分托出来，其他部分承担铺垫、连接和缓冲的功能。如果「终于」要重读，「真的」要重读，「直接」和「所有人」也要重读，最终判断还要再抬一次声音，那么整段话就像一页全部加粗的文字。重点已经消失，压力仍然留在读者身上。
 
-![当每个词都在大喊，重点也就消失了](/gallery/please-dont-shout/emphasis.svg)
+![当每个词都在大喊，重点也就消失了](/gallery/please-dont-shout/emphasis.png)
 
 ## 平台腔破坏了汉语的轻重层级
 
@@ -104,7 +104,7 @@ description: "从汉语声律、认知压缩、假熟络和推荐机制出发，
 
 这条边界在商业内容里尤其重要。正式广告至少承认自己正在宣传，平台文案却常常把商业目的包进一个普通人的即时感受中，让读者持续判断眼前的热情来自真实经验、角色经营，还是推广安排。
 
-![陌生人以亲密称呼强行拉近关系](/gallery/please-dont-shout/forced-intimacy.svg)
+![陌生人以亲密称呼强行拉近关系](/gallery/please-dont-shout/forced-intimacy.png)
 
 克里希那穆提在谈论人际关系时，常用 image 指一个人由记忆、判断和命名拼成的他人形象，也反复使用 register 描述经历如何被记录进既有印象。无论是否接受他的修行立场，这两个词很适合解释平台语言在做什么：一句话还没有开始讨论事实，就先为说话者和读者注册了身份。
 
@@ -134,7 +134,7 @@ description: "从汉语声律、认知压缩、假熟络和推荐机制出发，
 
 面对具体朋友时使用的语言，逐渐被面对流量时使用的语言替代，平台里的自我展示逻辑也就进入了最私人、最普通的交流空间。
 
-![同一种平台腔正在进入所有表达空间](/gallery/please-dont-shout/platform-voice.svg)
+![同一种平台腔正在进入所有表达空间](/gallery/please-dont-shout/platform-voice.png)
 
 ## 推荐系统筛选的是反应，不是理解
 
@@ -148,7 +148,7 @@ Tim Urban 在[《What's Our Problem?》](https://waitbutwhy.com/whatsourproblem)
 
 这个结论来自另一类平台，不能直接替所有内容社区下判断，但它说明了一个普遍问题：让人停留更久的内容，未必让人更愿意长期生活在这个媒介环境里。
 
-![不同的人经过推荐机制后被加工成同一种平台声音](/gallery/please-dont-shout/algorithm-voice.svg)
+![不同的人经过推荐机制后被加工成同一种平台声音](/gallery/please-dont-shout/algorithm-voice.png)
 
 每一轮分发都像一次小型筛选。标签更容易越过复杂背景，情绪更容易压过准确，极端表达更容易抢在温和判断前面。创作者随后根据可见数据调整表达，机构把有效形式写成教程，其他人继续模仿。我们听见的那一个「平台人格」并不存在于某个具体的人身上，它是无数创作者在相似反馈下逐渐收敛出来的统计人格。
 
