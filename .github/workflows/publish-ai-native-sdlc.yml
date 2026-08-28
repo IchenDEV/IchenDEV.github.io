@@ -93,8 +93,11 @@ jobs:
           render_svg "personal-harness"
 
           test "$(wc -c < "$article")" -eq 43406
-          for image in cover artifact-chain control-stack feedback-evals personal-harness; do
+          test "$(identify -format '%wx%h' "$gallery/cover.png")" = "1600x900"
+          for image in artifact-chain control-stack feedback-evals personal-harness; do
             test "$(identify -format '%wx%h' "$gallery/${image}.png")" = "1200x900"
+          done
+          for image in cover artifact-chain control-stack feedback-evals personal-harness; do
             test "$(wc -c < "$gallery/${image}.png")" -lt 512000
           done
 
