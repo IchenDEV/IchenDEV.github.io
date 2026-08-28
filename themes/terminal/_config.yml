@@ -5,7 +5,7 @@ terminal_title: "idevlab-blogs"
 favicon: /favicon.png
 
 stylesheets:
-  - /css/terminal.css
+  - /css/terminal.css?v=20260828-scroll
 
 scripts:
   - /js/search.js
