@@ -13,7 +13,7 @@ featured_image: /gallery/ai-native-sdlc-running-system/cover.webp
 description: 深度参考 Anthropic 原文，万字长文解析 AI 原生时代的软件开发运行系统：从 Artifact 驱动循环到六大阶段重构，从三层治理体系到实战工具 sdlc-skill。
 ---
 
-> **写在前面：** 本文深度参考 Anthropic 最新发布的《AI-Native SDLC Playbook》，并结合 iDEVLab 在工程实践中的真实洞察。这不仅是一篇技术文章，更是一份帮助专业程序员夺回掌控权、帮助新手走出代码泥潭的生存手册。
+> **写在前面：** 本文深度参考 Anthropic 最新发布的《AI-Native SDLC Playbook》。这不仅是一篇技术文章，更是一份帮助专业程序员夺回掌控权、帮助新手走出代码泥潭的生存手册。
 
 最近，软件工程领域正经历一场深刻的悖论：**当 AI 编写代码的速度提升了 10 倍，项目的整体交付速度却往往只提升了 20%，甚至在某些环节出现了倒退。**
 
