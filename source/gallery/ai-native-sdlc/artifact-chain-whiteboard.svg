@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">交接不能只靠聊天</title>
+  <desc id="desc">白板手绘风格。餐厅订单从顾客、服务员、厨师、验菜员传到顾客，展示 Artifact 像接力单一样保存意图。</desc>
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.5"/></filter>
+    <style>
+      .ink{fill:none;stroke:#171717;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#171717;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .txt{font-family:"Comic Sans MS","Marker Felt","PingFang SC","Microsoft YaHei",sans-serif;fill:#171717;font-weight:700}.small{font-size:28px}.mid{font-size:38px}.big{font-size:58px}
+      .blue{fill:#2563eb}.green{fill:#16a34a}.orange{fill:#f97316}.red{fill:#dc2626}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fff"/>
+  <g filter="url(#rough)">
+    <path class="ink" d="M456 30 Q790 7 1130 30 L1124 136 Q789 151 462 136Z" fill="#fff"/>
+    <path class="thin orange" d="M480 78 l12 23 l27 4 l-20 18 l5 26 l-24-12 l-24 12 l5-26 l-20-18 l27-4Z" fill="#facc15"/>
+    <text class="txt big" x="548" y="103">交接不能只靠</text><text class="txt big blue" x="924" y="103">聊天</text>
+
+    <!-- customer -->
+    <circle cx="115" cy="321" r="48" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M75 306 q36-60 80-5"/>
+    <path class="thin" d="M96 327 q9 9 18 0 M127 327 q9 9 18 0 M108 350 q15 12 30 0"/>
+    <path class="ink" d="M64 382 q50-44 103 0 l18 130 H47Z" fill="#fff"/>
+    <path class="ink" d="M64 414 q-34 5-52 37 M162 415 q40 6 54 35"/>
+    <ellipse cx="119" cy="528" rx="95" ry="30" fill="#fff" stroke="#171717" stroke-width="6"/>
+    <circle cx="85" cy="522" r="12" fill="#fff" stroke="#171717" stroke-width="4"/>
+    <rect x="132" y="492" width="25" height="40" rx="5" fill="#fff" stroke="#171717" stroke-width="4"/>
+    <path class="ink" d="M60 220 q63-48 124 0 q18 14 7 32 l-22 37 q-8 14-26 8 l-70 0 q-20 2-28-15 l-18-33 q-9-18 8-29Z"/>
+    <ellipse cx="111" cy="251" rx="39" ry="13" fill="#fff" stroke="#171717" stroke-width="4"/>
+    <path class="thin orange" d="M81 248 q29-23 60 0 M91 246 l10-10 M117 246 l10-11"/>
+    <text class="txt mid blue" x="57" y="590">需求</text>
+
+    <!-- waiter -->
+    <circle cx="362" cy="315" r="48" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M321 300 q37-55 82-2"/>
+    <path class="thin" d="M344 321 q8 8 16 0 M375 321 q8 8 16 0 M351 345 q15 10 29 0"/>
+    <path class="ink" d="M311 374 q50-42 102 0 l19 141 H292Z" fill="#fff"/>
+    <path class="thin orange" d="M352 374 l10 15 l10-15 l11 15 l10-15"/>
+    <rect x="385" y="393" width="87" height="127" rx="7" fill="#fff" stroke="#171717" stroke-width="6" transform="rotate(-5 428 456)"/>
+    <path class="thin" d="M401 420 h51 M401 442 h43 M401 464 h49 M401 486 h38"/>
+    <path class="ink" d="M311 407 q-49 15-69 51 M410 405 q34 5 49 28"/>
+    <path class="thin blue" d="M313 250 l-22-18 M341 239 l-7-28 M402 250 l23-18"/>
+    <text class="txt mid blue" x="318" y="590">记录</text>
+
+    <!-- order slip 1 -->
+    <path class="ink" d="M520 245 l130 9 l-3 244 l-132-8Z" fill="#fff"/>
+    <text class="txt mid orange" x="549" y="295">#12</text>
+    <text class="txt small" x="539" y="339">意面</text>
+    <text class="txt small" x="539" y="377">少辣</text>
+    <text class="txt small" x="539" y="415">不放香菜</text>
+    <text class="txt small" x="539" y="453">加芝士</text>
+    <path class="thin red" d="M615 465 q12-18 24 0 q-12 20-24 0Z" fill="#dc2626"/>
+
+    <!-- chef -->
+    <circle cx="802" cy="330" r="49" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M756 284 q0-44 31-42 q18-39 37 0 q35-1 32 43"/>
+    <path class="thin" d="M783 336 q8 8 16 0 M815 336 q8 8 16 0 M792 361 q15 10 29 0"/>
+    <path class="ink" d="M748 390 q52-43 106 0 l16 125 H733Z" fill="#fff"/>
+    <path class="ink" d="M751 420 q-46 12-67 55 M851 421 q42 6 63 40"/>
+    <ellipse cx="803" cy="516" rx="84" ry="25" fill="#fff" stroke="#171717" stroke-width="6"/>
+    <path class="thin orange" d="M743 511 q59-34 121 0"/>
+    <circle cx="777" cy="503" r="7" fill="#16a34a"/><circle cx="805" cy="514" r="7" fill="#f97316"/><circle cx="833" cy="502" r="7" fill="#16a34a"/>
+    <text class="txt mid blue" x="758" y="590">执行</text>
+
+    <!-- inspector -->
+    <circle cx="1060" cy="319" r="47" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M1018 303 q40-48 82 0 M1026 286 q32-24 66 0"/>
+    <path class="thin" d="M1042 326 q8 8 16 0 M1073 326 q8 8 16 0 M1050 350 q15 10 29 0"/>
+    <path class="ink" d="M1008 379 q51-41 104 0 l18 137 H990Z" fill="#fff"/>
+    <circle cx="989" cy="402" r="35" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M965 429 l-45 68"/>
+    <rect x="1070" y="399" width="87" height="120" rx="7" fill="#fff" stroke="#171717" stroke-width="6"/>
+    <path class="thin green" d="M1088 428 l10 10 l18-24 M1088 461 l10 10 l18-24 M1088 494 l10 10 l18-24"/>
+    <text class="txt mid blue" x="1015" y="590">验证</text>
+
+    <!-- happy customer -->
+    <circle cx="1410" cy="322" r="49" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M1370 308 q37-57 81-2"/>
+    <path class="thin" d="M1390 328 q9 9 18 0 M1422 328 q9 9 18 0 M1394 352 q19 18 39 0"/>
+    <path class="ink" d="M1358 385 q52-43 105 0 l15 128 H1341Z" fill="#fff"/>
+    <path class="ink" d="M1372 409 q19 39 40 9 q22 30 43-9"/>
+    <ellipse cx="1410" cy="529" rx="94" ry="29" fill="#fff" stroke="#171717" stroke-width="6"/>
+    <path class="ink" d="M1356 226 q49-39 98 0 q17 13 7 30 l-20 29 q-7 13-23 9 l-52 0 q-17 1-24-14 l-15-27 q-8-16 9-27Z"/>
+    <path class="thin red" d="M1389 246 q20-29 39 0 q-20 31-39 0Z" fill="#dc2626"/>
+    <text class="txt mid green" x="1340" y="590">满意交付</text>
+
+    <!-- arrows -->
+    <path class="ink" d="M202 361 h76 l-19-17 M278 361 l-19 17"/>
+    <path class="ink" d="M459 360 h45 l-18-17 M504 360 l-18 17"/>
+    <path class="ink" d="M657 360 h86 l-19-17 M743 360 l-19 17"/>
+    <path class="ink" d="M870 360 h77 l-19-17 M947 360 l-19 17"/>
+    <path class="ink" d="M1135 360 h191 l-19-17 M1326 360 l-19 17"/>
+
+    <!-- middle claim -->
+    <rect x="377" y="624" width="842" height="93" rx="27" fill="#fff" stroke="#16a34a" stroke-width="5" stroke-dasharray="15 12"/>
+    <path class="thin orange" d="M421 649 l10 20 l23 3 l-17 15 l4 22 l-20-11 l-20 11 l4-22 l-17-15 l23-3Z" fill="#facc15"/>
+    <text class="txt mid" x="475" y="684">信息</text><text class="txt mid green" x="558" y="684">不丢失</text><text class="txt mid" x="689" y="684">，意图</text><text class="txt mid green" x="801" y="684">不走样</text><text class="txt mid" x="932" y="684">，结果</text><text class="txt mid blue" x="1045" y="684">更可靠</text>
+
+    <!-- fading chat vignette -->
+    <g opacity=".55">
+      <path class="thin" stroke-dasharray="9 11" d="M175 770 q60-58 120 0 q60 55 120 0 q60-58 120 0 q60 55 120 0 q60-58 120 0 q60 55 120 0"/>
+      <circle cx="318" cy="770" r="24" fill="#fff" stroke="#171717" stroke-width="4"/><circle cx="602" cy="770" r="24" fill="#fff" stroke="#171717" stroke-width="4"/><circle cx="886" cy="770" r="24" fill="#fff" stroke="#171717" stroke-width="4"/>
+      <text class="txt mid" x="305" y="782">?</text><text class="txt mid" x="589" y="782">?</text><text class="txt mid" x="873" y="782">?</text>
+    </g>
+
+    <path class="ink" d="M513 759 Q800 737 1088 759 L1080 857 Q798 870 520 856Z" fill="#fff"/>
+    <path d="M510 750 l39 17 l-14 28 l-41-17Z" fill="#2563eb"/><path d="M1072 750 l40 18 l-15 29 l-40-17Z" fill="#2563eb"/>
+    <text class="txt big blue" x="594" y="826">Artifact</text><text class="txt big" x="806" y="826">就像</text><text class="txt big blue" x="930" y="826">接力单</text>
+  </g>
+</svg>
