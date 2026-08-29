@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">会自检的 Agent 更可靠</title>
+  <desc id="desc">白板手绘风格。厨师执行、观察、修正，检查员复查，生产事故进入错题本并成为新的评测题目。</desc>
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" seed="17" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.5"/></filter>
+    <style>
+      .ink{fill:none;stroke:#171717;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#171717;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .txt{font-family:"Comic Sans MS","Marker Felt","PingFang SC","Microsoft YaHei",sans-serif;fill:#171717;font-weight:700}.small{font-size:28px}.mid{font-size:40px}.big{font-size:60px}
+      .blue{fill:#2563eb}.green{fill:#16a34a}.orange{fill:#f97316}.red{fill:#dc2626}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fff"/>
+  <g filter="url(#rough)">
+    <path class="ink" d="M365 26 Q800 5 1240 26 L1232 143 Q805 158 374 143Z" fill="#fff"/>
+    <path class="thin orange" d="M413 65 l11 22 l25 4 l-18 17 l4 24 l-22-12 l-22 12 l4-24 l-18-17 l25-4Z" fill="#facc15"/>
+    <text class="txt big" x="497" y="102">会自检的</text><text class="txt big blue" x="774" y="102">Agent</text><text class="txt big" x="957" y="102">更可靠</text>
+
+    <!-- execute chef -->
+    <text class="txt mid blue" x="165" y="214">执行</text>
+    <circle cx="232" cy="319" r="54" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M183 270 q0-50 35-47 q20-42 42 0 q38-2 36 48"/>
+    <path class="thin" d="M211 329 q9 9 18 0 M244 329 q9 9 18 0 M220 354 q16 11 31 0"/>
+    <path class="ink" d="M177 383 q55-46 111 0 l18 139 H158Z" fill="#fff"/>
+    <path class="ink" d="M183 416 q-45 9-72 61 M283 417 q37 11 59 45"/>
+    <ellipse cx="235" cy="520" rx="96" ry="30" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="thin orange" d="M166 513 q67-39 137 0"/>
+    <circle cx="202" cy="504" r="8" fill="#16a34a"/><circle cx="235" cy="517" r="8" fill="#f97316"/><circle cx="267" cy="504" r="8" fill="#16a34a"/>
+    <path class="thin orange" d="M130 477 q-15-42 0-73 M144 479 q-11-34 3-61"/>
+    <path class="thin" d="M124 481 q30 32 63 0"/>
+    <path class="thin blue" d="M143 286 l-26-16 M163 259 l-12-29"/>
+
+    <!-- observe chef -->
+    <text class="txt mid blue" x="573" y="214">观察</text>
+    <circle cx="651" cy="319" r="54" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M602 270 q0-50 35-47 q20-42 42 0 q38-2 36 48"/>
+    <path class="thin" d="M630 329 q9 9 18 0 M663 329 q9 9 18 0 M639 354 q16 11 31 0"/>
+    <path class="ink" d="M596 383 q55-46 111 0 l18 139 H577Z" fill="#fff"/>
+    <ellipse cx="651" cy="520" rx="96" ry="30" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <circle cx="744" cy="365" r="54" fill="#fff" stroke="#171717" stroke-width="8"/>
+    <path class="ink" d="M706 403 l-58 74"/>
+    <path class="thin blue" d="M744 297 l0-31 M713 304 l-15-26 M776 304 l17-25"/>
+    <path class="thin orange" d="M582 513 q67-39 137 0"/>
+    <circle cx="618" cy="504" r="8" fill="#16a34a"/><circle cx="651" cy="517" r="8" fill="#f97316"/><circle cx="684" cy="504" r="8" fill="#16a34a"/>
+
+    <!-- adjust chef -->
+    <text class="txt mid blue" x="992" y="214">修正</text>
+    <circle cx="1075" cy="319" r="54" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M1026 270 q0-50 35-47 q20-42 42 0 q38-2 36 48"/>
+    <path class="thin" d="M1054 329 q9 9 18 0 M1087 329 q9 9 18 0 M1063 354 q16 11 31 0"/>
+    <path class="ink" d="M1020 383 q55-46 111 0 l18 139 H1001Z" fill="#fff"/>
+    <ellipse cx="1075" cy="520" rx="96" ry="30" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M1126 412 q39-18 70 7"/>
+    <rect x="1178" y="385" width="48" height="82" rx="11" fill="#fff" stroke="#171717" stroke-width="6" transform="rotate(15 1202 426)"/>
+    <path class="thin green" d="M1189 468 q-31 17-51 7 M1185 482 q-27 14-44 8" stroke-dasharray="3 12"/>
+    <path class="thin orange" d="M1007 513 q67-39 137 0"/>
+    <circle cx="1042" cy="504" r="8" fill="#16a34a"/><circle cx="1075" cy="517" r="8" fill="#f97316"/><circle cx="1108" cy="504" r="8" fill="#16a34a"/>
+    <path class="thin orange" d="M1150 278 l25-19 M1162 304 l31-8"/>
+
+    <!-- arrows -->
+    <path class="ink" d="M348 397 h165 l-22-20 M513 397 l-22 20"/>
+    <path class="ink" d="M778 397 h162 l-22-20 M940 397 l-22 20"/>
+
+    <!-- inspector -->
+    <text class="txt mid blue" x="1271" y="585">复查</text>
+    <circle cx="1360" cy="665" r="50" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M1318 650 q40-48 82 0 M1327 633 q32-23 65 0"/>
+    <path class="thin" d="M1341 672 q8 8 16 0 M1372 672 q8 8 16 0 M1349 696 q15 10 29 0"/>
+    <path class="ink" d="M1308 724 q52-42 104 0 l15 112 H1293Z" fill="#fff"/>
+    <rect x="1230" y="697" width="90" height="123" rx="8" fill="#fff" stroke="#171717" stroke-width="6" transform="rotate(-6 1275 758)"/>
+    <path class="thin green" d="M1249 728 l10 10 l19-24 M1249 762 l10 10 l19-24 M1249 796 l10 10 l19-24"/>
+    <ellipse cx="1439" cy="819" rx="92" ry="27" fill="#fff" stroke="#171717" stroke-width="6"/>
+    <circle cx="1410" cy="811" r="8" fill="#16a34a"/><circle cx="1440" cy="821" r="8" fill="#f97316"/><circle cx="1469" cy="810" r="8" fill="#16a34a"/>
+    <path class="thin green" d="M1437 624 q17-27 35 0 q-18 30-35 0Z" fill="#16a34a"/>
+    <path class="ink" d="M1184 549 q155 15 207 66"/>
+    <path class="ink" d="M1390 611 q86-127 33-278"/>
+
+    <!-- wrong-answer notebook -->
+    <rect x="588" y="625" width="248" height="217" rx="16" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="thin" d="M620 625 v217 M651 625 v217"/>
+    <path class="thin" d="M603 642 h61 M603 675 h61 M603 708 h61 M603 741 h61 M603 774 h61 M603 807 h61"/>
+    <text class="txt mid" x="684" y="681">错题本</text>
+    <path class="thin green" d="M689 724 l12 12 l23-28"/>
+    <path class="thin red" d="M688 771 l29 29 M717 771 l-29 29"/>
+    <path class="thin" d="M746 724 h57 M746 786 h57"/>
+    <path class="thin blue" d="M590 603 l-21-23 M623 592 l-5-30"/>
+
+    <!-- incidents -->
+    <text class="txt mid" x="116" y="672">生产事故 → 新题目</text>
+    <path class="ink" d="M117 704 q122-25 244 0 l-4 111 q-119 23-236 0Z" fill="#fff"/>
+    <path class="ink" d="M132 685 q118-21 235 0 M143 669 q111-17 220 0"/>
+    <path class="thin orange" d="M171 733 l19 38 h-38Z" fill="#fff"/>
+    <path class="thin" d="M171 744 v13 M171 765 h1"/>
+    <path class="thin red" d="M105 723 l-31-12 M103 749 l-36 3 M112 697 l-22-25"/>
+    <path class="thin green" stroke-dasharray="13 11" d="M365 761 q115 52 217 7 M836 750 q137 46 267-2"/>
+    <path class="thin green" d="M567 756 l-24-4 l12 22 M1091 736 l24 4 l-13-22"/>
+
+    <text class="txt small green" x="453" y="826">每次失败都留下证据</text>
+    <text class="txt small blue" x="906" y="826">配置变化也要跑回归</text>
+  </g>
+</svg>
