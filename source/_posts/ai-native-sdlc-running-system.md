@@ -12,7 +12,7 @@ tags:
   - 工作流
 categories:
   - [gallery]
-featured_image: /gallery/ai-native-sdlc/cover.png
+featured_image: /gallery/ai-native-sdlc/cover-whiteboard.svg
 description: "从 AI 编程提速后的新瓶颈出发，分析 Artifact、Harness、验证回路和 Personal Harness，哪些值得借鉴，哪些问题仍然没有解决。"
 ---
 
@@ -233,7 +233,7 @@ PR 与发布记录   保存审核、授权和上线状态
 
 它同时给人阅读，也给 Agent 读取，还能告诉系统什么时候可以进入下一段。被确认的 `intent.md` 可以启动设计，被批准的 `spec.md` 可以启动实施计划，合并后的 PR 可以启动发布，生产事故又会生成新的意图和测试样本。
 
-![Artifact 像一张会继续往下传的接力单](/gallery/ai-native-sdlc/artifact-chain.png)
+![Artifact 像一张会继续往下传的接力单](/gallery/ai-native-sdlc/artifact-chain-whiteboard.svg)
 
 <section class="stage-explorer" data-stage-explorer aria-label="AI Native SDLC 六个阶段查看器">
   <div class="stage-explorer__label">点一个阶段，看它回答什么问题</div>
@@ -273,7 +273,7 @@ Hook 和 Permission 更接近红绿灯与刹车。它们在命令执行或文件
 
 Sandbox 像封闭练习场。它限制 Agent 能看到的文件、网络、进程和凭据。MCP 则像标准插座，让 Agent 连接 GitHub、工单、数据库和其他工具。插座负责连接，权限仍然由运行环境控制。
 
-![Agent 需要说明书，也需要能够真正生效的边界](/gallery/ai-native-sdlc/control-stack.png)
+![Agent 需要说明书，也需要能够真正生效的边界](/gallery/ai-native-sdlc/control-stack-whiteboard.svg)
 
 这里的区分很实用：Skill 告诉 Agent 怎样做更合适，Hook、Permission 和 Sandbox 决定哪些事情可以发生。
 
@@ -297,7 +297,7 @@ Agent 也需要同样的回路：
 
 Self Verification 是执行者边做边检查，适合发现机械错误。Verifier Agent 使用新的上下文重新查看目标、代码和证据。一个负责推进，一个负责挑错。
 
-![任务内自检、独立复查和错题本组成验证回路](/gallery/ai-native-sdlc/feedback-evals.png)
+![任务内自检、独立复查和错题本组成验证回路](/gallery/ai-native-sdlc/feedback-evals-whiteboard.svg)
 
 模型、Prompt、`CLAUDE.md`、Skill、Hook 和权限发生变化时，Agent 的行为也可能变化，所以这些配置需要像代码一样跑回归测试。
 
@@ -345,7 +345,7 @@ Self Verification 是执行者边做边检查，适合发现机械错误。Verif
 
 Verifier 检查引用是否有效，数字能否互相对上，页面有没有裁切。用户确认以后，系统保存这次经验。下个月，日期或市场数据变化又可以触发新的检查。
 
-![同一套结构可以从开发流程延伸到个人工作系统](/gallery/ai-native-sdlc/personal-harness.png)
+![同一套结构可以从开发流程延伸到个人工作系统](/gallery/ai-native-sdlc/personal-harness-whiteboard.svg)
 
 这里可以得到一组简单的对应关系：
 
