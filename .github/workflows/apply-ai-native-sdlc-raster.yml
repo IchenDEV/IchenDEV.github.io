@@ -1,0 +1,121 @@
+name: Apply AI-native SDLC generated images
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/apply-ai-native-sdlc-raster.yml
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore generated WebP images
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d tools/ai-native-sdlc-raster.zip.b64 > /tmp/ai-native-sdlc-raster.zip
+          unzip -o /tmp/ai-native-sdlc-raster.zip -d source/gallery/ai-native-sdlc
+
+      - name: Point article at generated images
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('source/_posts/ai-native-sdlc-running-system.md')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = {
+              '/gallery/ai-native-sdlc/cover-whiteboard.svg': '/gallery/ai-native-sdlc/cover.webp',
+              '/gallery/ai-native-sdlc/cover.png': '/gallery/ai-native-sdlc/cover.webp',
+              '/gallery/ai-native-sdlc/artifact-chain-whiteboard.svg': '/gallery/ai-native-sdlc/artifact-chain.webp',
+              '/gallery/ai-native-sdlc/artifact-chain.png': '/gallery/ai-native-sdlc/artifact-chain.webp',
+              '/gallery/ai-native-sdlc/control-stack-whiteboard.svg': '/gallery/ai-native-sdlc/control-stack.webp',
+              '/gallery/ai-native-sdlc/control-stack.png': '/gallery/ai-native-sdlc/control-stack.webp',
+              '/gallery/ai-native-sdlc/feedback-evals-whiteboard.svg': '/gallery/ai-native-sdlc/feedback-evals.webp',
+              '/gallery/ai-native-sdlc/feedback-evals.png': '/gallery/ai-native-sdlc/feedback-evals.webp',
+              '/gallery/ai-native-sdlc/personal-harness-whiteboard.svg': '/gallery/ai-native-sdlc/personal-harness.webp',
+              '/gallery/ai-native-sdlc/personal-harness.png': '/gallery/ai-native-sdlc/personal-harness.webp',
+          }
+          for old, new in replacements.items():
+              text = text.replace(old, new)
+
+          for name in ['cover.webp', 'artifact-chain.webp', 'control-stack.webp', 'feedback-evals.webp', 'personal-harness.webp']:
+              if name not in text:
+                  raise SystemExit(f'Missing article reference: {name}')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate raster assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+
+          root = Path('source/gallery/ai-native-sdlc')
+          names = ['cover.webp', 'artifact-chain.webp', 'control-stack.webp', 'feedback-evals.webp', 'personal-harness.webp']
+          for name in names:
+              path = root / name
+              if not path.exists():
+                  raise SystemExit(f'Missing {path}')
+              if path.stat().st_size > 500 * 1024:
+                  raise SystemExit(f'{path} exceeds 500KB')
+              with Image.open(path) as image:
+                  if image.size != (1600, 900):
+                      raise SystemExit(f'{path} has unexpected size {image.size}')
+          PY
+
+      - name: Remove temporary SVG redraws and staging files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f \
+            source/gallery/ai-native-sdlc/cover-whiteboard.svg \
+            source/gallery/ai-native-sdlc/artifact-chain-whiteboard.svg \
+            source/gallery/ai-native-sdlc/control-stack-whiteboard.svg \
+            source/gallery/ai-native-sdlc/feedback-evals-whiteboard.svg \
+            source/gallery/ai-native-sdlc/personal-harness-whiteboard.svg \
+            tools/ai-native-sdlc-raster.zip.b64 \
+            .github/workflows/apply-ai-native-sdlc-raster.yml
+
+      - name: Commit generated images
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A source/_posts/ai-native-sdlc-running-system.md source/gallery/ai-native-sdlc tools .github/workflows
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m 'use generated raster illustrations for AI-native SDLC article'
+          git push
+
+      - name: Deploy latest main to Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail-with-body -L \
+            -X POST \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/hexo.yml/dispatches" \
+            -d '{"ref":"main"}'
