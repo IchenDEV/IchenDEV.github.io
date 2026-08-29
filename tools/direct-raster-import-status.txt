@@ -1,0 +1,1 @@
+Binary blobs will be attached through Git data objects.
