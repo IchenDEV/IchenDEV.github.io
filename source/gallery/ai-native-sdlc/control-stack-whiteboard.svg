@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI 需要说明书，也需要刹车</title>
+  <desc id="desc">白板手绘风格。人和 AI 坐在汽车里，周围有项目地图、Skill 指南、权限刹车和 Sandbox 练习场。</desc>
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" seed="13" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.5"/></filter>
+    <style>
+      .ink{fill:none;stroke:#171717;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#171717;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .txt{font-family:"Comic Sans MS","Marker Felt","PingFang SC","Microsoft YaHei",sans-serif;fill:#171717;font-weight:700}.small{font-size:27px}.mid{font-size:38px}.big{font-size:58px}
+      .blue{fill:#2563eb}.green{fill:#16a34a}.orange{fill:#f97316}.red{fill:#dc2626}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fff"/>
+  <g filter="url(#rough)">
+    <path class="ink" d="M362 28 Q798 6 1240 28 L1232 150 Q802 166 370 150Z" fill="#fff"/>
+    <path class="thin orange" d="M410 70 l11 22 l25 4 l-18 16 l4 25 l-22-12 l-22 12 l4-25 l-18-16 l25-4Z" fill="#facc15"/>
+    <text class="txt big" x="486" y="102">AI 需要说明书，也需要刹车</text>
+    <text class="txt small blue" x="610" y="139">instruction + limits = safe arrival</text>
+
+    <!-- context map -->
+    <text class="txt mid" x="122" y="217">项目上下文</text>
+    <text class="txt small blue" x="149" y="251">Project Context</text>
+    <rect x="82" y="273" width="353" height="210" rx="18" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="thin" d="M112 436 q48-81 98-36 q55-118 112-34 q50-72 82-20"/>
+    <path class="thin blue" d="M126 397 q47-38 89-7 q50 35 91-11 q45-48 93-10" stroke-dasharray="12 11"/>
+    <path class="thin red" d="M132 326 v72 M132 326 l60 19 l-60 19" fill="#dc2626"/>
+    <circle cx="365" cy="329" r="18" fill="#fff" stroke="#f97316" stroke-width="7"/><path class="thin orange" d="M365 347 l0 37"/>
+    <path class="thin green" d="M230 405 l0 34 M211 424 h38 M218 413 l12-22 l12 22"/>
+    <path class="thin green" d="M110 515 l10 10 l18-23 M110 552 l10 10 l18-23"/>
+    <text class="txt small" x="150" y="526">目标、背景、用户</text>
+    <text class="txt small" x="150" y="563">约束、数据、偏好</text>
+
+    <!-- skill guide -->
+    <text class="txt mid" x="120" y="655">Skill 指南</text>
+    <text class="txt small blue" x="149" y="690">Skill Guide</text>
+    <path class="ink" d="M82 718 q67-34 135 5 v124 q-68-33-135-5Z" fill="#fff"/>
+    <path class="ink" d="M217 723 q67-34 134-5 v124 q-67-28-134 5Z" fill="#fff"/>
+    <path class="thin" d="M217 723 v124"/>
+    <path class="thin orange" d="M197 753 l9 18 l21 3 l-15 14 l4 20 l-19-10 l-18 10 l3-20 l-15-14 l21-3Z" fill="#facc15"/>
+    <text class="txt small" x="112" y="812">GUIDE</text>
+    <path class="thin green" d="M375 735 l9 9 l17-22 M375 779 l9 9 l17-22 M375 823 l9 9 l17-22"/>
+    <text class="txt small" x="412" y="747">怎么做</text><text class="txt small" x="412" y="791">最佳实践</text><text class="txt small" x="412" y="835">示例与模板</text>
+
+    <!-- car -->
+    <path class="ink" d="M523 451 q18-155 155-179 h214 q111 15 166 181 l37 31 q26 18 22 61 l-11 111 q-4 39-48 44 H570 q-46-4-50-45 l-12-119 q-5-51 15-85Z" fill="#fff"/>
+    <path class="ink" d="M622 423 q31-111 111-126 h134 q78 17 111 126Z" fill="#fff"/>
+    <circle cx="654" cy="450" r="47" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M613 437 q39-55 82-2"/>
+    <path class="thin" d="M635 456 q8 8 16 0 M666 456 q8 8 16 0 M641 479 q15 10 29 0"/>
+    <path class="ink" d="M609 500 q46-33 92 0 l7 106 H601Z" fill="#fff"/>
+    <circle cx="842" cy="450" r="50" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <rect x="806" y="423" width="73" height="51" rx="22" fill="#171717"/>
+    <circle cx="827" cy="446" r="5" fill="#38bdf8"/><circle cx="858" cy="446" r="5" fill="#38bdf8"/>
+    <path class="thin blue" d="M829 460 q13 11 26 0"/>
+    <path class="ink" d="M797 505 q47-37 95 0 l8 101 H789Z" fill="#fff"/>
+    <path class="thin" d="M779 481 q38 12 66 0"/>
+    <circle cx="674" cy="570" r="48" fill="#fff" stroke="#171717" stroke-width="7"/><circle cx="674" cy="570" r="24" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <path class="ink" d="M720 560 q90-30 166 7"/>
+    <path class="thin blue" d="M835 511 q16 22 0 47"/>
+    <path class="ink" d="M579 695 q-1 76 61 76 q59 0 60-76 M944 695 q-1 76 61 76 q59 0 60-76"/>
+    <circle cx="641" cy="733" r="32" fill="#fff" stroke="#171717" stroke-width="7"/><circle cx="1007" cy="733" r="32" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <rect x="745" y="642" width="123" height="48" rx="10" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <text class="txt small" x="773" y="675">AI-001</text>
+    <path class="ink" d="M733 303 q15-63 72-63 q56 0 77 63"/>
+    <path class="thin blue" d="M799 231 l0-31 M793 201 h13"/>
+    <path class="ink" d="M872 302 q91-19 134 34 q34 42 13 86"/>
+    <path class="ink" d="M742 301 q-93-16-136 42 q-28 38-10 78"/>
+    <path class="ink" d="M751 550 q26 28 50 0"/>
+    <path class="thin orange" d="M1050 470 q35 9 48 37 M1048 489 q34 13 45 38"/>
+
+    <!-- speech -->
+    <path class="ink" d="M689 179 q125-50 248 0 q28 14 18 42 l-16 48 q-7 21-32 16 l-58 0 l-18 33 l-25-34 l-87 0 q-25 2-33-20 l-18-46 q-9-26 21-39Z" fill="#fff"/>
+    <text class="txt mid" x="715" y="227">出发！但有边界</text>
+    <text class="txt small blue" x="739" y="265">Go, but stay in bounds</text>
+
+    <!-- brake and permission -->
+    <text class="txt mid" x="1192" y="224">刹车与权限</text>
+    <text class="txt small blue" x="1233" y="259">Hook / Permission</text>
+    <rect x="1158" y="292" width="74" height="219" rx="20" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <circle cx="1195" cy="338" r="22" fill="#ef4444" stroke="#171717" stroke-width="5"/><circle cx="1195" cy="402" r="22" fill="#f59e0b" stroke="#171717" stroke-width="5"/><circle cx="1195" cy="466" r="22" fill="#22c55e" stroke="#171717" stroke-width="5"/>
+    <path class="thin red" d="M1136 328 l-24-8 M1138 347 l-27 4 M1253 329 l25-10 M1252 349 l28 4"/>
+    <path class="ink" d="M1301 402 q67-26 129 4 q24 13 16 37 l-8 107 q-4 26-31 23 l-93-1 q-25 1-30-25 l-9-107 q-5-25 26-38Z" fill="#fff"/>
+    <path class="thin green" d="M1304 439 l9 9 l17-22 M1304 474 l9 9 l17-22 M1304 509 l9 9 l17-22 M1304 544 l9 9 l17-22"/>
+    <text class="txt small" x="1341" y="448">可做 / 不可做</text><text class="txt small" x="1341" y="483">审批与确认</text><text class="txt small" x="1341" y="518">工具与 API 权限</text><text class="txt small" x="1341" y="553">安全护栏</text>
+    <path class="ink" d="M1245 575 q91-31 142 8 l-34 56 q-54-27-117-1Z" fill="#fff"/>
+    <path class="ink" d="M1312 554 q26-29 53-1 l-8 29"/>
+    <path class="thin orange" d="M1232 581 q-25 17-37 44 M1242 598 q-23 20-29 45"/>
+
+    <!-- sandbox -->
+    <text class="txt mid" x="1164" y="699">Sandbox 练习场</text>
+    <ellipse cx="1330" cy="798" rx="194" ry="70" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="thin" d="M1145 766 v68 M1184 744 v104 M1225 735 v122 M1267 730 v134 M1309 728 v138 M1351 729 v136 M1393 733 v126 M1435 742 v108 M1475 764 v72"/>
+    <path class="thin" d="M1145 779 q164-55 329 0 M1145 815 q164-55 329 0"/>
+    <path class="thin green" d="M1217 803 q41-77 86-12 q42 65 91-9" stroke-dasharray="12 10"/>
+    <path class="thin orange" d="M1260 824 l14-39 l15 39Z M1376 822 l14-39 l15 39Z" fill="#fff"/>
+    <path class="thin green" d="M1484 731 l10 10 l18-23 M1484 770 l10 10 l18-23 M1484 809 l10 10 l18-23"/>
+    <text class="txt small" x="1516" y="742">先试</text><text class="txt small" x="1516" y="781">可回滚</text><text class="txt small" x="1516" y="820">不伤车</text>
+
+    <path class="thin" stroke-dasharray="12 12" d="M435 380 q97 3 151 67 M357 709 q113-4 177-77 M1118 401 q-87 17-112 64 M1150 770 q-96-3-129-59"/>
+
+    <!-- summary bubble -->
+    <path class="ink" d="M510 770 q240-56 478 0 q32 12 20 43 l-10 48 q-5 26-37 23 H552 q-31 1-38-25 l-14-51 q-8-27 10-38Z" fill="#fff"/>
+    <text class="txt mid" x="565" y="816">有说明书，知道怎么开</text>
+    <text class="txt mid" x="548" y="860">有刹车和边界，才能安全到达</text>
+  </g>
+</svg>
