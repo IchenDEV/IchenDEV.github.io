@@ -8,7 +8,7 @@ tags:
   - AGI
   - GUI
   - Engineering
-featured_image: /gallery/lui-revenge-return-to-text/cover.jpg
+featured_image: /gallery/lui-revenge-return-to-text/cover.webp
 categories:
   - [gallery]
 author: chenli

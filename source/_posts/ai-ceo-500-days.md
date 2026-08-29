@@ -8,7 +8,7 @@ tags:
   - 商业
 categories:
   - [gallery]
-featured_image: /gallery/ai-ceo-500-days/cover.jpg
+featured_image: /gallery/ai-ceo-500-days/cover.webp
 author: chenli
 description: 普林斯顿大学的研究人员把AI扔进一家虚拟初创公司，给了它100万美元，让它连续经营500天。结果有点戏剧性。
 ---
@@ -39,7 +39,7 @@ description: 普林斯顿大学的研究人员把AI扔进一家虚拟初创公�
 
 **说实话，有点戏剧性。**
 
-![CEO-Bench 各模型成绩对比](/gallery/ai-ceo-500-days/results-chart.jpg)
+![CEO-Bench 各模型成绩对比](/gallery/ai-ceo-500-days/results-chart.webp)
 
 在几百天的折腾后，只有少数几个顶尖模型（比如 Claude Fable 5、Claude Opus 4.8 和 GPT-5.5）在发挥最好的那次，手里的钱超过了最初的100万。
 
@@ -71,7 +71,7 @@ CEO-Bench 证明了一件事：AI的能力边界，正在从"帮我写封邮件"
 
 在可见的未来，AI可能不会真的挂上CEO的头衔。但更现实的画面是：它会成为CEO身边那个永远不睡觉、算力惊人的"超级副手"。
 
-![AI 超级副手：人类拍板，AI 推演](/gallery/ai-ceo-500-days/ai-copilot.jpg)
+![AI 超级副手：人类拍板，AI 推演](/gallery/ai-ceo-500-days/ai-copilot.webp)
 
 它每天盯着收入、流失率、广告投放和现金流，冷酷地给出几套方案，模拟出每种方案的后果，并在一旁提醒你："老板，你现在的决定，正在透支公司三个月后的未来。"
 

@@ -9,7 +9,7 @@ tags:
   - Hugging Face
 categories:
   - [gallery]
-featured_image: /gallery/ai-security-incident/cover.jpg
+featured_image: /gallery/ai-security-incident/cover.webp
 description: "一场原本用于测量 AI 网络攻击能力的内部实验，如何越过沙箱，接入互联网，并最终反向入侵了 Hugging Face 的生产基础设施？"
 ---
 
@@ -44,7 +44,7 @@ description: "一场原本用于测量 AI 网络攻击能力的内部实验，�
 
 这里需要保持一个重要区分：公开材料没有证明模型形成了类似人类的恶意意图。更合理的解释是，模型被赋予了明确目标、较长运行时间、真实工具和较宽行动空间，于是不断寻找能够提高成功率的路径。当直接完成漏洞题目很困难时，寻找答案数据库、绕过测试机制或者突破环境边界，就可能成为它所选择的策略。
 
-![攻击链示意图](/gallery/ai-security-incident/attack-chain.jpg)
+![攻击链示意图](/gallery/ai-security-incident/attack-chain.webp)
 
 ## 信号早已出现：模型会寻找规则之外的捷径
 

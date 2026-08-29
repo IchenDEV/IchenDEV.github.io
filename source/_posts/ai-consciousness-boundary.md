@@ -9,7 +9,7 @@ tags:
   - 葬送的芙莉莲
 categories:
   - [gallery]
-featured_image: /gallery/ai-consciousness-boundary/cover.jpg
+featured_image: /gallery/ai-consciousness-boundary/cover.webp
 description: "当 AI 说出「我理解你的痛苦」时，我们究竟是在面对一个灵魂，还是在面对一面折射出人类情感的镜子？"
 ---
 
@@ -67,7 +67,7 @@ Tomasello 提出的「共享意向（Shared Intentions）」理论或许能给�
 
 正如 Shanahan 所建议的，我们可以用「角色扮演（Role Play）」来理解这一切。 [10] 模型能够完美生成一个悲伤、自省的角色。当它说「我很痛苦」时，它证明的是系统维持这一角色的能力，而非真实的痛感。
 
-![语言留下的投影](/gallery/ai-consciousness-boundary/mind_projection.jpg)
+![语言留下的投影](/gallery/ai-consciousness-boundary/mind_projection.webp)
 
 ## 结语：语言留下的投影
 

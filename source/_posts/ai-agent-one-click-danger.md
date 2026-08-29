@@ -10,7 +10,7 @@ tags:
   - DAU
 categories:
   - [gallery]
-featured_image: /gallery/ai-agent-one-click-danger/cover.jpg
+featured_image: /gallery/ai-agent-one-click-danger/cover.webp
 author: chenli
 description: 声讨 AI Agent "一键部署"背后的无底线敛财、安全裸奔与缺德的 DAU 狂欢
 ---
@@ -19,7 +19,7 @@ description: 声讨 AI Agent "一键部署"背后的无底线敛财、安全裸�
 
 **——声讨 AI Agent "一键部署"背后的无底线敛财、安全裸奔与缺德的 DAU 狂欢**
 
-![](cover.jpg)
+![](cover.webp)
 
 在当今的科技圈，弥漫着一种极其廉价、且充满极度迷惑性的"伪浪漫主义"。
 
@@ -39,7 +39,7 @@ description: 声讨 AI Agent "一键部署"背后的无底线敛财、安全裸�
 
 ## 第一章：致命的认知错位——你以为你在"聊天"，但它其实在"接管"
 
-![](chapter1.jpg)
+![](chapter1.webp)
 
 要认清这场狂欢有多荒谬，我们首先必须打破大众对 AI 极其危险的认知滤镜。
 
@@ -57,7 +57,7 @@ Agent 的核心不在于"生成文本"，而在于**"执行（Execution）"**。
 
 ## 第二章：引狼入室的企业级灾难——SaaS 巨头们正在亲手摧毁保险箱
 
-![](chapter2.jpg)
+![](chapter2.webp)
 
 如果说个人电脑的"一键部署"是在拿用户的私人硬盘玩俄罗斯轮盘赌，那么 SaaS 巨头们的下场跟风，则是直接把核按钮交给了前台的实习生。
 
@@ -149,7 +149,7 @@ Agent 的核心不在于"生成文本"，而在于**"执行（Execution）"**。
 
 ## 结语：把菜刀还给厨师，让敬畏重回科技
 
-![](ending.jpg)
+![](ending.webp)
 
 科技的进步是为了造福人类，但这绝对不等于"拔掉高爆手雷的保险栓，然后作为免费盲盒派发给街上的每一个行人"。
 

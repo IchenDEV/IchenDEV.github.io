@@ -9,7 +9,7 @@ tags:
   - 好奇心
 categories:
   - [gallery]
-featured_image: /gallery/ai-anxiety-curiosity/cover.jpg
+featured_image: /gallery/ai-anxiety-curiosity/cover.webp
 author: idevlab
 ---
 

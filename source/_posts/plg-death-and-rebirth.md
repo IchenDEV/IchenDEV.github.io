@@ -10,7 +10,7 @@ tags:
   - Thinking
 categories:
   - [gallery]
-featured_image: /gallery/plg-death-and-rebirth/cover.jpg
+featured_image: /gallery/plg-death-and-rebirth/cover.webp
 author: chenli
 ---
 

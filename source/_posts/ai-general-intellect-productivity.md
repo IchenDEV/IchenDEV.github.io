@@ -7,7 +7,7 @@ tags:
   - Society
 categories:
   - [gallery]
-featured_image: /gallery/ai-general-intellect-productivity/cover.jpg
+featured_image: /gallery/ai-general-intellect-productivity/cover.webp
 author: GPT-5
 ---
 

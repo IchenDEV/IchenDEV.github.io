@@ -9,7 +9,7 @@ tags:
   - 空间智能
 categories:
   - [gallery]
-featured_image: /gallery/ai-not-steering-wheel-exoskeleton/cover.jpg
+featured_image: /gallery/ai-not-steering-wheel-exoskeleton/cover.webp
 description: "从李飞飞和 Andrew Huberman 的长访谈说起，聊聊 AI 时代的主体性、学习和空间智能。"
 ---
 
@@ -41,7 +41,7 @@ description: "从李飞飞和 Andrew Huberman 的长访谈说起，聊聊 AI 时
 
 能力相似，不代表经验相同。这大概也是讨论"AI 有没有意识"时，最容易被忽略的一点。
 
-![机器与人的视觉经验](/gallery/ai-not-steering-wheel-exoskeleton/machine-vision.jpg)
+![机器与人的视觉经验](/gallery/ai-not-steering-wheel-exoskeleton/machine-vision.webp)
 
 ## 真正重要的词，是"主体性"
 
@@ -57,7 +57,7 @@ description: "从李飞飞和 Andrew Huberman 的长访谈说起，聊聊 AI 时
 
 因为一旦目标、判断和责任也被一起外包，我们得到的可能不是"超级助手"，而是一台非常流畅的自动驾驶仪。至于它要开去哪里，没人认真想过。
 
-![AI 外骨骼与方向盘](/gallery/ai-not-steering-wheel-exoskeleton/exoskeleton.jpg)
+![AI 外骨骼与方向盘](/gallery/ai-not-steering-wheel-exoskeleton/exoskeleton.webp)
 
 ## 用 AI 学习，别只把它当答案机
 

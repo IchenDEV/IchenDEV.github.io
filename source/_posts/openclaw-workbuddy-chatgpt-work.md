@@ -10,7 +10,7 @@ tags:
   - ChatGPT Work
 categories:
   - [gallery]
-featured_image: /gallery/openclaw-workbuddy-chatgpt-work/cover.jpg
+featured_image: /gallery/openclaw-workbuddy-chatgpt-work/cover.webp
 author: chenli
 description: 从OpenClaw的狂热跟风，到WorkBuddy和ChatGPT Work的务实回归，AI Agent正在经历一场从“养宠物”到“完成工作”的拨乱反正。
 ---
@@ -31,7 +31,7 @@ OpenClaw被叫作「养虾」，安装、调教和维护它，也被描述成养
 
 ## OpenClaw赢得了传播，Claude Cowork更早押中了方向
 
-![AI Agent 的三阶段演进](/gallery/openclaw-workbuddy-chatgpt-work/cover.jpg)
+![AI Agent 的三阶段演进](/gallery/openclaw-workbuddy-chatgpt-work/cover.webp)
 
 
 OpenClaw在中国火过Claude Cowork，有很现实的原因。
@@ -96,12 +96,12 @@ Claude Cowork较早看见了受控桌面Agent，Manus较早看见了通用Agent�
 
 一个足够通用的Agent，加上一组能够随任务组合的Skill，已经更接近未来。
 
-![Agent角色扮演 vs 多Skill组合](/gallery/openclaw-workbuddy-chatgpt-work/agent-skill-comparison.jpg)
+![Agent角色扮演 vs 多Skill组合](/gallery/openclaw-workbuddy-chatgpt-work/agent-skill-comparison.webp)
 
 
 ## 中国大厂把一个极客实验推成了全民饲养运动
 
-![大厂跟风OpenClaw](/gallery/openclaw-workbuddy-chatgpt-work/companies-following-openclaw.jpg)
+![大厂跟风OpenClaw](/gallery/openclaw-workbuddy-chatgpt-work/companies-following-openclaw.webp)
 
 
 2026年3月，OpenClaw热度进入高峰。腾讯总部曾出现近千人排队安装OpenClaw的场面。腾讯、字节跳动、阿里巴巴陆续推出相关智能体产品，腾讯云、阿里云、火山引擎、百度智能云、京东云以及电信运营商也迅速提供OpenClaw部署服务。([Sina Finance][8])
@@ -122,7 +122,7 @@ Claude Cowork较早看见了受控桌面Agent，Manus较早看见了通用Agent�
 
 ## 卸载潮让OpenClaw的真实成本浮出了水面
 
-![OpenClaw卸载潮：隐藏的真实成本](/gallery/openclaw-workbuddy-chatgpt-work/uninstall-wave.jpg)
+![OpenClaw卸载潮：隐藏的真实成本](/gallery/openclaw-workbuddy-chatgpt-work/uninstall-wave.webp)
 
 
 热闹过去以后，OpenClaw面对的是普通人的日常任务。
@@ -143,7 +143,7 @@ Claude Cowork较早看见了受控桌面Agent，Manus较早看见了通用Agent�
 
 ## WorkBuddy的增长说明普通用户愿意为省事投票
 
-![WorkBuddy的受控Agent架构](/gallery/openclaw-workbuddy-chatgpt-work/workbuddy-architecture.jpg)
+![WorkBuddy的受控Agent架构](/gallery/openclaw-workbuddy-chatgpt-work/workbuddy-architecture.webp)
 
 
 WorkBuddy同样在3月上线，但它后来跑出的数据，说明了另一种需求。
@@ -172,7 +172,7 @@ WorkBuddy的优势不在于拥有最大的权限。它把普通用户无力承�
 
 ## ChatGPT Work把全球智能体路线也拉回了「完成工作」
 
-![全球Agent路线的产品共识](/gallery/openclaw-workbuddy-chatgpt-work/global-consensus.jpg)
+![全球Agent路线的产品共识](/gallery/openclaw-workbuddy-chatgpt-work/global-consensus.webp)
 
 
 2026年7月9日，OpenAI正式推出ChatGPT Work。
@@ -225,7 +225,7 @@ AI同事的第一能力应该是按时交付。它要知道自己能做多少，
 
 这才是对「养虾时代」真正的拨乱反正。
 
-![AI同事绩效考核](/gallery/openclaw-workbuddy-chatgpt-work/ai-performance-review.jpg)
+![AI同事绩效考核](/gallery/openclaw-workbuddy-chatgpt-work/ai-performance-review.webp)
 
 
 [1]: https://www.anthropic.com/news/introducing-anthropic-labs?utm_source=chatgpt.com "Introducing Labs"

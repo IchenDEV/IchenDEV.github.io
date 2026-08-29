@@ -8,7 +8,7 @@ tags:
   - 职场
 categories:
   - [gallery]
-featured_image: /gallery/ai-team-roles/cover.jpg
+featured_image: /gallery/ai-team-roles/cover.webp
 author: chenli
 description: 当AI把「把想法变成代码」的成本降到极低，传统职能标签已经装不下现在的工作模式。原型师、构建者、清理者、成长者、维护者——这才是AI时代团队的五种新语言。
 ---
@@ -49,7 +49,7 @@ description: 当AI把「把想法变成代码」的成本降到极低，传统�
 
 这是 AI 时代极其稀缺，但又最容易被忽视的角色。
 
-![生成廉价，删减昂贵](/gallery/ai-team-roles/cleaner-role.jpg)
+![生成廉价，删减昂贵](/gallery/ai-team-roles/cleaner-role.webp)
 
 AI 写代码太快了。一个初级程序员带着 AI，一天能给你生成几千行代码。但结果往往是：代码库迅速膨胀，到处是冗余的逻辑、脆弱的实现、风格迥异的补丁。
 
@@ -85,7 +85,7 @@ Anthropic 自己都发现，在使用 Claude Code 时，有将近 10% 的任务�
 
 ## 结语：别再问"我们缺不缺PM"了
 
-![不同产品阶段需要不同的角色组合](/gallery/ai-team-roles/team-stages.jpg)
+![不同产品阶段需要不同的角色组合](/gallery/ai-team-roles/team-stages.webp)
 
 传统的"缺个前端招个前端，缺个PM招个PM"的思路，在 AI 时代会越来越笨重。
 

@@ -9,7 +9,7 @@ tags:
   - Harness
 categories:
   - [gallery]
-featured_image: /gallery/ai-orchestration-engine/cover.jpg
+featured_image: /gallery/ai-orchestration-engine/cover.webp
 description: "AI 办公大战争的是给软件增加能力，但真正缺少的，是一层让软件慢慢长成使用者样子的编排引擎。"
 ---
 
@@ -61,7 +61,7 @@ Skills
 模型
 ```
 
-![AI编程产品的分层结构](/gallery/ai-orchestration-engine/layers.jpg)
+![AI编程产品的分层结构](/gallery/ai-orchestration-engine/layers.webp)
 
 用户界面在最上面，模型在最下面。中间这些层，决定模型看到什么、会使用什么方法、能操作什么、什么时候需要确认，以及一个任务应该怎样继续执行。过去，这些东西通常被焊在同一个产品里，现在它们开始可以被替换、组合和重新设计。
 
@@ -90,7 +90,7 @@ Codex 已经支持多个 Agent 并行工作、Skills 和 Automations。用户可
 
 这也是今天很多 AI 产品给我的感觉。它们像一张摆满了高级食材的桌子。材料越来越丰富，用户依然只能点菜单上已经写好的菜。
 
-![摆满食材的桌子](/gallery/ai-orchestration-engine/food-table.jpg)
+![摆满食材的桌子](/gallery/ai-orchestration-engine/food-table.webp)
 
 ## 用户说不清工作流程，不等于用户不知道怎么工作
 

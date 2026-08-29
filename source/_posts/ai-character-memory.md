@@ -7,7 +7,7 @@ tags:
   - Agent
 categories:
   - Tech
-featured_image: /gallery/ai-character-memory/cover.jpg
+featured_image: /gallery/ai-character-memory/cover.webp
 ---
 
 如果把最近读到的两篇关于 AI 角色和叙事的论文压缩成一句话，那大概是：
@@ -42,7 +42,7 @@ featured_image: /gallery/ai-character-memory/cover.jpg
 
 ## 二、情绪不是标签，而是评价过程
 
-![情绪评价过程](/gallery/ai-character-memory/emotion-appraisal.jpg)
+![情绪评价过程](/gallery/ai-character-memory/emotion-appraisal.webp)
 
 很多角色系统把情绪写成人设属性，比如「她总是冷静」、「他有一点忧郁」，或者「当前情绪：愤怒」。这会导致情绪不会因事件自然变化，即使变化了也缺少因果解释。
 
@@ -78,7 +78,7 @@ featured_image: /gallery/ai-character-memory/cover.jpg
 
 ## 三、故事连续性不是事实列表
 
-![叙事世界模型](/gallery/ai-character-memory/narrative-world.jpg)
+![叙事世界模型](/gallery/ai-character-memory/narrative-world.webp)
 
 长篇故事中的关键问题常常不是「某个词出现在哪一章」，而是：
 

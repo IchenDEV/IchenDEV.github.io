@@ -10,7 +10,7 @@ tags:
   - Career
 categories:
   - [gallery]
-featured_image: /gallery/ai-judgement-is-survival/cover.jpg
+featured_image: /gallery/ai-judgement-is-survival/cover.webp
 author: chenli
 ---
 

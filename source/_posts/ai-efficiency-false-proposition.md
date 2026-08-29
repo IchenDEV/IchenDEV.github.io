@@ -9,7 +9,7 @@ tags:
   - 个人成长
 categories:
   - [gallery]
-featured_image: /gallery/ai-efficiency-false-proposition/cover.jpg
+featured_image: /gallery/ai-efficiency-false-proposition/cover.webp
 author: idevlab
 ---
 

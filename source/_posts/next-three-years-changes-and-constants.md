@@ -10,7 +10,7 @@ tags:
 categories:
   - [gallery]
 author: chenli
-featured_image: /gallery/next-three-years-changes-and-constants/cover-new.jpg
+featured_image: /gallery/next-three-years-changes-and-constants/cover-new.webp
 description: 关于未来三年与更长期世界变化的判断：哪些会被 AI 和新生产力重塑，哪些属于时代切换中依然稳定的人类底层结构
 ---
 
@@ -299,7 +299,7 @@ description: 关于未来三年与更长期世界变化的判断：哪些会被 
 
 **它们在工业逻辑里看起来不够高效，但在 AI 时代，反而可能越来越贵。**
 
-![真正稀缺的，反而是情感、关系与共同经验](./cover.jpg)
+![真正稀缺的，反而是情感、关系与共同经验](./cover.webp)
 
 ## 九、还有一个会越来越贵的东西：品味
 

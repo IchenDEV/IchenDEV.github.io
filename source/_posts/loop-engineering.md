@@ -8,7 +8,7 @@ tags:
   - 吴恩达
 categories:
   - [gallery]
-featured_image: /gallery/loop-engineering/cover.jpg
+featured_image: /gallery/loop-engineering/cover.webp
 author: chenli
 description: 「循环工程」正迅速成为 AI 软件开发领域最炸手可热的流行词。开发者不再直接提示 AI，而是设计并管理让 AI 自主运行的「循环」。本文深入剖析吴恩达提出的三大产品开发循环框架。
 ---
@@ -23,7 +23,7 @@ description: 「循环工程」正迅速成为 AI 软件开发领域最炸手可
 
 吴恩达提出了一个清晰的框架，将现代 AI 辅助的产品开发分为三个嵌套的循环。这些循环在不同的时间尺度上运行，不仅指导着如何构建软件，更决定了构建什么样的软件。
 
-![三大嵌套循环：从代理编码到外部反馈](/gallery/loop-engineering/cover.jpg)
+![三大嵌套循环：从代理编码到外部反馈](/gallery/loop-engineering/cover.webp)
 
 ### 1. 代理式编码循环（Agentic Coding Loop）
 
@@ -55,7 +55,7 @@ description: 「循环工程」正迅速成为 AI 软件开发领域最炸手可
 
 **核心意义**：外部数据是检验产品愿景的唯一标准。这些反馈将反过来驱动产品愿景的演进，进而更新详细的产品规范，最终再次驱动底层的代理式编码循环。
 
-![三大循环的详细流程](/gallery/loop-engineering/three-loops.jpg)
+![三大循环的详细流程](/gallery/loop-engineering/three-loops.webp)
 
 ## 深度评论：重新定义人类的"语境优势"
 
@@ -67,7 +67,7 @@ description: 「循环工程」正迅速成为 AI 软件开发领域最炸手可
 
 这种优势体现在我们对现实世界的复杂性、用户微妙的心理需求、特定的商业环境以及隐性知识的深刻理解。AI 代理可能知道如何写出完美的排序算法，但它不知道吴恩达的女儿"超爱猫咪"，因此在打字应用中加入"解锁猫咪服装"的功能——这种决策只能由拥有特定语境的人类做出。
 
-![人类的语境优势：AI 知道算法，人类知道女儿爱猫](/gallery/loop-engineering/contextual-advantage.jpg)
+![人类的语境优势：AI 知道算法，人类知道女儿爱猫](/gallery/loop-engineering/contextual-advantage.webp)
 
 这也解释了为什么开发者反馈循环无法被完全自动化。只要人类掌握着 AI 无法轻易获取的外部语境和隐性知识，就需要人类作为"环路中的关键节点（Human-in-the-loop）"，不断将这些知识注入系统，引导产品朝着正确的方向演进。
 

@@ -9,10 +9,10 @@ tags:
   - 财富模型
   - 思考
 description: '机器只会抢机器人的工作，只不过工业社会把人异化成了机器人。当 AI 开始消灭初级岗位、抹平信息差时，我们该如何在折叠的阶层中寻找生态位？'
-featured_image: /gallery/ai-class-folding-survival/cover.jpg
+featured_image: /gallery/ai-class-folding-survival/cover.webp
 ---
 
-![封面图](cover.jpg)
+![封面图](cover.webp)
 
 我之前听到过一个很有意思的说法，大家都担心 AI 抢了人的工作。但其实：
 
@@ -54,7 +54,7 @@ featured_image: /gallery/ai-class-folding-survival/cover.jpg
 
 ---
 
-![认知差层配图](cognitive-gap.jpg)
+![认知差层配图](cognitive-gap.webp)
 
 ## 认知差层的重构：从“我知道”到“我会驾驭”
 
@@ -92,7 +92,7 @@ AI 本质上是一个放大器，而不是增高器。它能放大你已有的�
 
 ---
 
-![生存法则配图](survival-rules.jpg)
+![生存法则配图](survival-rules.webp)
 
 ## 寻找生态位：重新做回一个“人”
 

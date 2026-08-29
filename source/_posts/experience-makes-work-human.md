@@ -9,7 +9,7 @@ tags:
   - 创作
 categories:
   - [gallery]
-featured_image: /gallery/experience-makes-work-human/cover.jpg
+featured_image: /gallery/experience-makes-work-human/cover.webp
 author: chenli
 description: 一个真正好的产品，里面应该有设计者的思路，也应该有用户真实用过它的痕迹。也就是说，它里面得有经历。
 ---
@@ -36,7 +36,7 @@ description: 一个真正好的产品，里面应该有设计者的思路，也�
 
 少了作者自己对这个按钮的判断过程，少了那种「我为什么觉得它就应该在这里」的感觉。
 
-![AI 输出 vs 人的创作](/gallery/experience-makes-work-human/ai-vs-human.jpg)
+![AI 输出 vs 人的创作](/gallery/experience-makes-work-human/ai-vs-human.webp)
 
 这件事很微妙。因为 AI 并不一定会把东西做差。很多时候它做得还挺好。页面很完整，代码能跑，结构也漂亮，甚至有时候比我自己一开始想得更周到。但问题也就在这里：它太快把一个结果送到我面前了。我看着觉得可以，就接受了。然后我就跳过了本来属于我的一段思考。
 
@@ -82,7 +82,7 @@ description: 一个真正好的产品，里面应该有设计者的思路，也�
 
 我以前写过一篇关于好品味和坏品味的文章。现在想想，当时我还很肤浅。我那时候更多是在看表面的东西，比如界面好不好看，设计统不统一，细节有没有打磨。现在我会觉得，品味其实更深。品味是一个人经历很多东西之后，慢慢形成的判断。
 
-![品味是怎么长出来的](/gallery/experience-makes-work-human/taste-grows.jpg)
+![品味是怎么长出来的](/gallery/experience-makes-work-human/taste-grows.webp)
 
 你见过很多产品，自己做过一些东西，也被一些烂设计折磨过，被一些好设计打动过。时间长了，你会开始知道，有些东西看起来流行，但其实不适合；有些东西看起来普通，但就是对；有些东西大家都在做，可你就是不想这么做。
 

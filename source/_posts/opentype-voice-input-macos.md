@@ -10,7 +10,7 @@ tags:
   - Open Source
 categories:
   - [gallery]
-featured_image: /gallery/opentype-voice-input-macos/cover.jpg
+featured_image: /gallery/opentype-voice-input-macos/cover.webp
 author: chenli
 description: OpenType 是一款为 macOS 打造的原生 AI 语音输入工具。按住快捷键，自然说话，它就能将处理好的文本直接输入到你正在使用的任何应用中。完全离线，隐私安全。
 ---
@@ -23,7 +23,7 @@ description: OpenType 是一款为 macOS 打造的原生 AI 语音输入工具�
 
 <!-- more -->
 
-![OpenType 演示](opentype-demo.jpg)
+![OpenType 演示](opentype-demo.webp)
 
 ## 一个手势，打破应用的边界
 

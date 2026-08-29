@@ -9,7 +9,7 @@ tags:
   - 技术伦理
 categories:
   - [gallery]
-featured_image: /gallery/openclaw-deployment-cost-humanized/cover.jpg
+featured_image: /gallery/openclaw-deployment-cost-humanized/cover.webp
 description: "当一键部署成为潮流，我们是否在不经意间为便利付出了安全的代价？在点击下一步之前，我们真的了解自己正在做什么吗？"
 ---
 
@@ -45,11 +45,11 @@ description: "当一键部署成为潮流，我们是否在不经意间为便利
 
 > "我之所以不降低使用门槛，是为了让大家阅读文档、学习，从而了解这个空间以及如何安全使用。如果我们在确保安全性之前就降低使用门槛，反而会害了大家。" [7]
 
-![微信讨论：从控制AI到控制AI Agent](wechat-ai-agent.jpg)
+![微信讨论：从控制AI到控制AI Agent](wechat-ai-agent.webp)
 
-![AI → Agent → Tool 关系讨论](agent-tool-relation.jpg)
+![AI → Agent → Tool 关系讨论](agent-tool-relation.webp)
 
-![朋友圈讨论](moments-discussion.jpg)
+![朋友圈讨论](moments-discussion.webp)
 
 我读到这些话时，心里咯噔一下。这和我的想法不谋而合。那个看起来有点"反人类"的安装过程，那个需要你静下心来阅读的文档，其实是一道过滤器，一个"知情同意书"。它在用一种极客的方式对你说："嘿，朋友，这东西很强大，但也可能很危险。在你掌握它之前，请务必了解它。"
 
@@ -57,7 +57,7 @@ description: "当一键部署成为潮流，我们是否在不经意间为便利
 
 ## 便利的代价：你看不见的安全黑洞
 
-![OpenClaw 能访问的系统权限范围](./risk-diagram.jpg)
+![OpenClaw 能访问的系统权限范围](./risk-diagram.webp)
 
 当你跳过学习，直接进入"下一步，下一步"的流程时，你可能根本意识不到自己打开了多少风险敞口。这就像你拿到了一把能打开城市所有门的万能钥匙，却没人告诉你其中有些门背后是悬崖。
 

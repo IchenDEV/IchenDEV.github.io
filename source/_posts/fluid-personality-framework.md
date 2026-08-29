@@ -8,10 +8,10 @@ tags:
   - 人机交互
   - 论文解读
 description: '普林斯顿最新研究：AI 每次开口前，都在后台悄悄完成「看眼色、查档案、调音量」三步。这不是噱头，而是一套有实验数据支撑的「流体人格框架」。'
-featured_image: /gallery/fluid-personality-framework/cover.jpg
+featured_image: /gallery/fluid-personality-framework/cover.webp
 ---
 
-![封面图](cover.jpg)
+![封面图](cover.webp)
 
 你有没有遇到过这种 AI：
 
@@ -35,7 +35,7 @@ featured_image: /gallery/fluid-personality-framework/cover.jpg
 
 这个框架在后台的运作流程，非常像一个「高情商的沟通专家」。每次 AI 准备回复你之前，它都会快速完成以下三步：
 
-![三步流程图](three-steps.jpg)
+![三步流程图](three-steps.webp)
 
 **第一步：看眼色（语境监控）**
 
@@ -67,7 +67,7 @@ AI 不会直接想「怎么回答」，而是先分析当前的外在局势：
 
 这个框架里有一个很有意思的概念，叫 **Goldilocks Zone（金发姑娘区间）**。
 
-![黄金区间图](goldilocks.jpg)
+![黄金区间图](goldilocks.webp)
 
 研究者发现，AI 的性格表达存在一个倒 U 形曲线：
 

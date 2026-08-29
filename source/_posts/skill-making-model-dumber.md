@@ -9,7 +9,7 @@ tags:
   - Prompt Engineering
 categories:
   - [gallery]
-featured_image: /gallery/skill-making-model-dumber/cover.jpg
+featured_image: /gallery/skill-making-model-dumber/cover.webp
 description: "从 Claude Opus 5 删掉 80% 系统提示说起，聊聊为什么少即是多，以及如何正确地给模型塞信息。"
 ---
 
@@ -29,7 +29,7 @@ description: "从 Claude Opus 5 删掉 80% 系统提示说起，聊聊为什么�
 
 这大概就是不少团队今天还在用的 AI 工作流。
 
-![冲突的提示词](/gallery/skill-making-model-dumber/bad-prompt.jpg)
+![冲突的提示词](/gallery/skill-making-model-dumber/bad-prompt.webp)
 
 ## 当旧地图遇上新天地
 
@@ -109,7 +109,7 @@ Anthropic 的工程师发文证实，他们为最新的 Opus 5 和 Fable 5 模�
 
 现代的上下文工程（Context Engineering）要做的，就是把信息放回它该在的位置。
 
-![五层汉堡模型](/gallery/skill-making-model-dumber/context-layers.jpg)
+![五层汉堡模型](/gallery/skill-making-model-dumber/context-layers.webp)
 
 ## 技能（Skill）的正确姿势
 
@@ -131,7 +131,7 @@ Anthropic 的工程师发文证实，他们为最新的 Opus 5 和 Fable 5 模�
 
 这和我们之前讨论的“让正确的信息，在正确的时机，以正确的粒度进入上下文”是一脉相承的。只不过在这个模式里，“谁来决定时机和粒度”这件事，也交给了模型自己。
 
-![管理代理与最小上下文](/gallery/skill-making-model-dumber/manager-agent.jpg)
+![管理代理与最小上下文](/gallery/skill-making-model-dumber/manager-agent.webp)
 
 ## 拥抱变化，而不是拥抱混乱
 

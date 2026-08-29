@@ -9,7 +9,7 @@ tags:
   - Open Source
 categories:
   - [gallery]
-featured_image: /gallery/petx-codex-pets-anywhere/cover.jpg
+featured_image: /gallery/petx-codex-pets-anywhere/cover.webp
 author: chenli
 description: PetX 是一组面向 Codex pet atlas 的页面组件包，让 React、Vue、Svelte、SolidJS 和 Web Component 都能直接渲染同一套宠物素材。
 ---
@@ -28,7 +28,7 @@ description: PetX 是一组面向 Codex pet atlas 的页面组件包，让 React
 
 <!-- more -->
 
-![PetX 官网首页](petx-home.jpg)
+![PetX 官网首页](petx-home.webp)
 
 ## 这事原本很小
 
@@ -77,7 +77,7 @@ PetX 的接入文档会告诉 AI 怎么处理 React、Vue、Svelte、SolidJS、W
 
 官网里放了一个调试区，可以切换动画、尺寸、偏移、帧间隔，也能切换框架代码片段。官网没有做成复杂文档站，先让人一眼看到 PetX 能干什么。
 
-![PetX 示例角色](pet-gallery.jpg)
+![PetX 示例角色](pet-gallery.webp)
 
 这些角色都来自同一种素材格式：
 

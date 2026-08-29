@@ -11,7 +11,7 @@ tags:
   - gbz185-sdk
 categories:
   - [gallery]
-featured_image: /gallery/gbz185-agent-standard/cover.jpg
+featured_image: /gallery/gbz185-agent-standard/cover.webp
 author: chenli
 description: GB/Z 185《人工智能 智能体互联》国家标准化指导性技术文件发布，从身份、描述、发现、交互到工具调用，给智能体补上了进入系统之前最基本的几样东西：工牌、名片、通讯录、工作群和工具间。
 ---

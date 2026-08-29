@@ -11,12 +11,12 @@ tags:
   - 开发工具
 categories:
   - [gallery]
-featured_image: /gallery/codex-annoying-bugs/cover.jpg
+featured_image: /gallery/codex-annoying-bugs/cover.webp
 author: chenli
 description: 从每天写入 1.76TB 日志谋杀 SSD，到打爆 syspolicyd 让整台 Mac 无法开启任何 App——Codex 近期 Bug 汇总与终极急救方案
 ---
 
-![](cover.jpg)
+![](cover.webp)
 
 如果你是一位开发者，且最近正在重度依赖 OpenAI 的 Codex 桌面端或 CLI 工具，那么你可能需要停下手头的工作，立刻检查一下你的硬盘剩余空间和 SSD 写入量了。
 

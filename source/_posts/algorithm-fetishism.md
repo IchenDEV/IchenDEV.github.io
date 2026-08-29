@@ -7,7 +7,7 @@ tags:
   - Society
 categories:
   - [gallery]
-featured_image: /gallery/algorithm-fetishism/cover.jpg
+featured_image: /gallery/algorithm-fetishism/cover.webp
 ---
 
 > 我们称算法为“姐”“老师”，并非亲切，而是一种幻觉。  

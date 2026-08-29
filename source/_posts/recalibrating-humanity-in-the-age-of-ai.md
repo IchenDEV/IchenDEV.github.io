@@ -9,7 +9,7 @@ tags:
   - Thinking
 categories:
   - [gallery]
-featured_image: /gallery/recalibrating-humanity-in-the-age-of-ai/sofa-exhaustion.jpg
+featured_image: /gallery/recalibrating-humanity-in-the-age-of-ai/sofa-exhaustion.webp
 author: chenli with gemini
 ---
 
@@ -19,7 +19,7 @@ author: chenli with gemini
 
 这种思考并非源于书斋里的理论推导，而是源于一种生理性的体验。如果你像我一样，在过去两年里高强度地使用 AI 产品，你或许会有同感——一种深沉的“无力感”，一种想彻底瘫倒在沙发上、什么都不做的虚无感。如果你还没体会到，那只能说明你用得还不够多，或者还没触碰到那个临界点。
 
-![瘫倒在沙发的无力感：多年努力被 AI 轻易追平](./sofa-exhaustion.jpg)
+![瘫倒在沙发的无力感：多年努力被 AI 轻易追平](./sofa-exhaustion.webp)
 
 ## 80% 的努力归零
 
@@ -39,7 +39,7 @@ author: chenli with gemini
 
 回望 2024 年，那时的 GitHub Copilot 研究就已经显示，开发者使用 AI 辅助后，任务完成速度平均提升了 55%。那是“人机协同”的早期信号。而到了今天，随着 CoWorker 类产品的成熟，我们经常提到的“10 倍工程师”正在进化为 “30 倍工程师”。
 
-![人机协作：指挥 AI 军团将想法变成软件](./human-ai-collaboration.jpg)
+![人机协作：指挥 AI 军团将想法变成软件](./human-ai-collaboration.webp)
 
 一个不懂代码的产品经理，现在可以指挥 AI 军团，在几个小时内完成过去需要一个 Scrum 团队两周的工作量。
 
@@ -75,7 +75,7 @@ author: chenli with gemini
 
 我认为，有泡沫才有发展。2023-2024 是资本寒冬后的复苏，2025 是疯狂投入的顶点。我的预感是，2028 年上半年，这颗巨大的泡沫可能会破裂。
 
-![AI 泡沫：Hype 与 CapEx 堆起的高塔](./ai-bubble-2028-hype-capex.jpg)
+![AI 泡沫：Hype 与 CapEx 堆起的高塔](./ai-bubble-2028-hype-capex.webp)
 
 但这并非坏事。互联网泡沫破裂后，诞生了真正的互联网巨头；AI 泡沫的清洗，将淘汰那些仅仅是“套壳”的公司。那些真正实现了 AI Native——即从根本上重构了商业逻辑和组织形式的企业，将穿越周期，成为下一个时代的 Google 和 Amazon。
 
@@ -111,7 +111,7 @@ author: chenli with gemini
 
 在那个不需要我们去“制造”和“计算”的未来，人类的价值坐标将发生根本性的偏移。我们将从效率的竞争中解脱出来，转向深度的体验。
 
-![手艺与人味儿：不完美的价值](./human-craft-in-ai-city.jpg)
+![手艺与人味儿：不完美的价值](./human-craft-in-ai-city.webp)
 
 > **生活剪影：有缺陷的咖啡**
 >

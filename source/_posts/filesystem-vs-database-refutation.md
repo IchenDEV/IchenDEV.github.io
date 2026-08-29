@@ -10,7 +10,7 @@ tags:
   - 多Agent系统
 categories:
   - [gallery]
-featured_image: /gallery/filesystem-vs-database-refutation/cover.jpg
+featured_image: /gallery/filesystem-vs-database-refutation/cover.webp
 author: chenli
 description: 文件系统是 AI 最 Native 的形式？这个观点在单 Agent 的简单场景下看似成立，但在多 Agent 协作的真实世界中必然崩溃。别偷懒，直接上 AI Native 数据库。
 ---

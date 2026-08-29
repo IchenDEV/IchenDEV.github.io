@@ -9,7 +9,7 @@ tags:
   - 罕见病
 categories:
   - [gallery]
-featured_image: /gallery/probability-perception/cover.jpg
+featured_image: /gallery/probability-perception/cover.webp
 description: "当我们以为自己在观察整个社会时，其实看到的只是被选择过的一小部分。"
 ---
 
@@ -51,7 +51,7 @@ CJD 更少见一些。按年龄分布和生命表粗略计算，普通人一生�
 
 后来我才发现，我们平时感受到的根本不是概率本身。
 
-![我们感受到的不是概率本身](/gallery/probability-perception/visibility-filter.jpg)
+![我们感受到的不是概率本身](/gallery/probability-perception/visibility-filter.webp)
 
 我们感受到的是一件事有多容易被看见，有多容易被讲成一个故事，又有多容易留在记忆里。
 
@@ -157,7 +157,7 @@ CJD 更少见一些。按年龄分布和生命表粗略计算，普通人一生�
 
 现在我再看到一条让人紧张的新闻，会下意识多想一下：这件事发生了多少次，观察了多少人，统计了多长时间？
 
-![故事只是冰山一角](/gallery/probability-perception/hidden-denominator.jpg)
+![故事只是冰山一角](/gallery/probability-perception/hidden-denominator.webp)
 
 以前我只记得那个故事。
 

@@ -9,7 +9,7 @@ tags:
   - 教育
 categories:
   - [gallery]
-featured_image: /gallery/renaissance-to-ai-era/cover.jpg
+featured_image: /gallery/renaissance-to-ai-era/cover.webp
 author: chenli
 description: 从达芬奇的跨界通才，到工业社会的专业折叠，再到 AI 时代重新展开的可能性。我们在技术浪潮中，该如何找回完整的人？
 ---
@@ -22,7 +22,7 @@ description: 从达芬奇的跨界通才，到工业社会的专业折叠，再�
 
 ## 被折叠进格子里的人
 
-![人被工业社会折叠进格子](/gallery/renaissance-to-ai-era/industrial-fold.jpg)
+![人被工业社会折叠进格子](/gallery/renaissance-to-ai-era/industrial-fold.webp)
 
 然后，工业时代来了。
 
@@ -40,7 +40,7 @@ description: 从达芬奇的跨界通才，到工业社会的专业折叠，再�
 
 ## AI 时代：重新展开的可能
 
-![AI 把人从盒子里解放出来](/gallery/renaissance-to-ai-era/ai-unfold.jpg)
+![AI 把人从盒子里解放出来](/gallery/renaissance-to-ai-era/ai-unfold.webp)
 
 然后，AI 时代来了。
 

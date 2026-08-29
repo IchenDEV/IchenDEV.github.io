@@ -10,7 +10,7 @@ tags:
   - 前端工程化
 categories:
   - [gallery]
-featured_image: /gallery/frontend-reconstruction-era/cover.jpg
+featured_image: /gallery/frontend-reconstruction-era/cover.webp
 author: idevlab
 description: 当 AI 能参与大规模代码迁移，很多过去不敢动的底层工具，开始有机会被重新写一遍。Bun 和 pnpm 的 Rust 重写，是前端基础生态进入成熟期后的一次自我修理。
 ---

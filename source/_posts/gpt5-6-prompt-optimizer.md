@@ -10,7 +10,7 @@ tags:
   - OpenAI
 categories:
   - [gallery]
-featured_image: /gallery/gpt5-6-prompt-optimizer/cover.jpg
+featured_image: /gallery/gpt5-6-prompt-optimizer/cover.webp
 author: chenli
 description: 当模型变得更聪明，我们的提示词反而应该变得更简单。聊聊我为 GPT-5.6 打造的提示词优化 Skill，以及 OpenAI 官方文档背后的设计哲学。
 ---
@@ -27,7 +27,7 @@ description: 当模型变得更聪明，我们的提示词反而应该变得更�
 
 最近，我花了不少时间仔细研读了 OpenAI 官方发布的 GPT-5.6 系列文档，并基于这些官方指导打造了一个名为 **optimize-gpt-5-6-prompts** 的 Skill。这个工具的职责很直接：把你手中那些粗糙的、过时的、或者过于臃肿的提示词，打磨成 GPT-5.6 真正能够高效执行的精简指令。今天想和大家聊聊这个过程里的一些发现——不只是工具本身，更是一种与新一代 AI 协作的思维方式的转变。
 
-![混乱的提示词 vs 精简的提示词](/gallery/gpt5-6-prompt-optimizer/prompt-bloat.jpg)
+![混乱的提示词 vs 精简的提示词](/gallery/gpt5-6-prompt-optimizer/prompt-bloat.webp)
 
 ## 旧提示词的"时代病"
 
@@ -83,7 +83,7 @@ If required data is missing, ask for the smallest missing field.
 
 第二种写法把注意力从"怎么一步步做"转移到了"做成什么样才算完成"。GPT-5.6 会自己选择最高效的执行路径，而你的提示词只需要定义终点和成功的标准。
 
-![从过程导向到结果导向的转变](/gallery/gpt5-6-prompt-optimizer/outcome-first.jpg)
+![从过程导向到结果导向的转变](/gallery/gpt5-6-prompt-optimizer/outcome-first.webp)
 
 官方文档里有一个非常生动的对比示例：
 
@@ -112,7 +112,7 @@ purchases, or a material expansion of scope.
 
 这个策略把操作分成了三个层级：可以自主执行的（阅读、分析、诊断），可以在本地范围内自主修改的（代码修复、文件编辑），以及必须经过批准的（外部写入、删除、购买、扩大范围）。清晰、简洁、没有歧义。
 
-![Agent 的权限边界](/gallery/gpt5-6-prompt-optimizer/authority-boundary.jpg)
+![Agent 的权限边界](/gallery/gpt5-6-prompt-optimizer/authority-boundary.webp)
 
 官方特别提到，重复的权限指令反而会造成问题。如果你在提示词里反复写"ask first"、"do not mutate"、"wait for approval"，模型可能会对本该安全执行的本地操作也反复确认，反而降低了效率。
 

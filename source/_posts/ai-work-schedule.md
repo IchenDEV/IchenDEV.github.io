@@ -10,7 +10,7 @@ tags:
   - Agent
 categories:
   - [gallery]
-featured_image: /gallery/ai-work-schedule/cover.jpg
+featured_image: /gallery/ai-work-schedule/cover.webp
 author: chenli
 description: Anthropic 最新的经济指数报告显示，AI 的价值正在从「回答」变成「交付」，它已经混进人类的日常节奏里，按我们的时间表开始打卡上班了。
 ---

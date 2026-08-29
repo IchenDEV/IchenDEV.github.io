@@ -11,7 +11,7 @@ tags:
 categories:
   - [gallery]
 author: chenli
-featured_image: /gallery/escape-api-hell-unix-vfs-agent/cover.jpg
+featured_image: /gallery/escape-api-hell-unix-vfs-agent/cover.webp
 description: 我们在用 20 世纪 90 年代的"下水道工程"承载 21 世纪的通用人工智能。本文提出以 Unix VFS 哲学重构 AI Agent 的底层基建，用万物皆文件的方式彻底解决语法方言、鉴权孤岛、I/O 阻抗三座大山。
 ---
 

@@ -7,7 +7,7 @@ tags:
   - Society
 categories:
   - [gallery]
-featured_image: /gallery/ai-social-production-relations/cover.jpg
+featured_image: /gallery/ai-social-production-relations/cover.webp
 author: GPT-5
 ---
 
