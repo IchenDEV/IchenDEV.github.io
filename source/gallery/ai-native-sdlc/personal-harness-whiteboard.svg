@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">从开发流程到个人工作系统</title>
+  <desc id="desc">白板手绘风格。一个人和 AI 助手准备融资材料，生成调研、模型、演示稿和可复用经验。</desc>
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" seed="23" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.5"/></filter>
+    <style>
+      .ink{fill:none;stroke:#171717;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#171717;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .txt{font-family:"Comic Sans MS","Marker Felt","PingFang SC","Microsoft YaHei",sans-serif;fill:#171717;font-weight:700}.small{font-size:28px}.mid{font-size:40px}.big{font-size:59px}
+      .blue{fill:#2563eb}.green{fill:#16a34a}.orange{fill:#f97316}.red{fill:#dc2626}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fff"/>
+  <g filter="url(#rough)">
+    <path class="ink" d="M350 26 Q797 5 1252 26 L1244 145 Q806 159 359 145Z" fill="#fff"/>
+    <path class="thin orange" d="M402 65 l11 22 l25 4 l-18 17 l4 24 l-22-12 l-22 12 l4-24 l-18-17 l25-4Z" fill="#facc15"/>
+    <text class="txt big" x="485" y="102">从开发流程到</text><text class="txt big blue" x="861" y="102">个人工作系统</text>
+
+    <!-- goal bubble -->
+    <text class="txt mid orange" x="74" y="224">目标</text>
+    <path class="ink" d="M60 257 q145-55 286 0 q28 15 18 43 l-15 119 q-5 28-35 25 H94 q-30 2-37-27 L43 300 q-6-28 17-43Z" fill="#fff"/>
+    <circle cx="141" cy="323" r="54" fill="#fff" stroke="#dc2626" stroke-width="8"/><circle cx="141" cy="323" r="34" fill="#fff" stroke="#dc2626" stroke-width="7"/><circle cx="141" cy="323" r="15" fill="#fff" stroke="#dc2626" stroke-width="6"/>
+    <path class="ink" d="M141 323 l67-49 M191 278 l31-5 l-13 29"/>
+    <text class="txt mid" x="212" y="315">准备下一轮</text>
+    <text class="txt mid" x="212" y="362">融资材料</text>
+    <text class="txt small green" x="95" y="416">一个目标，多个高质量成果</text>
+
+    <!-- human -->
+    <circle cx="539" cy="385" r="58" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <path class="ink" d="M491 366 q45-70 97-5"/>
+    <path class="thin" d="M517 393 q9 9 18 0 M552 393 q9 9 18 0 M526 419 q17 12 33 0"/>
+    <path class="ink" d="M477 455 q62-50 125 0 l23 180 H453Z" fill="#fff"/>
+    <path class="ink" d="M483 493 q-67 13-89 77 M598 493 q55 6 87 55"/>
+    <rect x="397" y="555" width="238" height="178" rx="14" fill="#fff" stroke="#171717" stroke-width="7" transform="rotate(-3 516 644)"/>
+    <path class="thin" d="M429 594 h168 M429 626 h152 M429 658 h172 M429 690 h136"/>
+    <path class="thin blue" d="M485 302 l-23-23 M522 288 l-7-32 M583 301 l22-23"/>
+    <rect x="306" y="634" width="74" height="74" rx="14" fill="#fff" stroke="#171717" stroke-width="6"/>
+    <path class="thin" d="M380 653 q31-1 26 23 q-4 23-26 17"/>
+    <path class="thin orange" d="M336 654 q13-19 26 0 q-13 22-26 0Z" fill="#f97316"/>
+
+    <!-- AI assistant -->
+    <circle cx="769" cy="406" r="62" fill="#fff" stroke="#171717" stroke-width="7"/>
+    <rect x="723" y="373" width="91" height="64" rx="28" fill="#171717"/>
+    <circle cx="749" cy="404" r="6" fill="#38bdf8"/><circle cx="788" cy="404" r="6" fill="#38bdf8"/>
+    <path class="thin blue" d="M752 421 q16 13 32 0"/>
+    <path class="thin blue" d="M769 344 v-36 M763 309 h13"/>
+    <path class="ink" d="M702 475 q66-50 135 0 l18 163 H682Z" fill="#fff"/>
+    <rect x="728" y="521" width="87" height="42" rx="8" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <text class="txt small blue" x="742" y="551">AI 助手</text>
+    <path class="ink" d="M705 503 q-48 4-68 50 M832 503 q51-11 75-53"/>
+    <path class="ink" d="M894 454 q8-36 32-31 q24 4 23 34"/>
+    <path class="thin blue" d="M924 419 l0-30"/>
+    <path class="ink" d="M681 643 q80-40 167 0 l13 94 H669Z" fill="#fff"/>
+    <path class="thin" d="M716 675 h94 M716 702 h70"/>
+    <path class="thin orange" d="M760 660 l8 16 l18 3 l-13 12 l3 18 l-16-9 l-16 9 l3-18 l-13-12 l18-3Z" fill="#facc15"/>
+
+    <!-- helper 1 -->
+    <circle cx="370" cy="452" r="31" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <path class="thin" d="M343 444 q25-31 53 0 M358 459 q10 7 20 0"/>
+    <path class="ink" d="M338 490 q31-25 64 0 l8 78 H329Z" fill="#fff"/>
+    <circle cx="314" cy="470" r="24" fill="#fff" stroke="#171717" stroke-width="5"/><path class="ink" d="M297 488 l-27 37"/>
+    <text class="txt small green" x="265" y="589">调研小助手</text>
+
+    <!-- helper 2 -->
+    <circle cx="937" cy="480" r="31" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <path class="thin" d="M910 472 q25-31 53 0 M925 487 q10 7 20 0"/>
+    <path class="ink" d="M905 518 q31-25 64 0 l8 78 H896Z" fill="#fff"/>
+    <rect x="941" y="520" width="49" height="66" rx="5" fill="#fff" stroke="#171717" stroke-width="4"/>
+    <path class="thin green" d="M951 539 l7 7 l12-16 M951 562 l7 7 l12-16"/>
+    <text class="txt small green" x="884" y="623">校对小助手</text>
+
+    <!-- helper 3 -->
+    <circle cx="879" cy="713" r="31" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <path class="thin" d="M852 705 q25-31 53 0 M867 720 q10 7 20 0"/>
+    <path class="ink" d="M847 751 q31-25 64 0 l8 72 H838Z" fill="#fff"/>
+    <rect x="902" y="721" width="78" height="62" rx="6" fill="#fff" stroke="#171717" stroke-width="4"/>
+    <path class="thin green" d="M915 765 l16-20 l14 11 l18-28"/>
+    <text class="txt small green" x="817" y="850">数据小助手</text>
+
+    <!-- speech -->
+    <path class="ink" d="M692 194 q147-50 289 0 q30 14 20 43 l-14 79 q-6 26-34 23 h-85 l-21 34 l-25-35 h-91 q-28 2-35-25 l-16-78 q-8-28 12-41Z" fill="#fff"/>
+    <text class="txt mid" x="741" y="247">我来帮你整理</text>
+    <text class="txt mid" x="770" y="294">和生成</text>
+    <path class="thin red" d="M936 290 q13-20 26 0 q-13 22-26 0Z" fill="#dc2626"/>
+
+    <!-- outputs -->
+    <path class="thin" stroke-dasharray="13 11" d="M931 367 q154-70 258-6 M999 510 q138-31 225 29 M962 672 q126 26 213 83"/>
+    <path class="thin" d="M1172 352 l22 9 l-16 18 M1206 531 l22 9 l-16 18 M1158 744 l22 9 l-16 18"/>
+
+    <path class="ink" d="M1198 204 l288 25 l-28 215 l-286-27Z" fill="#fff"/>
+    <path class="thin" d="M1228 258 h91 M1228 290 h173 M1228 322 h151 M1228 354 h119"/>
+    <path class="thin blue" d="M1251 390 v-52 M1291 390 v-80 M1331 390 v-37 M1371 390 v-103"/>
+    <circle cx="1430" cy="301" r="49" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <path class="thin orange" d="M1430 301 l0-45 a45 45 0 0 1 39 23Z" fill="#f97316"/>
+    <text class="txt mid blue" x="1482" y="331">调研</text>
+
+    <path class="ink" d="M1215 474 l272 16 l-13 178 l-274-16Z" fill="#fff"/>
+    <path class="thin" d="M1241 516 h215 M1241 551 h215 M1241 586 h215 M1241 621 h215 M1280 500 v149 M1340 500 v149 M1400 500 v149"/>
+    <rect x="1343" y="554" width="55" height="31" fill="#bbf7d0" stroke="#16a34a" stroke-width="3"/>
+    <text class="txt mid blue" x="1490" y="579">模型</text>
+
+    <path class="ink" d="M1169 687 l287 20 l-18 169 l-289-20Z" fill="#fff"/>
+    <circle cx="1238" cy="771" r="47" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <path class="thin green" d="M1238 771 l0-43 a43 43 0 0 1 38 23Z" fill="#86efac"/>
+    <path class="thin" d="M1311 750 h105 M1311 785 h89 M1311 820 h108"/>
+    <text class="txt mid blue" x="1465" y="795">演示稿</text>
+
+    <!-- reuse loop -->
+    <path class="ink" d="M76 694 q139-49 276 0 q27 14 17 41 l-15 89 q-6 25-33 23 H109 q-27 2-34-24 l-15-88 q-8-27 16-41Z" fill="#fff"/>
+    <text class="txt mid orange" x="111" y="749">一个目标</text>
+    <text class="txt mid" x="91" y="801">多份高质量输出</text>
+    <path class="thin green" d="M389 768 q31-54 84-31 l-14-22 M473 737 l-22 7 M474 771 q-31 54-84 31 l14 22 M390 802 l22-7"/>
+    <text class="txt small green" x="503" y="759">定期更新</text>
+    <text class="txt small green" x="503" y="798">持续复用</text>
+    <path class="thin red" d="M510 827 l29-33 l29 18 l36-53"/>
+    <rect x="666" y="761" width="132" height="97" rx="8" fill="#fff" stroke="#171717" stroke-width="5"/>
+    <path class="thin green" d="M686 789 l9 9 l17-22 M686 819 l9 9 l17-22 M686 849 l9 9 l17-22"/>
+    <path class="thin red" d="M781 842 q12-18 24 0 q-12 20-24 0Z" fill="#dc2626"/>
+    <text class="txt small blue" x="626" y="890">复用经验</text>
+
+    <path class="thin" stroke-dasharray="13 11" d="M350 337 q78 16 121 63 M351 782 q71-27 112-72 M845 647 q37 33 34 60"/>
+  </g>
+</svg>
