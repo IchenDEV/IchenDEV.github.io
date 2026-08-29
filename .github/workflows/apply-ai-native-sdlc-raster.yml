@@ -24,7 +24,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d tools/ai-native-sdlc-raster.zip.b64 > /tmp/ai-native-sdlc-raster.zip
+          base64 -di tools/ai-native-sdlc-raster.zip.b64 > /tmp/ai-native-sdlc-raster.zip
           unzip -o /tmp/ai-native-sdlc-raster.zip -d source/gallery/ai-native-sdlc
 
       - name: Point article at generated images
