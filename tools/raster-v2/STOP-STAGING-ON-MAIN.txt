@@ -1,0 +1,1 @@
+Temporary. Raster staging continues on a separate branch.
