@@ -1,0 +1,1 @@
+Temporary staging files for direct raster import. This directory is removed by the import workflow.
