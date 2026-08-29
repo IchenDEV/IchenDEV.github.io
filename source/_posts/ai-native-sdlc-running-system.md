@@ -98,7 +98,7 @@ Agent 根据 `intent.md`，结合组织的 **Skills**（如安全规范、UX 标
 无论你使用的是 Claude Code、Codex 还是 Cursor，只需一行命令即可安装：
 
 ```bash
-npx skills add idevlab/SDLC-skill
+npx skills add IchenDEV/sdlc-skill
 ```
 
 它能帮你完成：
