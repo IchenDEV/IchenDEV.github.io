@@ -2,7 +2,7 @@
 title: 我们可能又迈过了一个奇点
 date: 2026-09-01
 categories: gallery
-featured_image: /gallery/singularity/infinite-movie.webp
+featured_image: /gallery/singularity/infinite-futures.webp
 description: 电影还没有拍完，你就已经坐进了故事。网页在你点击以前，甚至还不存在。当生成速度超越感知速度，现实将成为一种可选的插件。
 ---
 
