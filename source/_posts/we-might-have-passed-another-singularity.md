@@ -46,18 +46,18 @@ fal.live 是一个很直观的早期实验。它把自己称作 **“AI televisi
 ![历史的起点](/gallery/singularity/historical-sketchpad.webp)
 *1963 年，Ivan Sutherland 在 Sketchpad 上划下了第一道数字线条*
 
-1963 年，Ivan Sutherland 在巨大的 TX-2 计算机前，用一支光笔划下了人类历史上第一道交互式的数字线条。随后，1968 年 Douglas Engelbart 展示了鼠标和图形界面，1987 年苹果推出了 HyperCard。计算机的发展史，本质上就是一部**“如何让屏幕更像真实世界”**的历史。
+1963 年，Ivan Sutherland 在巨大的 TX-2 计算机前，用一支光笔划下了人类历史上第一道交互式的数字线条。[1] 随后，1968 年 Douglas Engelbart 展示了鼠标和图形界面。[2] 计算机的发展史，本质上就是一部**“如何让屏幕更像真实世界”**的历史；而 Web 让这种交互以链接的形式走向大众。[3]
 
 但在这六十年里，有一个前提从未改变：**你点击以后到达的地方，必须提前存在。** 无论是网页、应用还是游戏，它们都是工程师提前建好的“游乐园”。你只能在预设的轨道上滑行。
 
 ![Flipbook 截图](/gallery/singularity/flipbook-screenshot.webp)
 *Flipbook：点击不再是跳转，而是沿着兴趣实时生成*
 
-现在，看看 **Flipbook**。它不再有固定的网页链接，每一页都是根据你的点击实时生成的图像。当你点击画面里的一个细节，下一张页面才从虚无中诞生。这不再是“先建设后使用”，而是“在行走中生长”。
+现在，看看 **Flipbook**。它不再有固定的网页链接，每一页都是根据你的点击实时生成的图像。当你点击画面里的一个细节，下一张页面才从虚无中诞生。这不再是“先建设后使用”，而是“在行走中生长”。[5]
 
 ## 第三章：Solaris 与“界面世界模型”的崛起
 
-如果说 Flipbook 改变了网页，那么 Runway 最近发布的 **Solaris** 则在彻底颠覆软件的本质。Runway 将其称为 **"Interface World Models"（界面世界模型）**。
+如果说 Flipbook 改变了网页，那么 Runway 最近发布的 **Solaris** 则在彻底颠覆软件的本质。Runway 将其称为 **"Interface World Models"（界面世界模型）**。[6]
 
 ![Solaris 家具演示](/gallery/singularity/runway-solaris.webp)
 ![Solaris 虚拟试衣演示](/gallery/singularity/runway-solaris-clothing.webp)
@@ -65,7 +65,7 @@ fal.live 是一个很直观的早期实验。它把自己称作 **“AI televisi
 
 过去六十年，所有的软件开发都遵循一个逻辑：**视觉设计 -> 翻译成代码（中介表示）-> 浏览器/系统渲染。** 这个“翻译”过程是极其损耗信息的。设计师的灵感被压缩成死板的 CSS 和 JS，所有的交互都必须提前预设。
 
-**Solaris 终结了这个逻辑。** 它没有中介代码，它直接生成像素。每一帧画面都是模型对用户交互的实时响应。这意味着：
+**Solaris 试图跳过这个逻辑。** 它直接生成界面帧，并把用户的点击、拖拽等操作作为后续生成的条件。[6] 这意味着：
 
 1. **界面即环境**：软件不再是“页面”的堆叠，而是一个活生生的环境。在 Solaris 的演示中，你可以像在物理世界一样，直接拿起衣架上的衣服拖到自己身上，光影和反射会随之实时流动。这不再是点击按钮触发脚本，而是操纵现实。
 2. **无限交互**：因为没有预设代码的限制，Solaris 支持开发者从未想过的行为。你可以点一下画作，然后直接在画作的风格里开始涂鸦；你可以点一下猫，然后把它的花纹“刷”到房间的任何地方。**软件的能力不再取决于程序员写了多少行代码，而取决于驱动它的世界模型有多强。**
@@ -96,12 +96,22 @@ fal.live 是一个很直观的早期实验。它把自己称作 **“AI televisi
 
 ---
 
-**参考资料：**
-- [1] [The Remarkable Ivan Sutherland - Computer History Museum](https://computerhistory.org/blog/the-remarkable-ivan-sutherland/)
-- [2] [Did Engelbart's “Mother of All Demos” Launch the Connected World?](https://computerhistory.org/blog/net-50-did-engelbart-s-mother-of-all-demos-launch-the-connected-world/)
-- [3] [A short history of the Web - CERN](https://home.cern/science/computing/the-birth-of-the-web/short-history-web/)
-- [4] [Introducing H3 Max by fal](https://blog.fal.ai/introducing-h3-max-by-fal/)
-- [5] [Flipbook ends the tyranny of the text box - Fast Company](https://www.fastcompany.com/91532926/flipbook-animated-browser-inspired-by-apple-hypercard)
-- [6] [Introducing Solaris - Runway News](https://runway.com/news/research/introducing-solaris)
-- [7] [@LerSentAI Interactive Game Generator Showcase](https://x.com/LerSentAI)
-- [8] [fal.live — AI television directed by everyone](https://fal.live/)
+## 参考资料
+
+1. [The Remarkable Ivan Sutherland — Computer History Museum][1]
+2. [Did Engelbart's “Mother of All Demos” Launch the Connected World?][2]
+3. [A short history of the Web — CERN][3]
+4. [Introducing H3 Max by fal][4]
+5. [Flipbook ends the tyranny of the text box — Fast Company][5]
+6. [Introducing Solaris — Runway News][6]
+7. [@LerSentAI Interactive Game Generator Showcase][7]
+8. [fal.live — AI television directed by everyone][8]
+
+[1]: https://computerhistory.org/blog/the-remarkable-ivan-sutherland/
+[2]: https://computerhistory.org/blog/net-50-did-engelbart-s-mother-of-all-demos-launch-the-connected-world/
+[3]: https://home.cern/science/computing/the-birth-of-the-web/short-history-web/
+[4]: https://blog.fal.ai/introducing-h3-max-by-fal/
+[5]: https://www.fastcompany.com/91532926/flipbook-animated-browser-inspired-by-apple-hypercard
+[6]: https://runway.com/news/research/introducing-solaris
+[7]: https://x.com/LerSentAI
+[8]: https://fal.live/
