@@ -52,8 +52,9 @@ fal 最近发布的 H3 Max 告诉我们，AI 生成五秒视频只需要不到�
 
 如果说 Flipbook 改变了网页，那么 Runway 最近发布的 **Solaris** 则在彻底颠覆软件的本质。Runway 将其称为 **"Interface World Models"（界面世界模型）**。
 
-![Solaris 演示](/gallery/singularity/runway-solaris.webp)
-*Solaris：界面不再是代码的产物，而是世界模型的实时渲染*
+![Solaris 家具演示](/gallery/singularity/runway-solaris.webp)
+![Solaris 虚拟试衣演示](/gallery/singularity/runway-solaris-clothing.webp)
+*Solaris：界面不再是代码的产物，而是世界模型的实时渲染。无论是移动家具还是虚拟试衣，交互即生成。*
 
 过去六十年，所有的软件开发都遵循一个逻辑：**视觉设计 -> 翻译成代码（中介表示）-> 浏览器/系统渲染。** 这个“翻译”过程是极其损耗信息的。设计师的灵感被压缩成死板的 CSS 和 JS，所有的交互都必须提前预设。
 
