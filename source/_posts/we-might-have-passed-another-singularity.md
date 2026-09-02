@@ -30,6 +30,14 @@ fal.live 是一个很直观的早期实验。它把自己称作 **“AI televisi
 
 因此，fal 跨过的并不只是“更快出片”的线。更准确地说，它把视频生成从一个离线交付任务，推近了一个能够持续运行、能够被观看过程反过来改写的系统。**视频不再只是被播放，它开始在播放中生长。**
 
+### 另一个现场：影像不必重新开机
+
+fal.live 把“下一段由谁决定”交给了一群观众；Reactor 上的 **Visko Orbis Dynamic** 则把另一个问题推到眼前：**已经开始流动的画面，能不能在不中断的情况下改道？**
+
+在它的 Sandbox 里，提示词、参考图、输出分辨率和声音都被放在一条正在运行的流旁边。文档说明，生成开始后再次发送提示词，画面会在下一个约 1.8 秒的片段边界转向，而不需要把会话停掉、从头再来；分辨率也可以在运行中切换。[11] 这很像把剪辑台搬进了放映过程：不必导出一段、看完、再生成一段，创作者可以在影像仍向前走时改变它的方向。
+
+Reactor 将 Orbis 1.0 称为“无限长度视频生成”模型，并表示其有限记忆系统旨在让主体、场景与风格在数小时内保持一致。[12] 这仍是产品方的公开表述，而不是“永远不漂移”的承诺；但它清楚地把困难从“做出一段视频”，换成了“让一段视频持续运行，同时还能被实时改写”。
+
 ### 实战案例：零延迟的互动剧场
 
 这种“超前生成”的逻辑也已经在开发者手中开花结果。开发者 @LerSentAI 展示了一款基于 MiniMax H3 Max 的互动游戏生成器。在其演示里，写实与二次元叙事都呈现出接近即时的分支反馈。[7]
@@ -120,6 +128,8 @@ World Labs 最新介绍的 **Atlas**，试图把问题从“下一帧像不像�
 8. [fal.live — AI television directed by everyone][8]
 9. [Atlas: A World Model for Spatial Intelligence — World Labs][9]
 10. [A Functional Taxonomy of World Models — World Labs][10]
+11. [Visko Orbis Dynamic overview — Reactor Docs][11]
+12. [Introducing Visko Orbis 1.0 — Reactor][12]
 
 [1]: https://computerhistory.org/blog/the-remarkable-ivan-sutherland/
 [2]: https://computerhistory.org/blog/net-50-did-engelbart-s-mother-of-all-demos-launch-the-connected-world/
@@ -131,3 +141,5 @@ World Labs 最新介绍的 **Atlas**，试图把问题从“下一帧像不像�
 [8]: https://fal.live/
 [9]: https://www.worldlabs.ai/blog/atlas
 [10]: https://www.worldlabs.ai/blog/taxonomy-of-world-models
+[11]: https://docs.reactor.inc/model-api-reference/visko-orbis-dynamic
+[12]: https://www.reactor.inc/blog/visko-orbis-launch
