@@ -26,6 +26,9 @@ description: 当生成速度开始追上感知速度，视频不再等剪完才�
 
 2026 年 8 月 27 日，fal 发布 H3 Max。按照 fal 公布的数据，这个在 MiniMax H3 基础上后训练、并与推理系统共同优化的版本，生成一段 5 秒视频约需 3 秒，吞吐量约为官方 MiniMax H3 接口的 35 倍。[4]
 
+![fal H3 Max Playground](/gallery/singularity/fal-h3-max-playground.webp)
+*在 H3 Max 的 Playground 里，首帧、提示词、时长和分辨率都被放进同一个生成面板。*
+
 三秒，五秒。
 
 单独看，不过是发布页上的两组数字。把它们放到播放器的时间轴上，意义就变了。
@@ -40,11 +43,17 @@ description: 当生成速度开始追上感知速度，视频不再等剪完才�
 
 fal.live 就站在这条线上。它把自己称作 “AI television directed by everyone”。大家看着同一条节目，在倒计时里投票，获胜的选项决定下一段。[8]
 
+![fal.live 直播界面](/gallery/singularity/fal-live-directing.webp)
+*节目仍在播放，观众已经可以在右侧把新的问题和方向送进下一段。*
+
 传统直播也没有母带，但镜头前的人和房间已经存在。AI 直播更古怪一些：观众作出选择后，连镜头背后的那部分世界都可能才开始出现。
 
 然后我又打开了 Reactor 的 Sandbox。
 
 Visko Orbis Dynamic 的页面看起来像一张仍在工作的剪辑台。提示词、参考图、分辨率和声音都摆在视频流旁边。按照 Reactor 的文档，生成开始以后仍可以发送新的提示词；画面会在下一个约 1.8 秒的片段边界转向，不需要停止会话再从头生成。分辨率也能在运行中切换。[11]
+
+![Visko Orbis Dynamic Sandbox](/gallery/singularity/orbis-dynamic-sandbox.webp)
+*Orbis Dynamic 把提示词、参考画面和实时输出控制留在同一块工作台上。*
 
 这和“再生成一条视频”不是同一回事。影像没有关机。它还在流动，只是在半路听见了一句新指令，然后慢慢拐向另一条路。
 
@@ -104,6 +113,9 @@ Runway 的 Solaris 又往前走了一步。Runway 把它叫作 Interface World M
 World Labs 的 Atlas 正在碰这个问题。官方把它描述为一个能原生处理文本、图像、视频和 3D 的多模态世界模型。不同输入被放进共享的空间上下文，模型再据此生成新视角和后续内容。[9]
 
 给它几张房屋与院子的照片，它可以生成未被拍到的观察角度，也可以根据多张图像重建场景，输出点云或 3D Gaussian splats。[9]
+
+![World Labs Atlas 3D 输出演示](/gallery/singularity/worldlabs-atlas-3d-output.webp)
+*Atlas 从图像补出新视角与几何，再把结果转换成可以继续探索的 Gaussian splats。*
 
 屏幕上不只是多了一幅风景。你开始有机会绕着同一处风景走。
 
