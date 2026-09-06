@@ -32,7 +32,7 @@ date_format: MMM D, YYYY
 profile:
   title: Hi, this is idevlab's Blog. 
   body: 
-  image: /profile_cover.png
+  image: /profile_cover.jpg
 
   links:
     Home: /

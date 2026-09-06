@@ -18,7 +18,7 @@ description: AI 生成的低质量 PR 和培训机构批量制造的简历流水
 
 vLLM 是当下最活跃的开源 AI 基础设施项目之一。它最初来自 UC Berkeley 的 Sky Computing Lab，现在已经成长为一个由很多高校、公司和超过 2000 名贡献者共同维护的开源项目 [1]。可就在这样一个站在 AI 浪潮中心的项目身上，也出现了一个很刺痛人的场景：有人在辅导机构的指导下提交 PR，把开源项目当成简历镀金场，把维护者当成免费审核员，把社区信用当成培训机构的宣传素材。
 
-![被做成流水线的简历 PR](/gallery/open-source-is-dying/vllm-pr-screenshot.png)
+![被做成流水线的简历 PR](/gallery/open-source-is-dying/vllm-pr-screenshot.jpg)
 
 那张截图里，左边是聊天记录：用户先发了一个 PR 截图，然后问「老师接下来怎么处理呢」。过了一会儿，又发了另一张截图，还 @ 了某个用户。最后，他发消息说「感谢老师，今天下午 pr 成功合入」。右边是一条社交平台帖文：恭喜同学 PR 合入 vLLM 社区，能一同见证并为 AI infra 社区的发展贡献力量。
 
