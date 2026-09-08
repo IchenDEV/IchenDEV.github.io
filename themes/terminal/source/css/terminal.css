@@ -525,11 +525,32 @@ img {
 }
 
 .terminal-footer {
-  padding: 1rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid var(--terminal-line);
   color: var(--terminal-muted);
 }
 
-.terminal-footer div:last-child {
+.terminal-footer img {
+  width: 100%;
+  height: auto;
+}
+
+:root:not([data-terminal-theme="white"]) .terminal-footer img {
+  filter: grayscale(1) invert(1) contrast(1.15);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.terminal-footer-copy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  padding: 1rem 0;
+  font-size: 0.85rem;
+}
+
+.terminal-footer-copy span:last-child {
   color: var(--terminal-green);
 }
 
@@ -1014,8 +1035,7 @@ img {
 
   .profile-panel,
   .shortcut-panel,
-  .system-panel,
-  .terminal-footer {
+  .system-panel {
     display: none;
   }
 

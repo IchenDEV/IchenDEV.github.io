@@ -90,8 +90,3 @@
     <div><dt>Last update:</dt><dd><%- date(site.posts.sort('date', -1).first().date, theme.date_format) %></dd></div>
   </dl>
 </section>
-
-<footer class="terminal-footer">
-  <div>© <%- new Date().getFullYear() %> <%- config.author || theme.site_brand_name %></div>
-  <div>&gt; <%- theme.footer_text %></div>
-</footer>

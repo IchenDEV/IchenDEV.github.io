@@ -26,6 +26,13 @@
         </aside>
         <main class="terminal-main">
           <%- body %>
+          <footer class="terminal-footer">
+            <img src="<%- url_for('/footer-landscape.webp') %>" alt="" width="2172" height="724" loading="lazy" decoding="async">
+            <div class="terminal-footer-copy">
+              <span>© <%= new Date().getFullYear() %> <%= config.author || theme.site_brand_name %></span>
+              <span>&gt; <%= theme.footer_text %></span>
+            </div>
+          </footer>
         </main>
         <aside class="terminal-sidebar terminal-sidebar-right">
           <%- partial('partials/right-sidebar') %>
