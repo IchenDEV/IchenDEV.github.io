@@ -1,7 +1,7 @@
 ---
 title: '我真没想到，AI 这么快就开始影响种地了'
 date: 2026-09-09 02:00:00
-updated: 2026-09-09 02:00:00
+updated: 2026-09-09 03:08:00
 tags:
   - AI
   - 农业
@@ -9,7 +9,7 @@ tags:
   - McKinsey
 categories:
   - [gallery]
-featured_image: /gallery/ai-farming-arrives/cover.jpg
+featured_image: /gallery/ai-farming-arrives/01-decisions.svg
 author: idevlab
 ---
 
