@@ -1,7 +1,7 @@
 ---
 title: '我真没想到，AI 这么快就开始影响种地了'
 date: 2026-09-09 02:00:00
-updated: 2026-09-09 03:08:00
+updated: 2026-09-09 17:13:00
 tags:
   - AI
   - 农业
@@ -9,7 +9,7 @@ tags:
   - McKinsey
 categories:
   - [gallery]
-featured_image: /gallery/ai-farming-arrives/01-decisions.svg
+featured_image: /gallery/ai-farming-arrives/01-decisions.webp
 author: idevlab
 ---
 
@@ -53,7 +53,7 @@ author: idevlab
 
 **只要开始影响「怎么种」，它就已经开始影响农业了。**
 
-![AI开始参与农业决策](/gallery/ai-farming-arrives/01-decisions.svg)
+![AI开始参与农业决策](/gallery/ai-farming-arrives/01-decisions.webp)
 
 ## 当然，现在还远没到 AI 接管农场
 
@@ -67,7 +67,7 @@ author: idevlab
 
 它帮你更快找到信息、整理选项、做一些分析，但真正落到一块具体的土地上，经验、当地环境和专业判断依然重要。
 
-![AI目前更像农业里的副驾驶](/gallery/ai-farming-arrives/02-copilot.svg)
+![AI目前更像农业里的副驾驶](/gallery/ai-farming-arrives/02-copilot.webp)
 
 ## 那中国呢？
 
@@ -89,7 +89,7 @@ author: idevlab
 
 AI 完全可能先进入这一层，再间接影响更多农户。
 
-![中国农业AI可能先进入服务层](/gallery/ai-farming-arrives/03-china-service.svg)
+![中国农业AI可能先进入服务层](/gallery/ai-farming-arrives/03-china-service.webp)
 
 **使用 AI 的人、为软件付费的人、最终受益的人，未必是同一个人。**
 
