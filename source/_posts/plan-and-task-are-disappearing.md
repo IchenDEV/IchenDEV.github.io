@@ -15,8 +15,6 @@ author: chenli
 description: Plan 和 Task 没有真的消失，但它们正在失去作为 Agent 默认配置的理由。更强的模型把组织工作的能力带回执行现场，harness 则应把力气放在上下文、边界、证据与恢复上。
 ---
 
-# Plan 和 Task 的消亡
-
 最近 Codex 和 Claude Code 都在做一件有意思的事：给 Agent 做减法。
 
 2026 年 8 月 31 日，Codex 合并了一个标题很直接的 PR：**Make the update_plan tool opt-in**。`update_plan` 默认关闭，用户可以主动开启。这个改动不只是隐藏一个工具，还清理了模型指令、协作模式、上下文压缩和 Goal 续跑提示中，要求模型使用它的配套指导。[1]
