@@ -1,16 +1,18 @@
 <article class="terminal-article">
-  <div class="prompt-line"><span>$</span> cat <a href="<%- url_for('/') %>"><%- (page.source || page.slug + '.md') %></a></div>
-  <header class="article-head">
-    <h1><%- page.title || '*Untitled' %></h1>
-    <div class="article-meta">
-      <time datetime="<%- date_xml(page.date) %>"><%- date(page.date, theme.date_format) %></time>
-      <% if (page.tags && page.tags.length) { %>
-        <span>/</span>
+  <div class="prompt-line"><span>$</span> cat <a href="<%- url_for('/') %>"><%= page.source || page.slug + '.md' %></a></div>
+  <header class="letter-head">
+    <dl>
+      <dt>From:</dt><dd><%= page.author || config.author %></dd>
+      <dt>Date:</dt><dd><time datetime="<%= date_xml(page.date) %>"><%= date(page.date, theme.date_format) %></time></dd>
+      <dt>Subject:</dt><dd><h1><%= page.title || 'Untitled' %></h1></dd>
+    </dl>
+    <% if (page.tags && page.tags.length) { %>
+      <div class="letter-tags" aria-label="Tags">
         <% page.tags.each(function(tag) { %>
-          <a href="<%- url_for(tag.path) %>">#<%- tag.name %></a>
+          <a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>
         <% }); %>
-      <% } %>
-    </div>
+      </div>
+    <% } %>
   </header>
   <%
     var leadImage = page.featured_image || page.cover || '';
@@ -19,13 +21,26 @@
       if (leadBase && leadBase.charAt(leadBase.length - 1) !== '/') leadBase += '/';
       leadImage = leadBase + leadImage;
     }
+    var letterContent = page.content || '';
+    var openingHeading = letterContent.match(/^\s*<h1\b[^>]*>([\s\S]*?)<\/h1>\s*/i);
+    if (openingHeading && strip_html(openingHeading[1]).trim() === (page.title || '').trim()) {
+      letterContent = letterContent.slice(openingHeading[0].length);
+    }
   %>
   <% if (leadImage) { %>
     <figure class="article-cover">
-      <img src="<%- url_for(leadImage) %>" alt="">
+      <img src="<%- url_for(leadImage) %>" alt="<%= page.title %>的封面" loading="lazy" decoding="async">
     </figure>
   <% } %>
-  <div class="terminal-content">
-    <%- page.content %>
-  </div>
+  <div class="terminal-content"><%- letterContent %></div>
+  <% if (page.prev || page.next) { %>
+    <nav class="letter-navigation" aria-label="Post navigation">
+      <div>
+        <% if (page.prev) { %><a href="<%- url_for(page.prev.path) %>" rel="prev"><span>prev &lt;-</span><%= page.prev.title %></a><% } %>
+      </div>
+      <div class="next-letter">
+        <% if (page.next) { %><a href="<%- url_for(page.next.path) %>" rel="next"><span>next -&gt;</span><%= page.next.title %></a><% } %>
+      </div>
+    </nav>
+  <% } %>
 </article>

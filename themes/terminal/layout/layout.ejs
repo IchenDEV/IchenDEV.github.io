@@ -4,27 +4,20 @@
     <%- partial('partials/head') %>
   </head>
   <body>
+    <a class="skip-link" href="#main">跳到正文</a>
     <div class="terminal-shell">
-      <header class="terminal-titlebar" aria-label="Terminal window">
-        <div class="terminal-controls" aria-hidden="true">
-          <span class="control control-close"></span>
-          <span class="control control-minimize"></span>
-          <span class="control control-zoom"></span>
-        </div>
-        <div class="terminal-title"><%- theme.terminal_title || config.title %></div>
-        <div class="mobile-theme-switcher" aria-label="Theme colors">
-          <button type="button" data-terminal-theme-choice="green" aria-label="terminal-green"></button>
-          <button type="button" data-terminal-theme-choice="amber" aria-label="terminal-amber"></button>
-          <button type="button" data-terminal-theme-choice="cyan" aria-label="terminal-cyan"></button>
-          <button type="button" data-terminal-theme-choice="magenta" aria-label="terminal-magenta"></button>
-          <button type="button" data-terminal-theme-choice="white" aria-label="terminal-white"></button>
-        </div>
+      <header class="mail-masthead">
+        <a class="mail-brand" href="<%- url_for('/') %>" aria-label="idevlab 博客首页">
+          <span class="prompt-mark" aria-hidden="true">&gt;</span>
+          <span><%= theme.terminal_title || config.title %></span>
+        </a>
+        <button class="theme-current" type="button" data-terminal-theme-current aria-keyshortcuts="T" aria-label="Cycle theme" title="terminal-green">terminal-green</button>
       </header>
       <div class="terminal-grid">
-        <aside class="terminal-sidebar terminal-sidebar-left">
+        <aside class="terminal-sidebar">
           <%- partial('partials/left-sidebar') %>
         </aside>
-        <main class="terminal-main">
+        <main class="terminal-main" id="main">
           <%- body %>
           <footer class="terminal-footer">
             <img src="<%- url_for('/footer-landscape.webp') %>" alt="" width="2172" height="724" loading="lazy" decoding="async">
@@ -34,16 +27,11 @@
             </div>
           </footer>
         </main>
-        <aside class="terminal-sidebar terminal-sidebar-right">
-          <%- partial('partials/right-sidebar') %>
-        </aside>
       </div>
     </div>
     <%- partial('partials/search-data') %>
-    <% if (theme.scripts && theme.scripts.length > 0) { %>
-      <% theme.scripts.forEach(function(script) { %>
-        <script src="<%- url_for(script) %>"></script>
-      <% }); %>
-    <% } %>
+    <% (theme.scripts || []).forEach(function(script) { %>
+      <script src="<%- url_for(script) %>" defer></script>
+    <% }); %>
   </body>
 </html>

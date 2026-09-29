@@ -1,5 +1,9 @@
 <section class="command-section">
   <div class="prompt-line"><span>$</span> find archives -type f</div>
   <h1 class="terminal-page-title">Archives</h1>
+  <nav class="archive-browse" aria-label="Browse archives">
+    <a href="<%- url_for('/categories/') %>">Categories</a>
+    <a href="<%- url_for('/tags/') %>">Tags</a>
+  </nav>
   <%- partial('partials/post-list', { posts: page.posts }) %>
 </section>

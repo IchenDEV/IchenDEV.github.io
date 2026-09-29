@@ -22,6 +22,8 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Build
         run: bun run build
+      - name: Check mailbox theme
+        run: bun run check:theme
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

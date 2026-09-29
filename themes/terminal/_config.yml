@@ -9,24 +9,13 @@ stylesheets:
 
 scripts:
   - /js/search.js
-  - /js/system-info.js
   - /js/theme-switcher.js
   - /js/keyboard-shortcuts.js
 
 menu:
   _home: /
   _archives: /archives/
-  _categories: /categories/
-  _tags: /tags/
   _about: /about/
-
-profile:
-  identity: idevlab-blogs
-  role: hacker & creator
-  image: /profile_cover.png
-  lines:
-    - "> code. write. explore."
-    - "> coffee-powered"
 
 welcome:
   command: cat welcome.txt
@@ -37,7 +26,6 @@ welcome:
   accent: Stay curious. Keep hacking.
 
 about:
-  title: ABOUT
   lines:
     - 探讨科技和人文的十字路口
     - 相信好奇心的力量
@@ -53,6 +41,5 @@ now:
   - label: 最近在读
     value: 查拉图斯特拉如是说
 
-recent_tags_limit: 8
 date_format: YYYY-MM-DD
 footer_text: keep learning, keep shipping.
