@@ -1,7 +1,7 @@
 ---
 title: "Plan 和 Task 的消亡"
 date: 2026-09-29 16:45:00
-updated: 2026-09-29 19:27:00
+updated: 2026-09-29 20:54:00
 tags:
   - Agent
   - Codex
@@ -18,6 +18,12 @@ description: Plan 和 Task 没有真的消失，但它们正在失去作为 Agen
 最近 Codex 和 Claude Code 都在做一件有意思的事：给 Agent 做减法。
 
 2026 年 8 月 31 日，Codex 合并了一个标题很直接的 PR：**Make the update_plan tool opt-in**。`update_plan` 默认关闭，用户可以主动开启。这个改动不只是隐藏一个工具，还清理了模型指令、协作模式、上下文压缩和 Goal 续跑提示中，要求模型使用它的配套指导。[1]
+
+这件事可以说得比“Codex 不搞 TODO 了”更准确一点。Codex 在当前源码里直接把 `update_plan` 定义为 TODO/checklist/progress 工具，主分支也有一项名为 `code_mode_does_not_expose_update_plan_by_default` 的测试：默认 Code Mode 中，它既不能调用，也不会出现在可用工具列表里。需要时，仍可以通过 `tools.update_plan.enabled = true` 显式启用。[13]
+
+所以，Codex 默认路径确实不再要求模型维护一张自用的待办清单；但这不是把待办能力从产品里彻底删除。更像是把它从默认工作法降为一个可选的辅助工具。
+
+同样，Codex 并没有因此放弃规划。官方当前仍建议：复杂或含糊的任务可以进入 Plan mode，由模型先查上下文、追问和组织方案；更长的工作可以使用 `PLANS.md` 一类持久计划文档。[14] 现在更清楚的结构是：Plan mode 用来把人的意图和取舍说清，`update_plan` 是可选的模型侧清单，Goal 则保存跨 turn 的完成条件与续跑状态。
 
 Claude Code 也调整了任务跟踪工具的默认可用性。在较新的模型上，`TodoWrite` 和 `TaskCreate`、`TaskGet`、`TaskUpdate`、`TaskList` 不再默认提供。官方文档给出的解释相当明确：这些模型可以在没有书面清单的情况下跟踪多步工作，而工具定义和提醒本身会占用上下文。[2]
 
@@ -217,7 +223,7 @@ Few-shot 也没有失效。需要精确格式、特殊分类口径或团队独�
 
 现在，从 Plan 转向 Goal，看起来非常合理。既然模型可以决定怎么做，harness 就只负责告诉它要达到什么结果。
 
-从当前开源代码看，Codex 的 Goal 扩展比 TODO 多了一层实际执行语义：它会读取持久化目标，检查状态与续跑条件，再在空闲时请求启动下一轮。它不是单纯展示一段文字，而是在管理跨 turn 的继续执行。[10]
+从当前开源代码看，Codex 的 Goal 扩展比 TODO 多了一层实际执行语义：它会读取持久化目标，检查状态与续跑条件，再在空闲时请求启动下一轮。它不是单纯展示一段文字，而是在管理跨 turn 的继续执行。官方对 Goal 的描述也把它定义为线程范围内的完成契约：目标、生命周期、预算、续跑条件与基于证据的完成判断，都被保存在同一个线程里。[10][15]
 
 Goal 的续跑模板也说得很直白：不要把目标缩小成更容易完成的部分，不能把状态重述当进展，完成前应检查当前事实与证据。这些内容在试图修复长期执行中的目标漂移和过早停止。[10]
 
@@ -303,3 +309,6 @@ Goal 也可能经历同样的过程。今天我们用它解决过早停止和目
 10. OpenAI Codex，[Goal extension source](https://github.com/openai/codex/tree/main/codex-rs/ext/goal)，开源实现，访问于 2026-09-29。
 11. OpenAI，[Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/)，2026-01-23。
 12. Anthropic，[Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)，2026-01-09。
+13. OpenAI Codex，[`code_mode_does_not_expose_update_plan_by_default`](https://github.com/openai/codex/blob/0462dcc062b822bb8fff16cc31ce6eeab69823b9/codex-rs/core/tests/suite/code_mode.rs#L3889-L3939)，当前主分支源码快照，访问于 2026-09-29。
+14. OpenAI，[Codex best practices](https://developers.openai.com/codex/learn/best-practices)，Plan mode 与长任务规划说明，访问于 2026-09-29。
+15. OpenAI，[Using Goals in Codex](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex)，Goal 的线程状态、续跑与证据完成条件，访问于 2026-09-29。
