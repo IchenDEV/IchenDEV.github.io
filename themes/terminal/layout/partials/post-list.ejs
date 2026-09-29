@@ -1,6 +1,7 @@
+<div class="mail-columns" aria-hidden="true"><span>From</span><span>Subject</span><span>Date</span></div>
 <div class="terminal-post-list">
-  <% posts.each(function(post, index) { %>
-    <%- partial('post-card', { post: post, index: index }) %>
+  <% posts.each(function(post) { %>
+    <%- partial('post-card', { post: post }) %>
   <% }); %>
 </div>
 <%- partial('paginator') %>

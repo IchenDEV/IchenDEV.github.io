@@ -9,16 +9,14 @@
   };
   const key = "terminal-theme";
   const currentNodes = Array.from(document.querySelectorAll("[data-terminal-theme-current]"));
-  const choices = Array.from(document.querySelectorAll("[data-terminal-theme-choice]"));
 
   function setTheme(theme) {
     const nextTheme = themes.includes(theme) ? theme : "green";
     document.documentElement.dataset.terminalTheme = nextTheme;
     currentNodes.forEach((node) => {
       node.textContent = names[nextTheme];
-    });
-    choices.forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.terminalThemeChoice === nextTheme));
+      node.setAttribute("aria-label", `Cycle theme, ${names[nextTheme]}`);
+      node.setAttribute("title", names[nextTheme]);
     });
     try {
       localStorage.setItem(key, nextTheme);
@@ -33,12 +31,6 @@
       return null;
     }
   }
-
-  choices.forEach((button) => {
-    button.addEventListener("click", () => {
-      setTheme(button.dataset.terminalThemeChoice);
-    });
-  });
 
   currentNodes.forEach((node) => {
     node.addEventListener("click", () => {

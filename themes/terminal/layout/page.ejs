@@ -6,4 +6,34 @@
   <div class="terminal-content">
     <%- page.content %>
   </div>
+  <% if (page.path === 'about/index.html') { %>
+    <div class="about-details">
+      <section>
+        <p>code. write. explore.</p>
+        <% (theme.about.lines || []).forEach(function(line) { %>
+          <p><%= line %></p>
+        <% }); %>
+        <% Object.keys(theme.about.links || {}).forEach(function(label) { %>
+          <a href="<%- url_for(theme.about.links[label]) %>"><%= label %> ↗</a>
+        <% }); %>
+      </section>
+      <section>
+        <h2>NOW</h2>
+        <% (theme.now || []).forEach(function(item) { %>
+          <p><%= item.label %>：<%= item.value %></p>
+        <% }); %>
+      </section>
+      <details class="shortcut-panel">
+        <summary>SHORTCUTS</summary>
+        <dl>
+          <div><dt><kbd>/</kbd> / <kbd>Esc</kbd></dt><dd>search / clear</dd></div>
+          <div><dt><kbd>j</kbd> / <kbd>k</kbd></dt><dd>scroll</dd></div>
+          <div><dt><kbd>gg</kbd> / <kbd>G</kbd></dt><dd>top / bottom</dd></div>
+          <div><dt><kbd>[</kbd> / <kbd>]</kbd></dt><dd>prev / next</dd></div>
+          <div><dt><kbd>t</kbd></dt><dd>theme</dd></div>
+          <div><dt><kbd>g</kbd> + <kbd>h a b</kbd></dt><dd>nav</dd></div>
+        </dl>
+      </details>
+    </div>
+  <% } %>
 </article>

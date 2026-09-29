@@ -30,7 +30,7 @@
 
     const meta = document.createElement("span");
     meta.className = "search-result-meta";
-    meta.textContent = [post.date, ...(post.tags || []).slice(0, 3).map((tag) => "#" + tag)].join(" ");
+    meta.textContent = post.date;
 
     link.append(title, meta);
     return link;

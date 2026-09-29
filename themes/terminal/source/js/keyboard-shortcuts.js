@@ -6,8 +6,6 @@
   const gotoKeys = {
     h: "home",
     a: "archives",
-    c: "categories",
-    t: "tags",
     b: "about",
   };
 
@@ -39,11 +37,7 @@
   function focusSearch() {
     const input = document.querySelector("[data-terminal-search-input]");
     if (!input) return false;
-    try {
-      input.focus({ preventScroll: true });
-    } catch {
-      input.focus();
-    }
+    input.focus();
     input.select();
     return true;
   }
@@ -65,15 +59,13 @@
   }
 
   function scrollTarget() {
-    const main = document.querySelector(".terminal-main");
-    if (main && main.scrollHeight > main.clientHeight) return main;
     return document.scrollingElement || document.documentElement;
   }
 
   function scrollPage(direction) {
     scrollTarget().scrollBy({
       top: Math.round(window.innerHeight * 0.85) * direction,
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
     return true;
   }
@@ -82,7 +74,7 @@
     const target = scrollTarget();
     target.scrollTo({
       top: edge === "bottom" ? target.scrollHeight : 0,
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
     return true;
   }
@@ -91,7 +83,7 @@
     const relLink = document.querySelector('a[rel="' + direction + '"], link[rel="' + direction + '"]');
     if (relLink) return relLink;
 
-    const markers = direction === "prev" ? ["prev", "<-"] : ["next", "->"];
+    const markers = direction === "prev" ? ["prev", "<-", "←"] : ["next", "->", "→"];
     const links = Array.from(document.querySelectorAll(".terminal-pagination a"));
     return links.find((link) => {
       const label = String(link.textContent || "").trim().toLowerCase();
