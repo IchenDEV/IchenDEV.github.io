@@ -1,7 +1,7 @@
 ---
 title: "Plan 和 Task 的消亡"
 date: 2026-09-29 16:45:00
-updated: 2026-09-29 16:45:00
+updated: 2026-09-29 17:33:00
 tags:
   - Agent
   - Codex
@@ -10,7 +10,7 @@ tags:
   - Engineering
 categories:
   - [gallery]
-featured_image: /gallery/plan-and-task-are-disappearing/cover.webp
+featured_image: /gallery/plan-and-task-are-disappearing/cover.webp?v=890dc59
 author: chenli
 description: Plan 和 Task 没有真的消失，但它们正在失去作为 Agent 默认配置的理由。更强的模型把组织工作的能力带回执行现场，harness 则应把力气放在上下文、边界、证据与恢复上。
 ---
@@ -71,7 +71,7 @@ Anthropic 的复盘就描述过这段历史：早期 Claude Code 提供 `TodoWri
 
 **计划应该是当前最好的猜测，不应该变成任务本身。**
 
-![计划在证据出现后调整，而不是要求事实服从计划](/gallery/plan-and-task-are-disappearing/adaptive-judgment.webp)
+![计划在证据出现后调整，而不是要求事实服从计划](/gallery/plan-and-task-are-disappearing/adaptive-judgment.webp?v=890dc59)
 
 这里并不是说模型从此拥有了无限记忆。Codex 的 agent loop 仍把上下文管理视为 harness 的职责，并在上下文接近限额时自动压缩对话；关闭 TODO 不代表这些信息不再存在，只是不再默认要求模型通过专用工具反复维护一张清单。[11]
 
@@ -273,7 +273,7 @@ Anthropic 最近关于自动评测与优化的文章，也强调了代表性任�
 
 方法可以自适应，承诺和判断依据不能悄悄跟着变。
 
-![模型在边界内拥有路径选择权，系统仍然负责证据、权限与验收](/gallery/plan-and-task-are-disappearing/harness-boundaries.webp)
+![模型在边界内拥有路径选择权，系统仍然负责证据、权限与验收](/gallery/plan-and-task-are-disappearing/harness-boundaries.webp?v=890dc59)
 
 ---
 
