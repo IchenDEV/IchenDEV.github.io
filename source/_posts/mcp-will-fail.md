@@ -1,7 +1,7 @@
 ---
 title: "MCP，终将会走向失败"
 date: 2026-10-01 10:00:00
-updated: 2026-10-01 10:00:00
+updated: 2026-10-01 15:42:00
 tags:
   - MCP
   - Agent
@@ -13,232 +13,69 @@ categories:
   - [gallery]
 featured_image: /gallery/mcp-will-fail/cover.webp
 author: chenli
-description: MCP 也许会成功得无处不在，却未必完成互操作性的承诺。问题不在于管道能否连通，而在于不同 Host、Server、授权、UI 与运行时如何真正协作。
+description: MCP 的采用会继续扩大，但协议层的互操作性仍取决于 Host、Server、授权、UI 与运行时边界。本文从 MCP Server 的开发经验出发，讨论它更适合承担什么。
 ---
 
-最近看了 Pi 团队的一篇文章，《You Said No MCP!》。[1]
+最近重读 Pi 团队的《You Said No MCP!》。[1]
 
-这篇文章解释了一件挺有意思的事情：为什么一个过去明确反对 MCP 的 Agent，现在又把 MCP 放进了 Core。Pi 0.99.0 已把 MCP 与 codemode 一并纳入内置能力。[1] [3]
+这篇文章讨论了一件值得留意的事：一个曾经明确反对 MCP 的 Agent，为什么后来又把 MCP 放进了 Core。Pi 0.99.0 已把 MCP 与 codemode 一并纳入内置能力。[1] [3]
 
-Pi 过去对 MCP 的态度并不暧昧。Mario 去年也专门写过《What if you don’t need MCP at all?》，批评常见 MCP Server 带来的上下文开销、工具数量膨胀，以及工具之间不好组合的问题。他当时更喜欢 Bash、CLI 和代码，因为代码天然可以组合，中间结果也没必要全部经过模型上下文。[2]
+Pi 过去对 MCP 的批评并不含糊。Mario 去年在《What if you don’t need MCP at all?》里指出，常见 MCP Server 会带来工具描述膨胀、上下文开销，以及工具之间不容易组合的问题。他更偏向 Bash、CLI 和代码，因为代码可以组合，中间结果也不必逐步经过模型上下文。[2]
 
-但现在 Pi 支持 MCP 了。
+Pi 现在支持 MCP，并不意味着这些担忧突然失效。Earendil 给出的解释是，MCP 生态、模型能力和 Pi 自己的 Tool Infrastructure 都在变化。Pi 可以通过 codemode，把 MCP Tool 暴露给 QuickJS JavaScript Sandbox，让模型用程序组合调用，而不是把几十个 Tool 一次性摊进上下文。文章也承认，许多 MCP Server 仍然围绕“把 Tool 全部塞进 Context”设计；Pi 希望把 MCP 用得更接近带智能发现能力的 OpenAPI，并尽可能返回结构化数据。[1] [3]
 
-Earendil 给出的解释也很合理：世界变了，MCP 变了，Pi 自己的 Tool Infrastructure 也变了。Pi 可以通过 codemode，把 MCP Tool 暴露给 QuickJS JavaScript Sandbox，让模型用程序去组合工具，而不是把几十个 Tool 全部摊在模型上下文里。文章也直接承认，很多 MCP Server 今天依然是围绕“把 Tool 全部塞进 Context”设计的；他们更希望 MCP 接近带智能发现能力的 OpenAPI，工具返回结构化数据。[1] [3]
+我不觉得改变判断需要被视作立场问题。技术选择本来就应当随着条件变化。让我更在意的是另一个更工程化的区别：Pi 改善了自己使用 MCP 的方式，不等于不同 Agent 与不同 Server 之间的行为已经因此趋同。
 
-我并不觉得改主意有什么问题。
+去年有一段时间，我在做 MCP Server：接入不同 Agent，处理鉴权，排查兼容问题。那段经验留下的不是对某个 Tool Schema 的执念，而是一个很具体的习惯：听到“这个 Agent 支持 MCP”时，接下来仍要确认 Client 的版本、鉴权实现、Tool 的加载方式、Resource 与 Elicitation 的支持情况，以及 structured output 是否会被真正消费。
 
-技术判断本来就应该变化。
-
-真正让我觉得有意思的是另外一个问题：
-
-当初反对 MCP 的那些问题，究竟真的被解决了，还是 Pi 只是终于找到了一种自己能够接受 MCP 的方式？
-
-这两件事情差别很大。
-
-我之所以会对这篇文章有这么强的反应，也是因为去年很长一段时间，我就在做 MCP Server。
-
-开发 Server，接各种 Agent，处理鉴权，排查各种莫名其妙的兼容问题。
-
-那已经是去年的事情了。
-
-但看完 Pi 这篇文章，当时很多已经有些遗忘的痛苦又回来了。
-
-做到最后，我最烦的其实已经不是 Tool Schema 怎么写，也不是一个 Tool 多占了几千个 Token。
-
-而是：
-
-你永远不知道管道另一端到底是什么东西。
-
-用户告诉你：
-
-我的 Agent 支持 MCP。
-
-理论上，这句话应该能够消除很多信息差。
-
-实际上，排查问题往往才刚刚开始。
-
-哪个 Agent？
-
-哪个版本？
-
-支持哪一版鉴权？
-
-Tool 是全部加载，还是动态发现？
-
-Resource 支不支持？
-
-Elicitation 呢？
-
-Apps 呢？
-
-Structured Output 到底会不会被真正消费？
-
-同一个 MCP Server，在张三的 Agent 上完全正常，在李四的 Agent 上可能直接不能工作。
-
-然后用户会问：
-
-两个不是都支持 MCP 吗？
-
-我也很想问。
-
-对啊。
-
-不是都叫 MCP 吗？
-
+同一个 MCP Server 在一个 Agent 上正常，在另一个 Agent 上出问题，通常不是谁故意没有遵循协议，而是双方对协议的能力边界和默认行为理解不同。“支持 MCP”因此更像一个起点，而不是完整的兼容性结论。
 
 ---
 
 
-MCP 最大的问题不是 Context
+互操作性的缺口不在 Context
 
-Anthropic 在 2024 年发布 MCP 时，描述得很清楚：希望通过一个开放协议连接 AI 应用与外部系统，包括数据源和工具，用统一标准取代不断重复的碎片化集成。[4]
+Anthropic 在 2024 年发布 MCP 时，目标说得很清楚：通过一个开放协议连接 AI 应用与外部系统，包括数据源和工具，用统一标准减少重复集成。[4]
 
-这也是 MCP 最吸引人的地方。
+这也是 MCP 最有吸引力的承诺。重点不在 JSON-RPC 本身，而在于 Server 作者不用为每一个 Agent 单独写一套接入逻辑。
 
-不是因为 JSON-RPC 有多先进，而是因为它承诺了一件非常朴素的事情：
+Context、Tool 数量、调用链长度和中间结果的体积，当然都是真问题，但它们已有相对直接的工程手段：按需加载、Tool Search、代码编排和 Sandbox 内过滤。更难处理的是另一类差异：Client 与 Server 可以都声称支持 MCP，却在能力、语义和降级策略上没有形成可预期的契约。
 
-以后不用每接一个 Agent，再重新做一次集成。
+作为 Server 作者，我需要知道对面的 Agent 会如何加载 Tool、是否消费结构化输出、是否支持 Resource、是否能向用户发起交互；作为 Agent 作者，也需要知道 Server 是把 Tool 视作严格的程序接口，还是把它当作主要由模型阅读的自然语言入口。
 
-但做到后来，我越来越觉得 MCP 最大的问题，并不是大家经常讨论的 Context。
+例如，有的 Server 使用严格 Schema 并返回 JSON；有的 Server 直接返回大段 Markdown；有的依赖 Resource；有的需要 Client 参与用户确认；还有的已经把 UI 放进 Apps。Client 端也存在同样的差异：有的全量加载 Tool，有的做 Tool Search，有的通过 Code Mode 调用，有的只实现基础子集。
 
-Context 太大，可以延迟加载。
+这些选择各自都有合理的使用场景。问题在于，协议名称相同并不能自动把它们变成相同的产品能力。一个 Tool 声明了输入 Schema，并不自动规定分页、错误码、幂等性、长任务的状态表达，或一段文本究竟是结果、解释还是给模型的操作建议。对于模型而言，这些含混之处可以被推理能力吸收；对于需要重复运行、审计和组合的系统，它们会重新变成接口契约问题。
 
-Tool 太多，可以搜索。
-
-调用过程太长，可以用代码。
-
-中间数据太多，可以放到 Sandbox 里过滤。
-
-这些都是工程问题，而且已经有很多不错的解决方案。
-
-真正麻烦的是：
-
-MCP Client 和 MCP Server 之间的能力与行为并不对等，而且这种不对等可以大到让“支持 MCP”本身失去实际意义。
-
-我作为 Server 作者，不知道对面的 Agent 到底支持什么。
-
-反过来，如果我开发 Agent，也不知道接进来的 MCP Server 会用什么方式理解这个协议。
-
-张三的 MCP 把 Tool 当传统 API，用非常严谨的 Schema，返回 JSON。
-
-李四觉得 Tool 本来就是给模型看的，直接返回一大段 Markdown。
-
-王五依赖 Resource。
-
-赵六需要客户端 Elicit 用户。
-
-另一个 Server 已经开始返回 Apps。
-
-这些设计未必是错误的。
-
-客户端这边也一样。
-
-一个 Agent 把所有 Tool 直接加载。
-
-一个做 Tool Search。
-
-一个使用 Code Mode。
-
-另一个只支持其中最基础的一小部分。
-
-它们可能全部都可以合理地宣称自己：
-
-支持 MCP。
-
-问题恰恰就在这里。
+这也是为什么“工具调用成功”与“系统已经互操作”之间还有一段距离。前者说明消息到达了对方，后者还要求双方对能力语义、错误处理和关键路径的降级方式形成足够稳定的共识。MCP 目前覆盖了其中一部分，但没有，也不必试图替所有产品把这一层约定完。
 
 ![同样的协议连接到不同 Host，却会遇到完全不同的能力与结果](/gallery/mcp-will-fail/same-protocol-different-worlds.webp)
 
+---
+
+
+同一协议下的语义差异
+
+Structured Output 是一个很具体的例子。MCP 后来增加了 outputSchema 和 structuredContent；2025 年的工具规范已经明确了它们的语义，2026-07-28 又放宽到更多 JSON Schema 2020-12 关键字，并允许 structuredContent 使用任意符合 Schema 的 JSON 值。[5] [7]
+
+这使 Tool 更接近程序接口，也让 Server 可以明确表达结果的结构。但兼容旧客户端时，协议仍建议 Server 同时把结构化结果序列化进 TextContent，照顾只读取 content 的实现。[5] 这不是 SDK 自动替开发者完成的事：官方 Ruby SDK 的 Response 同时支持 content 与 structuredContent，却不会把后者自动序列化回文本，Server 作者仍需明确维护兼容层。[6]
+
+这里没有简单的对错。对于需要统计、筛选或继续调用的数据，结构化结果更合适；对于由模型解释给用户的结果，自然语言又更直接。困难在于调用方必须预先知道自己拿到的是哪一种，或者承担把自然语言重新解析成结构化数据的成本。
+
+标准能统一传输的外形，不代表它已经统一了结果在产品中的角色。对我来说，这才是 MCP 互操作性讨论里更值得继续细化的部分。
 
 ---
 
 
-大家都支持协议，但大家想象的不是同一个协议
+鉴权让兼容边界更明显
 
-Structured Output 是一个很典型的例子。
+返回格式造成的通常是额外处理；鉴权差异更容易直接落到用户体验上。去年做 MCP Server 时，常见情况是：Client 不支持认证，或支持的版本不同，或授权页完成后回到 Client 仍然无法调用。Resource 的处理、Client Registration、localhost redirect 的细节，都可能决定最后一次 Tool Call 是否成功。
 
-MCP 后来增加了 outputSchema 和 structuredContent，这是正确方向。2025 年的工具规范已经明确它们的语义；到了 2026-07-28，outputSchema 又放宽到更多 JSON Schema 2020-12 关键字，structuredContent 也扩展到了任意符合 Schema 的 JSON 值。[5] [7]
+MCP 在 2026 年新版规范的说明中也承认，Authorization 是实现者花费最多集成时间的领域之一。2026-07-28 的更新继续调整了 iss 验证、Dynamic Client Registration 的 application_type，以及客户端身份与 issuer 的绑定。[7]
 
-但兼容旧客户端时，协议建议 Server 同时把结构化结果序列化进 TextContent，照顾那些只读取 content 的实现。[5] 这不是 SDK 自动替你完成的事：官方 Ruby SDK 的 Response 同时支持 content 与 structuredContent，但不会把后者自动序列化回文本，Server 作者仍需显式处理兼容层。[6]
+这些变化有必要，尤其是安全相关的变化不应当为了兼容性而停下来。但版本演进有一个很现实的节奏：规范会更新，Client、SDK、Server 和企业自己的 OAuth 服务不会在同一天完成升级。
 
-单独看，这些设计都有充分理由。
-
-但作为调用方，我仍然需要面对那个最现实的问题：
-
-这个 Tool 到底是一个程序接口，还是一段写给模型看的话？
-
-我要统计数据，当然希望拿到结构化结果。
-
-结果对面返回：
-
-根据您的需求，我找到了以下几个结果……
-
-怎么办？
-
-再找模型解析一次。
-
-今天模型很强，这当然能做。
-
-但这件事本身已经开始有些荒谬。
-
-我接入一个所谓的标准协议，原本就是希望减少 Adapter。
-
-最后变成：
-
-让模型在运行时替我写 Adapter。
-
-然后我们说，没关系，模型越来越聪明。
-
-那协议本身到底替我解决了多少问题？
-
-
----
-
-
-鉴权把这个问题暴露得最彻底
-
-如果返回格式只是难受，鉴权很多时候会直接让产品不能用。
-
-这也是去年做 MCP Server 时，我最深的体会之一。
-
-有的 Agent 根本不支持认证。
-
-有的支持，但实现的版本不一样。
-
-有的授权页面正常打开，看起来也授权成功，回来以后还是调用失败。
-
-Resource 怎么处理、Client Registration 怎么做、localhost redirect 怎么支持，这里面任何一个地方出现一点差异，最终用户看到的都只是：
-
-不能用。
-
-有意思的是，MCP 自己在 2026 年新版规范的介绍里也直接承认：
-
-过去一年和实现者讨论下来，Authorization 是实现者花最多集成时间的地方之一。
-
-于是 2026-07-28 又继续调整授权协议，包括 iss 验证、Dynamic Client Registration 的 application_type，以及客户端身份与 issuer 的绑定。[7]
-
-这些变化很多是必要的。
-
-安全问题当然应该修。
-
-但标准的困难就在这里：
-
-规范发布一个新版本，不等于整个生态在同一天升级。
-
-客户端有客户端的版本。
-
-SDK 有 SDK 的版本。
-
-Server 有 Server 的版本。
-
-企业自己的 OAuth 服务又是另外一套生命周期。
-
-最后 Server 开发者维护的其实不是：
-
-MCP
-
-而是：
+因此，Server 作者维护的往往不是一个抽象的“支持 MCP”，而是一组明确的组合：
 
 ```text
 MCP
@@ -249,103 +86,37 @@ MCP
 × Server Implementation
 ```
 
-任何一个问题单独拿出来，都可以说：
+认证尤其说明了“支持”不是二元状态。一个 Client 即便实现 OAuth，也可能与 Server 在授权发现、redirect、token 刷新、scope、audience 或企业身份提供商的约束上不同。Server 作者不能假设任意已认证的 Client 都会走同一条流程，Client 也不能假设所有 Server 都使用相同的授权部署方式。
 
-这是客户端 Bug。
-
-这是 SDK Bug。
-
-这是 Server 没正确实现。
-
-都可以。
-
-但用户根本不关心。
-
-他只是来问：
-
-为什么这个 Agent 能用，那个 Agent 不能用？
-
-一个协议如果最后需要开发者长期回答这个问题，就很难说它真正解决了互操作性。
-
+每个具体故障都可以归因到某一环，但用户看到的是一个更简单的问题：为什么这个 Agent 能用，另一个不能。协议如果想减少集成成本，就需要把这种组合关系尽量变得可见、可检测，也可解释。对产品而言，除了协议版本，公开支持矩阵、可复现的兼容测试和清楚的错误信息同样重要。
 
 ---
 
 
-Capability Negotiation 也没有解决问题
+Capability Negotiation 只解决了第一步
 
-有人会说，MCP 不是有 Capability 吗？
+Capability Negotiation 很重要。Client 告诉 Server 自己支持什么，至少可以避免把不支持的能力当成理所当然。但它回答的是“有没有”，而不是“不支持时产品如何完成”。
 
-Client 告诉 Server 自己支持什么，不就可以了？
+例如，一个流程必须让用户确认：Client 有对应的交互能力时，Tool 可以走正常路径；Client 没有时，Server 需要决定是返回文字、拆成多个 Tool、保存中间状态，还是明确标记该功能不可用。再比如，一个应用必须依赖 UI 才能完成任务。Client 不支持 Apps 时，协议仍然可以降级为文本，但如果用户已经无法完成原来的流程，这种降级只能算传输层兼容，不能算产品层兼容。
 
-问题是：
+我倾向于把这两层分开看：协议层保证消息仍然可达，产品层需要对关键能力、替代路径和失败模式作出设计。Capability 本身不应被当成全部答案；它只是让后续决策有了依据。
 
-知道“不支持”，和知道“不支持以后怎么办”，完全是两回事。
-
-比如一个流程必须让用户确认。
-
-Client 支持对应的交互能力，很好。
-
-不支持呢？
-
-Tool 失败？
-
-返回一句文字，让模型问用户？
-
-拆成两个 Tool？
-
-在 Server 上保存中间状态？
-
-还是整个功能标记为不可用？
-
-再比如一个应用必须有 UI 才能完成任务。
-
-客户端不支持 Apps。
-
-你当然可以降级成文本。
-
-协议还可以继续通信。
-
-但如果用户已经无法完成原来的任务，这究竟算不算“兼容”？
-
-这就是我觉得 MCP 经常混淆的一件事情：
-
-Protocol fallback 不等于 Product fallback。
-
-协议没有断，不意味着产品还能工作。
+这意味着 Server 不应只列出“支持哪些 Feature”，还应说明哪些能力是完成关键路径的前提，哪些可以文本降级，哪些需要保存状态后交给用户稍后继续。对 Host 也是一样：Capability 的价值不只在初始化时返回一段声明，更在于运行时能否给出一致的执行与失败语义。协议可以提供表达机制，产品仍要为具体流程负责。
 
 ![管道仍然连通，用户却可能无法走完实际产品流程](/gallery/mcp-will-fail/pipe-not-product.webp)
 
-
 ---
 
 
-Pi 改的是自己的 Harness，不是这个问题
+Pi 改善的是 Harness 的使用方式
 
-所以再回到 Pi。
+再回到 Pi。Earendil 对 codemode 的判断很有说服力：复杂 Tool Call 交给代码组合，往往比让模型反复调用、阅读结果、再决定下一步更可控。Mario 去年批评 MCP 时偏爱的也是代码和 Bash。2025 年 9 月，Cloudflare 公开提出 Code Mode：把 MCP Tool 的 schema 转成带类型与文档的 TypeScript API，让模型写代码组合调用，并把中间结果留在执行环境，只返回需要的最终结果。[8]
 
-我基本认同 Earendil 对 Codemode 的判断。
-
-复杂 Tool Call 用代码组合，本来就比让模型：
-
-call tool
-→ 看结果
-→ call tool
-→ 看结果
-→ call tool
-
-一轮轮操作自然。
-
-但这并不是什么 2026 年才发现的新东西。
-
-Mario 自己去年反对 MCP 时，喜欢的就是代码和 Bash。
-
-2025 年 9 月，Cloudflare 也已经公开提出 Code Mode：把 MCP Tool 的 schema 转成带类型与文档的 TypeScript API，让模型直接写代码组合调用，把中间结果留在执行环境，只把需要的最终结果带回上下文。[8]
-
-所以 Pi 今天的变化，在我看来更像：
-
-以前：
+从这个角度看，Pi 的变化并没有放弃原来的执行哲学，而是把 MCP 接到这个执行路径的下方：
 
 ```text
+以前：
+
 CLI / API
     ↓
 Bash / Code
@@ -353,9 +124,9 @@ Bash / Code
 Composition
 ```
 
+```text
 现在：
 
-```text
 MCP
     ↓
 Codemode
@@ -363,855 +134,162 @@ Codemode
 Composition
 ```
 
-它没有真正改变自己的执行哲学。
+这是一种合理的接入方式。MCP 已经有足够大的生态，Agent 没必要因为不接受某一种默认用法就拒绝所有 Server。Pi 通过 Tool Metadata、Deferred Loading 和 Codemode，建立了自己更可控的工具使用层；Earendil 也明确说过，MCP 的组合问题尚未被彻底解决，不同 Server 与不同 Harness 的使用方式仍是变量。[1] [3]
 
-只是接受了 MCP 作为下面的接口。
-
-这当然是合理的。
-
-MCP 已经成为一个很大的生态，你没有必要因为不喜欢某一种 MCP 使用方式，就拒绝整个生态。
-
-但这里解决的是：
-
-Pi 怎么使用 MCP。
-
-它没有解决：
-
-其他 Agent 怎么使用 MCP。
-
-更没有解决：
-
-Server 作者怎么知道每一个 Agent 会怎么理解自己。
-
-Pi 可以通过自己的 Tool Metadata、Deferred Loading 和 Codemode，把 MCP 包装成它喜欢的样子。Earendil 自己也明确说，他们仍然认为 MCP 很难组合，而且不同 Server 和不同 Harness 的使用方式仍然是问题。[1] [3]
-
-所以我反而觉得，Pi 的转向证明了另一件事：
-
-一个优秀的 Harness 可以把 MCP 用好，不等于 MCP 让不同 Harness 变得一样好用。
+我更愿意把这个变化理解为一个积极信号：优秀的 Harness 可以把协议用得更好，但 Harness 的改进与跨 Host 的语义一致性，是两件不同的工作。
 
 ![Harness 可以在基础管道之上完成发现、过滤、代码组合与上下文管理](/gallery/mcp-will-fail/harness-wraps-pipe.webp)
 
+---
+
+
+Extension 扩展了能力，也扩大了协调范围
+
+MCP Apps 成为正式 Extension，本身并不意外。MCP Apps 不是 OpenAI 的私有协议，而是 MCP 的公开扩展；不过 Host 支持会随客户端、版本和渠道而变化。2026 年 1 月的官方公告列出 Claude Web/Desktop、Goose、VS Code Insiders 与 ChatGPT 的支持或上线状态，但这并不表示所有 Host 实现了同一组能力。[9]
+
+微软的 MCP Apps 文档把这种现实写得很清楚。Microsoft 365 Copilot 支持 MCP Apps，同时也给出能力兼容表：部分接口可用，部分不可用；Display Mode 只覆盖一部分模式；文件上传、Modal 和若干生命周期回调存在差异。文档建议在运行时检测 API 是否存在，并准备 fallback。[10]
+
+这不是实现质量的问题，反而是一种诚实的工程表达。跨平台 UI 本来就需要处理能力子集。OpenAI 的建议也是类似的：公共能力先使用 MCP Apps，MCP Apps 没有提供的 ChatGPT 专属能力再通过 window.openai 使用，并对扩展能力做 feature detection。[11]
+
+但这也重新定义了 MCP 的承诺。应用作者若要跨 Host，通常要选择能力交集并准备降级；若要利用某个 Host 的完整体验，就要接受更明确的平台适配。这种成本并不会因为协议存在而消失，协议能做的是把成本放到更清楚、更一致的边界上。
+
+后续真正有价值的工作，可能不是继续抽象地宣布“兼容 MCP”，而是沉淀更具体的 profile、测试夹具和能力描述。例如，哪些 UI 调用可用、返回结构的大小与类型边界是什么、没有 UI 时如何继续、任务中断后由谁恢复。这样既不要求所有 Host 放弃差异，也能让差异不再完全依赖开发者手工摸索。
 
 ---
 
 
-Extension 让事情变得更乱了
+MCP 可能更适合成为稳定的基础层
 
-今年 MCP Apps 成为第一个正式 MCP Extension。
+MCP 最初的结构很简洁：
 
-这件事情本身并没有错。
-
-而且需要说准确：MCP Apps 不是 OpenAI 的私有协议。它是 MCP 的公开扩展，但 Host 支持会随客户端、版本和渠道而变化。2026 年 1 月的官方公告列出 Claude Web/Desktop、Goose、VS Code Insiders 与 ChatGPT 的支持或上线状态；这不等于所有 Host 都实现了同一组能力。[9]
-
-问题是，Extension Framework 进一步放大了一个已经存在的问题：
-
-同样叫支持 MCP，实际支持的能力集合可以越来越不一样。
-
-看微软自己的 MCP Apps 文档就很直观。
-
-Microsoft 365 Copilot 支持 MCP Apps，但微软同时给出了一张很长的能力兼容表：
-
-有些接口支持。
-
-有些不支持。
-
-Display Mode 只有部分模式。
-
-文件上传、Modal、部分生命周期回调、部分 Tool Annotation 都存在差异。
-
-微软甚至直接建议开发者在运行时检测 API 是否存在，然后自己准备 fallback。Microsoft 365 Copilot 的兼容矩阵也说明，部分 display mode、文件与 modal API 并不与其他 Host 完全一致。[10]
-
-这不是在批评微软实现得不好。
-
-相反，它很诚实。
-
-问题就在于：
-
-如果一个公开标准最后要求应用开发者对不同 Host 做 Feature Detection，然后逐家设计 fallback，那么这个标准到底把多少跨平台成本消掉了？
-
-OpenAI 这边也一样。
-
-OpenAI 当前的官方建议就是：公共能力先使用 MCP Apps；MCP Apps 没有提供的 ChatGPT 专属能力，再通过 window.openai 使用，并对扩展能力做 feature detection。[11]
-
-这个设计本身非常合理。
-
-一个平台当然应该能创新。
-
-但从应用作者的角度，选择就很现实：
-
-要跨平台，就只使用所有 Host 的交集。
-
-要最好的 ChatGPT 体验，就使用 ChatGPT Extension。
-
-到另一个 Host，再做另一套。
-
-绕了一圈：
-
-兼容矩阵又回来了。
-
-以前我们给 Chrome、IE、Safari 写兼容代码。
-
-现在我们开始给不同 Agent Host 写 MCP 兼容代码。
-
-当然，这比什么标准都没有可能还是好。
-
-但我很难把它叫成问题已经解决。
-
-Extension 解决的是：
-
-协议怎么继续增加能力。
-
-它没有解决：
-
-应用怎么稳定跨 Host 工作。
-
-甚至从某种意义上说，它把差异正式制度化了。
-
-协议维护者得到了扩展性。
-
-Host 得到了产品自由。
-
-开发者得到了一张越来越长的兼容矩阵。
-
-
----
-
-
-最后 MCP 很可能只剩下一根管道
-
-这也是我最近越来越强烈的感觉。
-
-MCP 最开始的想象很漂亮：
-
+```text
 Agent
   │
  MCP
   │
 Tools / Data
+```
 
-一个 Agent 世界的 USB-C。
+随后协议逐步增加了 Tool、Resource、Prompt、Sampling、Elicitation、Tasks、Apps、Extension 与 Authorization。每一个能力单独看都有现实理由，但它们并不都属于同一层。
 
-后来开始不断增加东西。
+2026-07-28 的调整反而说明核心协议正在重新收敛：核心改为 Stateless，移除了原来的 initialize/initialized handshake 和 protocol-level session；Tasks 移出实验性核心，成为官方 Extension；Roots、Sampling 和 Logging 被标记为 deprecated，但仍在兼容窗口内。[7]
 
-Tool。
+我认可这种把边界说清楚的方向。MCP 可以稳定地表达：这里有一个能力，它接受什么输入，产生什么输出，如何被调用。Tool 的发现时机、是否延迟加载、是否使用 Code Mode、Context Management、多 Agent 调度和 Sandbox 的创建，则更接近 Harness 的职责。
 
-Resource。
+Codex 的变化也提供了一个相近的例子。OpenAI 移除了原来的 codex mcp-server；需要暴露 Codex 自身的鉴权、Conversation History、Approval 和 Agent Event 时，需要迁移到 app-server 协议；与此同时，Codex 仍能连接外部 MCP Server。官方明确写道，app-server 使用自己的 JSON-RPC，不是 MCP Server，也不是 drop-in replacement。[12]
 
-Prompt。
+这种拆分并不让系统更“简单”，但它避免了把 Agent Runtime 与 Tool Protocol 混作同一个概念。一个协议层的核心越保守，Host 与 Harness 越容易在上层实验；反过来，若把模型侧工作流、UI、状态、权限和执行环境都固定进同一层，每次演进都更容易牵动整条兼容链。
 
-Sampling。
-
-Elicitation。
-
-Tasks。
-
-Apps。
-
-Extension。
-
-Authorization。
-
-每一个能力单独看，都能解释为什么需要它。
-
-但整个协议开始承担越来越多原本属于不同层次的问题。
-
-然后到了 2026-07-28，MCP 又做了一次非常大的基础调整：协议核心改为 Stateless，移除了原来的 initialize/initialized handshake 和 protocol-level session；Tasks 移出实验性核心，成为官方 Extension；Roots、Sampling 和 Logging 则被标记为 deprecated。官方把这次发布称为 MCP 发布以来最大的一次修订。这里的 deprecated 不是立刻删除：它们仍处在兼容窗口内。[7]
-
-其中很多变化我甚至觉得方向是对的。
-
-特别是 Stateless。
-
-Server 不应该因为一个隐式 Transport Session 就很难水平扩展。
-
-但这个变化同时让我更确信：
-
-MCP 最后很可能应该老老实实做一根管道。
-
-告诉我：
-
-这里有一个能力。
-
-这是它的输入。
-
-这是它的输出。
-
-我可以调用它。
-
-至于：
-
-什么时候发现 Tool。
-
-要不要延迟加载。
-
-用不用 Code Mode。
-
-要不要 Plan。
-
-怎么做 Context Management。
-
-怎么调度多个 Agent。
-
-怎么创建 Sandbox。
-
-这些本来就是 Harness 的事情。
-
-Codex 最近的变化其实也在说明这个边界。
-
-OpenAI 已经移除了原来的 codex mcp-server。如果你需要暴露 Codex 自身完整的鉴权、Conversation History、Approval 和 Agent Event，需要迁移到自己的 app-server 协议；但 Codex 继续支持连接外部 MCP Server。OpenAI 文档明确写着，app-server 采用自己的 JSON-RPC，不是 MCP Server，也不是 drop-in replacement。[12]
-
-我反而觉得这种分开是对的。
-
-Agent Runtime 是 Agent Runtime。
-
-Tool Protocol 是 Tool Protocol。
-
-不要什么都叫 MCP。
-
+这并不意味着 Apps、Tasks 或 Sampling 没有价值。它更像是在提醒协议设计者区分两件事：一种能力是否需要被所有实现默认携带，和一种能力是否应当有标准化的扩展表达。把它们混在一起，短期看起来功能更齐全，长期却会让“最小可互操作集”越来越难说清。
 
 ---
 
 
-但 CLI 也不是答案
+CLI 的边界
 
-批评 MCP 以后，一个很自然的答案是：
+批评 MCP 后，很容易把 CLI 当作更通用的替代方案。我和 Mario 的判断并不完全重合。
 
-那就用 CLI。
+CLI 对 Coding Agent 的确自然：模型会 Bash、Pipe、grep、jq，也会写临时程序。它适合把多步操作留在代码里，让输出不必全部进入上下文。对于开发任务，这些优势非常实际。
 
-这一点我和 Mario 的判断还是不完全一样。
+但从“CLI 对 Coding Agent 很好用”推导到“CLI 是所有 Agent 的通用 Tool Protocol”，中间仍有不少条件。CLI 需要可运行的 Runtime、已安装的程序、文件系统和依赖管理；许多 Agent 任务只是读 CRM、查订单、改工单或调用几个远程 API，并不需要先获得一台完整的 Linux 机器。
 
-CLI 对 Coding Agent 确实非常自然。
+OpenAI 现在的 Agent 架构给出了一种更按需的边界：Harness、Session 和 Environment 是不同概念。Agent 可以设置 environment.type = none；不需要运行代码或操作文件时，Harness 仍可调用 OpenAI 可访问的远程 HTTP MCP 和 Function Tools。只有真正需要命令、代码或文件操作时，才增加 Environment。[13]
 
-模型很会 Bash。
-
-会 Pipe。
-
-会 grep。
-
-会 jq。
-
-会写临时程序。
-
-输出不需要全部进入上下文。
-
-对于开发任务，我完全认可这些优势。
-
-但从：
-
-CLI 对 Coding Agent 非常好用。
-
-推导到：
-
-CLI 是所有 Agent 的通用 Tool Protocol。
-
-中间还差得很远。
-
-最直接的问题就是：
-
-CLI 总得运行在什么地方。
-
-你要有 Runtime。
-
-要装程序。
-
-要有文件系统。
-
-要处理依赖。
-
-而很多 Agent 任务本来根本不需要这些东西。
-
-我只是读 CRM。
-
-查一张订单。
-
-改一个工单。
-
-调用三个远程 API。
-
-为什么在这之前，我必须先给 Agent 准备一台 Linux 机器？
-
-OpenAI 现在的 Agent 架构反而提供了一个很好的例子：Harness、Session 和 Environment 是不同的概念。Agent 可以设置 environment.type = none；不需要运行代码或操作文件时，Harness 仍可调用 OpenAI 可访问的远程 HTTP MCP 和 Function Tools。真正需要命令、代码或文件操作时，再增加 Environment。[13]
-
-我觉得这更自然。
-
-执行环境应该是需要的时候才出现的资源，不应该是 Agent 存在的前提。
-
+我更认同这种安排：执行环境是一种按需出现的资源，而不是 Agent 存在的前提。一个读订单、查知识库或提交审批的任务，应该能够直接在受控服务连接上完成；一个需要编译、处理文件或运行浏览器自动化的任务，再申请相应的 Runtime。这样既减少了无意义的基础设施，也让权限与数据边界更容易被单独审计。
 
 ---
 
 
-更麻烦的是 Secret
+执行环境之外的身份与凭据
 
-CLI 在自己的电脑上为什么这么舒服？
+CLI 在个人电脑上很顺手，常常是因为登录态已经存在：GitHub、AWS、配置文件，甚至浏览器 Cookie 都在本地。模型执行 `gh issue list`，就能直接得到结果。
 
-因为一切已经在那里。
+这套前提在临时 Sandbox 中会改变。任务可能被调度到新实例，执行结束后实例会销毁；凭据不能简单地随着每个 Sandbox 复制，也不适合把整个 Home Directory 挂载进去。企业场景还要考虑离职、撤权、审计与凭据泄漏后的处置。
 
-GitHub 登录过了。
+Anthropic 的 Claude Code 云端 Sandbox 使用了另一种边界：真实 Git Credential 不进入 Sandbox，Sandbox 使用按会话限定的短期 Credential 访问外部 Proxy，由 Proxy 检查操作和目标，再在服务端附上真正的认证。这里讨论的是 Anthropic-hosted Cloud sessions，不应泛化到所有自托管运行方式。[16]
 
-AWS 登录过了。
+OpenAI 把两类边界拆得更清楚：Vault 将 MCP Credential 放在 Agent 配置之外，Agent 使用已认证连接时不会得到 Secret 值；Codex Cloud 的 Network Secret 则让程序只看到 Placeholder，由受控代理仅在允许域名的 HTTPS 请求中替换真正 Secret。[14] [15]
 
-各种配置文件都在 Home Directory。
+这些设计说明，可靠的 Agent 执行并不只依赖 CLI 或 Sandbox。Identity、Permission、Credential Broker、Network Policy、Sandbox Isolation 与 Audit 都属于更外层的控制系统；CLI 只是其中一种交互接口。
 
-甚至浏览器 Cookie 都已经准备好了。
-
-所以模型只需要执行：
-
-gh issue list
-
-事情就完成了。
-
-但如果 Sandbox 是临时的呢？
-
-任务到来：
-
-创建一个。
-
-任务结束：
-
-销毁。
-
-下一次任务跑到另外一个实例。
-
-那 Credential 怎么办？
-
-每个 Sandbox 重新登录？
-
-把 .config 持久化？
-
-把用户的 Home Directory 挂进去？
-
-创建 Sandbox 的时候，把所有 Token 一股脑注入？
-
-这些方案对于个人机器可能可以接受，到了企业就是完全不同的问题。
-
-员工离职怎么办？
-
-Token 泄漏怎么办？
-
-权限怎么立即撤销？
-
-一份 Credential 被复制到多少台环境里，我怎么知道？
-
-这不是 CLI 自己可以解决的。
-
-当然，可以做得很好。
-
-Anthropic 的 Claude Code 云端 Sandbox 就没有把真实 Git Credential 放进 Sandbox，而是通过外部 Proxy 代理 Git 操作：Sandbox 使用按会话限定的短期 Credential，Proxy 检查操作和目标，再在服务端附上真正的认证。这是 Anthropic-hosted Cloud sessions 的设计，不应泛化为所有自托管运行方式。[16]
-
-OpenAI 把两类边界拆得更清楚：Vault 将 MCP Credential 放在 Agent 配置之外，Agent 使用已认证连接时不会拿到 Secret 值；Codex Cloud 的 Network Secret 则让程序只收到 Placeholder，由受控代理仅在允许域名的 HTTPS 请求中替换真正 Secret。[14] [15]
-
-我认同这种设计。
-
-但注意，到这里以后真正解决问题的已经不是 CLI 了。
-
-而是：
-
-Identity。
-
-Permission。
-
-Credential Broker。
-
-Network Policy。
-
-Sandbox Isolation。
-
-Audit。
-
-CLI 只是最里面的一种 Interface。
+从系统设计上看，比较稳妥的模式是：控制层保存任务、授权引用、审批记录和可恢复状态；执行层只拿到完成当前步骤所需的短期权限与输入；步骤结束后，产物被写回受控的存储或业务系统，而不是留在某一台难以追踪的机器里。这样即使 Runtime 被回收，任务仍然有明确的归属和恢复路径。
 
 ![Sandbox 是按需执行资源，身份、权限与凭据应留在受控边界之外](/gallery/mcp-will-fail/ephemeral-sandbox-vault.webp)
 
-所以说：
+---
 
-CLI 比 MCP 简单。
 
-在个人电脑上可能没错。
+Sandbox 是执行资源，不是 Agent 的身份
 
-在一个企业级、多租户、可以水平扩展的 Agent 系统里，我觉得这句话漏掉了太多东西。
+过去一年里，“给 Agent 一台电脑”逐渐成了一种直觉。它有文件、浏览器、软件和登录态，长期运行，看起来像一个数字员工。这个形态对某些任务有用，尤其是依赖桌面软件、专用硬件或长时间本地环境的工作。
 
+但我不认为它应当成为默认的身份模型。Sandbox 更适合被看作 Agent 可调度的执行资源：需要时创建，任务完成后销毁，需要并行时扩展多个实例；只需要 Remote Tool 时，甚至不必创建。任务、状态、权限、审批、长期记忆和产物不应因为一个 Sandbox 被回收而消失。
+
+这也是水平扩展中容易被忽视的地方。增加十个 Container 不难；如果身份、状态、Credential 和工作进度仍绑定在某个 Container 上，新增的只是更多状态孤岛，而不是更可调度的计算能力。
+
+OpenClaw 的实际架构已经体现出控制层与执行层的区分：在启用 Agent Sandbox 的场景中，Gateway 控制进程留在 Host，受策略约束的 Tool Execution 可以交给 Docker、Podman、SSH、OpenShell 或其他 Sandbox Backend。Sandbox 默认并不一定开启。[17]
+
+这里的分歧不在于常驻电脑是否有价值，而在于是否把它误当成 Agent 的身份。电脑可以是 Agent 调度的一个执行节点，不应是所有状态的唯一归宿。
 
 ---
 
 
-Sandbox 不是 Agent 的家
+组织数据与运行时应当分离
 
-这也是我对过去一年 Agent 产品形态一个越来越大的疑问。
+对于信息化程度较高的组织，重要数据通常并不以某个人的电脑为中心：代码在 GitHub 或企业 GitLab，文档在飞书云文档、Google Docs、Notion 或知识库，项目状态在项目系统，客户和订单在业务系统。电脑上保留的是工作副本、Cache、未 Push 的代码与临时文件，而不是组织唯一的事实来源。
 
-不知道什么时候开始：
+本地电脑因此更像 Interface 与 Runtime，而不是 Data Center。打开飞书不代表文档住进 Mac；git clone 一个仓库，也不表示整个项目开始依赖某块 SSD。
 
-给 Agent 一台电脑
+给 Agent 准备长期电脑时，需要格外区分这两层。局部计算当然可能必须留在设备上，例如数百 GB 的文件、深度依赖桌面软件的流程、本地硬件、特殊 GPU 或不能离开设备的数据。但这些条件决定的是某一步计算在哪里执行，而不是整个 Agent 的状态必须住在哪里。
 
-变成了一种特别自然的直觉。
-
-它有自己的文件。
-
-浏览器。
-
-软件。
-
-登录态。
-
-一台机器长期放在那里。
-
-看上去很像一个数字员工。
-
-但我越来越觉得，这个类比可能从一开始就不太对。
-
-在我们的设想里：
-
-Sandbox 是 Agent 使用的执行资源，不是 Agent 本身。
-
-需要的时候创建。
-
-任务完成以后销毁。
-
-需要并行就开多个。
-
-只需要 Remote Tool，就一个都不要。
-
-Agent 的任务、状态、权限、审批、长期记忆和产物，不应该因为某一个 Sandbox 被销毁就一起消失。
-
-不然你所谓的 Agent，最后其实只是：
-
-一台不太敢关机的虚拟机。
-
-这对水平扩展尤其麻烦。
-
-你可以很容易增加十个 Container。
-
-但如果真正的身份、状态、Credential 和工作进度都绑在某一个 Container 上，那么增加 Container 并不等于获得了可调度的计算能力。
-
-只是增加了十个新的状态孤岛。
-
-OpenClaw 这一类产品又很容易强化“Agent 就是住在一台电脑里的东西”这种产品想象。
-
-这里不想把代码架构本身说错。OpenClaw 在启用 Agent Sandbox 的架构中明确把 Gateway 控制进程留在 Host，只把受策略约束的 Tool Execution 交给 Docker、Podman、SSH、OpenShell 或其他 Sandbox Backend；它的实际架构本身已经存在控制层和执行层的区分。Sandbox 默认并不一定开启。[17]
-
-我真正不认同的是这种被大众进一步简化之后的产品直觉：
-
-一台常驻电脑 + 一个模型 + 一堆 Tool = Agent。
-
-电脑应该是 Agent 可以调度的一个执行节点。
-
-而不是 Agent 的身份。
-
+这种分离也能让“本地优先”和“云端优先”不再是非此即彼的选择。工作流可以把代码检查调度到本地，把长时间批处理调度到隔离 Sandbox，把 CRM 查询留在远程服务，把最终状态写回项目系统。真正需要标准化的不是 Agent 永久待在哪台机器上，而是这些执行节点如何取得有限权限、报告进度并交还产物。
 
 ---
 
 
-更何况，真正重要的数据本来就不应该在本地
+从本地切入到服务化运行时
 
-还有一个前提经常被忽略。
+回头看早期的 v0 与 Lovable，这条线会更清楚。2023 年的 v0 是一个在线产品：用户描述想要的界面，v0 生成并迭代基于 React、Tailwind CSS 与 shadcn/ui 的代码，用户再把代码带走继续开发。[18]
 
-如果讨论的是信息化做得比较好的企业，或者一个正常使用现代知识管理工具的知识工作者，真正重要的数据本来就不以个人电脑为中心。
+Lovable 的历史也有类似变化。gpt-engineer 起初是面向终端开发者的开源项目，后来团队做了面向非技术用户的商业 Web 平台 gptengineer.app，并将其品牌重塑为 Lovable。开源命令行项目与商业 Web 产品需要分开看。[19]
 
-程序员的代码在 GitHub，或者企业 GitLab。
+本地 Coding Agent 的兴起同样有很实际的理由：开发者电脑上已有代码、Node、Git、浏览器和已登录的 CLI，Agent 可以很快进入工作，不必先搭一套额外基础设施。这是很好的切入点。
 
-文档在飞书云文档、Google Docs、Notion 或企业知识库。
+只是切入点不等于最终架构。随着任务变长、用户换设备、电脑休眠、网络中断和远程接管逐渐变成常态，产品自然开始引入云端 Sandbox、Remote Runtime、Credential Proxy、状态同步与任务接管。它们最终会指向一个独立于个人电脑、长期在线的控制层。
 
-项目状态在项目系统。
+这个过程不必被理解成“本地路线走错了”。本地环境仍然是很多高价值任务的最佳入口，特别是在已有工作副本、私有网络或特定工具链的情况下。变化只是要求产品把本地环境当作一个可接入、可调度、可撤销的执行节点，而不再把它当作整个 Agent 的唯一宿主。
 
-客户在 CRM。
-
-订单在业务系统。
-
-电脑上当然还有东西。
-
-有工作副本。
-
-有 Cache。
-
-有还没 Push 的代码。
-
-有临时文件。
-
-但这些通常不应该是组织唯一的事实来源。
-
-本地电脑更多是一个 Interface 和 Runtime，不是 Data Center。
-
-我打开飞书，不代表飞书文档住进了我的 Mac。
-
-我 git clone 一个仓库，也不代表整个项目从此依赖我的 SSD。
-
-我们过去二十年一直在做一件事：
-
-把组织数据从某个人的电脑里搬出来。
-
-统一版本。
-
-统一权限。
-
-方便协作。
-
-方便交接。
-
-结果到了 Agent 时代，又开始给每一个 Agent 准备一台长期存在的电脑，再把文件、状态、Cookie、Credential 全部往里面塞。
-
-好不容易从：
-
-某个人的电脑
-
-里跑出来。
-
-现在准备搬进：
-
-某个 Agent 的电脑。
-
-我不觉得这是一个很自然的终局。
-
-当然，确实有例外。
-
-几百 GB 的文件。
-
-深度依赖某个桌面软件。
-
-本地硬件。
-
-特殊 GPU。
-
-真正不能离开设备的数据。
-
-这些都应该支持本地执行。
-
-但它们决定的是：
-
-这一步计算在哪里执行。
-
-而不是：
-
-整个 Agent 应该住在哪里。
-
+我的判断是，组织级 Agent 会逐渐形成更明确的结构：控制层长期在线，状态、身份与权限集中管理，Runtime 按需调度；需要本地时，把某个步骤调度到本地，需要代码环境时创建 Sandbox，只需要 Remote API 时就不创建 Runtime。这样做不是否定本地 Agent，而是让 Agent 与运行环境能够在需要时分开。
 
 ---
 
 
-我们这一年其实绕了一条挺奇怪的路
+Agent 协议栈的分层问题
 
-回头看看早期的 v0 和 Lovable，我觉得这件事情尤其有意思。
+写到这里，我有一个仍在形成中的判断：MCP 的困难未必来自某一个 Feature 做错了，而是越来越多不同层次的职责被放进同一份协议里。Tool 不够时加入 Resource，需要模型参与时加入 Sampling，需要用户参与时加入 Elicitation，需要任务生命周期时加入 Tasks，需要 UI 时加入 Apps，之后再通过 Extension 扩展。
 
-2023 年的 v0，本质上就是一个在线产品：用户描述自己想要的界面，v0 生成并迭代基于 React、Tailwind CSS 与 shadcn/ui 的代码，用户再把代码带走继续开发。[18]
+每一次选择都有理由，但放在一起会使协议的边界越来越宽。网络协议提供了一个有用的参照，不是因为 Agent 要照抄 OSI 七层，而是因为稳定的下一层抽象能让上层演进：IP 不需要理解网页，TCP 不需要理解数据库，HTTP 也不规定操作系统如何调度进程。
 
-Lovable 的历史也有类似轨迹：gpt-engineer 起初是面向终端开发者的开源项目，后来团队做了面向非技术用户的商业 Web 平台 gptengineer.app，并将其品牌重塑为 Lovable。开源命令行项目与商业 Web 产品需要分开看。[19]
+Agent 的通信体系可能也需要类似的边界。连接、可靠通信、长期状态与任务可以分别处理；Tool、Agent 协作和人机交互可能属于更上面的 Application Protocol；Code Mode、Skill、Sandbox、Tool Search 与 Multi-Agent Orchestration 则更接近 Harness。
 
-这些产品当时当然没有今天的 Coding Agent 强。
+具体应当怎样划分，我现在没有完整答案，也不认为此刻需要急着画出一张“Agent 七层模型”。但协议能力越多，Host 可以选择的组合也越多，“支持 MCP”表达的信息就越少。成熟协议的重要能力之一，是清楚说明哪些问题留给上层处理。
 
-但产品直觉非常清楚：
-
-用户把事情交给服务。
-
-至于后面启动几台机器，安装什么环境，是服务自己的事情。
-
-后来 Coding Agent 快速起来，本地 Agent 成为一个非常自然的切入口。
-
-因为开发者电脑上已经什么都有了。
-
-代码有。
-
-Node 有。
-
-Git 有。
-
-浏览器有。
-
-各种 CLI 也登录好了。
-
-Agent 直接进去工作，几乎不需要额外基础设施。
-
-这是非常聪明的产品选择。
-
-但一个：
-
-最容易启动的切入点
-
-不等于：
-
-最终应该采用的系统架构。
-
-我们很快遇到了：
-
-电脑合盖怎么办？
-
-断网怎么办？
-
-任务执行几个小时怎么办？
-
-人换设备怎么办？
-
-怎么 Remote Control？
-
-怎么让它继续运行？
-
-然后开始做云端 Sandbox。
-
-做 Remote Runtime。
-
-做 Credential Proxy。
-
-做状态同步。
-
-做任务接管。
-
-最后又发现：
-
-好像还是需要一个独立于用户电脑、常在线的控制层。
-
-有时候我会觉得，这一年的过程挺有意思。
-
-我们先把一个服务拆成了一台需要用户照看的电脑，然后又开始一点点把它重新做回服务。
-
-我的判断是，接下来组织级 Agent 会越来越明确地回到这个结构：
-
-控制层长期在线。
-
-状态集中管理。
-
-Identity 和 Permission 集中管理。
-
-Runtime 按需调度。
-
-需要本地，就把一个步骤调度到本地。
-
-需要代码环境，就创建一个 Sandbox。
-
-只需要 Remote API，就根本不创建 Runtime。
-
-Agent 与运行环境重新分开。
-
-而且这一次应该分得更彻底。
-
+如果 MCP 最终能在 Agent Stack 中沉淀为一层稳定、清晰的能力接口，它反而可能拥有很长的生命周期。
 
 ---
 
 
-也许最后需要的是一个分层的 Agent Protocol Stack
+不必急着寻找替代协议
 
-写到这里，我有一个还没有完全想清楚的判断。
+讨论到这里，很容易顺着推到“那就重新设计一个更好的协议”。现实中的标准演进很少只由技术漂亮与否决定。OpenAI、Anthropic、Microsoft、既有 Server 与开发者社区，都有迁移成本、已有投入、产品节奏与平台利益需要考虑。
 
-也许 MCP 最大的问题，不是某一个 Feature 做错了。
+MCP 今天最大的优势也不在于已经完美，而在于它已经形成了生态：Server、SDK、用户预期和平台支持都在增长。一个 Agent 选择不支持 MCP，往往需要额外解释原因。这种惯性很强，也并不必然是坏事。
 
-而是它一直试图在同一个协议里处理太多不同层次的问题。
+因此，标题里所说的“失败”并不是指 MCP 会消失。更可能的风险是：它广泛存在，却没有完成最初最吸引人的那部分承诺。如果协议只统一了基础管道，而决定产品是否可用的行为仍主要散落在 Host、Server、授权实现、UI 与运行时的私有选择里，开发者依然要为不同对方写大量适配。
 
-Tool 不够，加 Resource。
+这不是对 MCP 的否定。协议、Code Mode、Apps、Extension、CLI、Sandbox 和云端控制层各自都有充分理由，也会继续发展。更重要的是承认它们所在的层次不同，并把“能连通”“能调用”和“能稳定完成用户任务”分开衡量。
 
-需要模型参与，加 Sampling。
-
-需要用户参与，加 Elicitation。
-
-需要任务生命周期，加 Tasks。
-
-需要 UI，加 Apps。
-
-以后再继续通过 Extension 扩展。
-
-每一次单独看，都有理由。
-
-但放到一起，就越来越像一个什么事情都想管一点的协议。
-
-我反而觉得，Agent 未来的通信体系可能最终还是会走向类似网络协议的分层 Stack。
-
-这里不是说照抄 OSI 七层，也不是现在就应该画出一张“Agent 七层模型”。
-
-这个问题还远远没有清楚到那个程度。
-
-但网络协议有一个特别重要的思想：
-
-下一层提供稳定抽象，上层在这个抽象之上继续构建，而不是一个协议一路从链路管到最终应用。
-
-IP 不需要理解网页。
-
-TCP 不需要理解数据库。
-
-HTTP 也不需要规定操作系统怎么调度一个进程。
-
-Agent 的通信最后大概率也要找到类似的边界。
-
-连接是一层问题。
-
-可靠通信是另一层问题。
-
-长期状态与任务又是另一层。
-
-Tool、Agent 协作、人机交互，可能分别属于更上面的 Application Protocol。
-
-Code Mode、Skill、Sandbox、Tool Search、Multi-Agent Orchestration，则更可能应该留给 Harness。
-
-具体到底怎么分，我现在没有答案。
-
-而且我觉得现在就非常自信地提出一套完整 Agent OSI，大概率也是过早设计。
-
-但至少有一点越来越清楚：
-
-继续把所有新需求都往 MCP 里面加，不会自然得到一个越来越统一的协议。
-
-甚至可能正好相反。
-
-它拥有的 Feature 越多，Host 可以选择的组合越多，“支持 MCP”这句话表达的信息越少。
-
-一个成熟协议最重要的能力，可能并不是不断证明：
-
-这个我也能做。
-
-而是终于能够明确：
-
-这个事情不归我管。
-
-如果 MCP 最后能退回整个 Agent Stack 中一个清晰、稳定的层，我反而觉得它还有可能活得非常久。
-
-
----
-
-
-但新的完美协议也不会有人自动 Follow
-
-说到这里，很容易得出另一个结论：
-
-那重新设计一个更好的协议不就好了？
-
-问题是，现实世界不是这样工作的。
-
-就算今天有人写出一份逻辑上比 MCP 漂亮十倍的规范：
-
-OpenAI 为什么迁？
-
-Anthropic 为什么迁？
-
-Microsoft 为什么迁？
-
-已经存在的 Server 为什么迁？
-
-生态为什么迁？
-
-标准从来不只是技术正确性的问题。
-
-还有迁移成本。
-
-已有投资。
-
-开发者习惯。
-
-平台利益。
-
-先发优势。
-
-MCP 今天最大的优势恰恰不是它已经完美，而是：
-
-它已经在那里了。
-
-Server 有了。
-
-SDK 有了。
-
-用户开始要求了。
-
-越来越多平台支持了。
-
-如果你今天做一个 Agent 不支持 MCP，反而需要解释：
-
-为什么不支持？
-
-一个标准进入这个阶段以后，就会产生非常强的惯性。
-
-所以我所谓的“MCP 会失败”，并不意味着它会消失。
-
-甚至恰恰相反。
-
-
----
-
-
-MCP 最可能的失败方式，是成功得无处不在
-
-它可能成为所有 Agent 都有的一根公共管道。
-
-所有产品官网都写：
-
-Supports MCP.
-
-所有业务系统都提供 MCP Server。
-
-越来越多 Apps。
-
-越来越多 Extensions。
-
-越来越多 Plugin、Skill、Agent 建立在上面。
-
-从 Adoption 看，非常成功。
-
-但真正做产品的时候，Server 开发者还是在问：
-
-这个 Agent 到底支持什么？
-
-Agent 开发者还是在问：
-
-这个 MCP Server 到底会返回什么？
-
-用户还是在问：
-
-为什么同一个 MCP，在这里能用，在那里不能用？
-
-然后所有人继续：
-
-Feature Detection。
-
-Compatibility Layer。
-
-Host-specific Logic。
-
-Private Extension。
-
-版本判断。
-
-Fallback。
-
-以前我们适配不同 API。
-
-后来我们说 MCP 可以结束这种碎片化。
-
-最后，我们开始适配：
-
-不同厂商对于 MCP 的理解。
-
-如果到了那个时候，你接入一个 MCP Server 之前，第一句话仍然是：
-
-你用的是哪家的 MCP？
-
-那我们到底统一了什么？
-
-这也是为什么，我还是愿意把标题写成：
-
-MCP，终将会走向失败
-
-它未必会死。
-
-甚至可能活得非常好。
-
-但如果一个协议最终只统一了一根管道，而真正决定应用能不能工作的行为，依然全部散落在管道两端的私有实现里，那么它至少没有完成最初那个最迷人的承诺：
-
-让开发者不再为每一个对方重新做一次集成。
-
-从 MCP，到 Code Mode，到 Apps，到 Extension，到 CLI，到 Sandbox，再到重新建立云端控制层。
-
-每一步单独拿出来看，都有自己的理由。
-
-很多决定本身甚至都是对的。
-
-只是把这一年折腾的东西全部摊在桌子上以后，我总会想到刘震云那本《一地鸡毛》。
-
-这不是引用书里的哪句话。
-
-只是觉得这个书名实在太合适。
-
-协议越来越完整。
-
-Agent 越来越聪明。
-
-架构图越来越复杂。
-
-大家都在解决自己眼前那个非常合理的问题。
-
-最后低头一看。
-
-折腾一圈，一地鸡毛。
+我仍然保留这个标题，是因为它提醒我不要把 Adoption 当作互操作性的完成。MCP 若能收敛为一层稳定的能力接口，并允许上层产品明确表达自己的约束与扩展，它未必会失败，反而可能比承担一切时活得更久。
 
 ## 参考资料
 
