@@ -19,7 +19,7 @@ featured_image: /gallery/governing-an-organization-with-agents/cover.webp
 
 后来有了 AI Coding，我们开始把需求交给 Agent，让它写代码、调试、测试、提交 PR。自己则更多地负责技术方案、工作拆分、Code Review，以及解决几个 Agent 之间的冲突。
 
-这已经很像一名 Tech Lead 的日常工作了。
+这已经很像一名技术负责人的日常工作了。
 
 但最近，我又往前走了一步。
 
@@ -31,13 +31,13 @@ featured_image: /gallery/governing-an-organization-with-agents/cover.webp
 
 ![人和协调者面向共同目标，多个专长不同的 Agent 沿着任务路径协作](/gallery/governing-an-organization-with-agents/cover.webp)
 
-### Leader 的 Leader 在做什么？
+### 当职责再往上一层
 
-传统软件工程里，一个 Tech Lead 可能需要带着几名工程师完成项目。他要理解需求，确定架构，分配任务，协调依赖，解决技术争议，并最终保证交付质量。
+传统软件工程里，一名技术负责人可能需要带着几名工程师完成项目。他要理解需求，确定架构，分配任务，协调依赖，解决技术争议，并最终保证交付质量。
 
-那么，Tech Lead 的 Leader 呢？
+那么，当职责再往上一层呢？
 
-一个管理着几个技术团队的人，不可能每天阅读所有人的代码。他甚至不一定知道某个工程师今天具体修改了哪个文件。再往上，一个大型组织的技术负责人管理着数百甚至数千名工程师，更不可能亲自审查每一个 PR。
+负责几个技术团队的人，不可能每天阅读所有人的代码。他甚至不一定知道某个工程师今天具体修改了哪个文件。再往上，一个大型组织的技术负责人管理着数百甚至数千名工程师，更不可能亲自审查每一个 PR。
 
 但这不意味着他什么都不做。
 
